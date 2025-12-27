@@ -6,16 +6,15 @@ import React from "react";
 const Header = () => {
   return (
     <header className="w-full h-20 flex items-center justify-between fixed top-0 bg-foreground/40 backdrop-blur-md px-[var(--gutter-width)] text-accent z-10">
-      <Link href={"/#home"} className="w-1/3">
+      <Link href={"/#home"} className="w-full tablet:w-1/3">
         <span className="font-dm text-lg inline-block">
           <Image
             src={"/images/beyondFaith-logo-white.svg"}
-            height={48}
-            width={180}
+            height={40}
+            width={160}
             alt="beyondFaith-logo"
             className="translate-y-1"
           />
-          {/* BeyondFaith */}
         </span>
       </Link>
       <nav className="hidden tablet:flex items-center gap-x-10 font-inter text-sm w-1/3 justify-center">
