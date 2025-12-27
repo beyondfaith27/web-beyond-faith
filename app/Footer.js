@@ -5,7 +5,15 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="flex justify-between items-center px-[var(--gutter-width)] py-6">
-      <h2 className="text-lg font-dm">BeyondFaith</h2>
+      <h2 className="text-lg font-dm inline-block">
+        <Image
+          src="/images/beyondFaith-logo-black.svg"
+          alt="beyondFaith-logo"
+          width={120}
+          height={32}
+          draggable="false"
+        />
+      </h2>
       <div className="flex items-center gap-x-6 tablet:gap-x-12">
         <Link href="#">
           <Image
