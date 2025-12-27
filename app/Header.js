@@ -22,7 +22,7 @@ const Header = () => {
         <Link href="/#home">Home</Link>
         <Link href="/#services">Services</Link>
         <Link href="/#faq">FAQ</Link>
-        <Link href="/#shop">Shop</Link>
+        {/* <Link href="/#shop">Shop</Link> */}
       </nav>
       <div className="w-1/3 flex justify-end items-center">
         <Button variant="outline" className="hidden tablet:flex">
