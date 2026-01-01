@@ -5,6 +5,7 @@
 
 :root {
   --background: oklch(1 0 0);
+  --colored-background: oklch(0.3669 0.1387 303.38);
   --foreground: oklch(0 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -80,6 +81,7 @@
 
 @theme inline {
   --color-background: var(--background);
+  --color-colored-background: var(--colored-background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
@@ -136,14 +138,14 @@
   }
 
   section {
-    @apply w-full h-full min-h-[100dvh] relative px-[var(--gutter-width)] font-inter; 
+    @apply w-full h-full min-h-[100dvh] relative px-[var(--gutter-width)] font-inter;
   }
 
   h1 {
-    @apply text-4xl tablet:text-6xl font-dm text-center
+    @apply text-4xl tablet:text-6xl font-dm text-center;
   }
 
   h2 {
-    @apply text-4xl font-dm text-center
+    @apply text-4xl font-dm text-center;
   }
 }
