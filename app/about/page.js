@@ -2,7 +2,7 @@ import AnimatedUnderline from "@/components/AnimatedUnderline";
 import Image from "next/image";
 import React from "react";
 
-const page = () => {
+const About = () => {
   return (
     <>
       <section className="!h-full flex items-center relative py-24 bg-colored-background text-white">
@@ -70,8 +70,54 @@ const page = () => {
           ></div>
         </div>
       </section>
+      <section className="!h-full flex items-center relative py-24">
+        <div className="w-full flex justify-between">
+          <div className="px-10 py-32 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] max-w-120 flex flex-col gap-y-6 relative z-0 overflow-clip">
+            <div className="absolute top-0 right-0 -z-10 backdrop-blur-md bg-white opacity-40 w-full h-full"></div>
+            {/* <Image
+              width={48}
+              height={48}
+              src="/images/empathy-icon.svg"
+              alt="empathy-icon"
+            /> */}
+            <h3 className="text-2xl text-primary font-bold">Our Mission</h3>
+            <p className="text-xl grow-0">
+              To <span className="text-primary">normalize</span> the
+              conversation around mental health. We{" "}
+              <span className="text-primary">empower</span> individuals to seek
+              support with <span className="text-primary">confidence</span>,
+              replacing stigma with strength.
+            </p>
+          </div>
+          <div className="px-10 py-32 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] max-w-120 flex flex-col gap-y-6 relative z-0 overflow-clip">
+            <div className="absolute top-0 right-0 -z-10 backdrop-blur-md bg-white opacity-40 w-full h-full"></div>
+            {/* <Image
+              width={48}
+              height={48}
+              src="/images/rising-sun-icon.svg"
+              alt="rising-sun-icon"
+            /> */}
+            <h3 className="text-2xl text-primary font-bold">Our Vision</h3>
+            <p className="text-xl grow-0">
+              A world where mental wellness is a{" "}
+              <span className="text-primary">basic right</span>. We see a{" "}
+              <span className="text-primary">future</span> where individuals and
+              organizations embrace health as the key to{" "}
+              <span className="text-primary">fulfillment</span> .
+            </p>
+          </div>
+        </div>
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src={"/images/compassion-blob-lady.jpg"}
+            alt="compassion-bg"
+            fill
+            className="object-contain scale-90"
+          />
+        </div>
+      </section>
     </>
   );
 };
 
-export default page;
+export default About;
