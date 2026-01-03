@@ -1,6 +1,12 @@
 import AnimatedUnderline from "@/components/AnimatedUnderline";
 import Image from "next/image";
 import React from "react";
+import { Button } from "@/components/ui/button";
+import {
+  FeatureContextProvider,
+  FeatureGraphicListing,
+  FeatureTextListing,
+} from "./FeatureUtils";
 
 const About = () => {
   return (
@@ -70,10 +76,10 @@ const About = () => {
           ></div>
         </div>
       </section>
-      <section className="!h-full flex items-center relative py-24">
-        <div className="w-full flex justify-between">
+      <section className="!h-full flex items-center relative py-24 mt-10">
+        <div className="w-full flex gap-8 items-center flex-col lg:flex-row justify-between">
           <div className="px-10 py-32 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] max-w-120 flex flex-col gap-y-6 relative z-0 overflow-clip">
-            <div className="absolute top-0 right-0 -z-10 backdrop-blur-md bg-white opacity-40 w-full h-full"></div>
+            <div className="absolute top-0 right-0 -z-10 backdrop-blur-lg bg-white opacity-60 w-full h-full"></div>
             {/* <Image
               width={48}
               height={48}
@@ -90,7 +96,7 @@ const About = () => {
             </p>
           </div>
           <div className="px-10 py-32 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] max-w-120 flex flex-col gap-y-6 relative z-0 overflow-clip">
-            <div className="absolute top-0 right-0 -z-10 backdrop-blur-md bg-white opacity-40 w-full h-full"></div>
+            <div className="absolute top-0 right-0 -z-10 backdrop-blur-lg bg-white opacity-60 w-full h-full"></div>
             {/* <Image
               width={48}
               height={48}
@@ -114,6 +120,59 @@ const About = () => {
             fill
             className="object-contain scale-90"
           />
+        </div>
+      </section>
+      <FeatureContextProvider>
+        <section className="relative bg-white">
+          <div className="h-px w-[calc(100%-(2*var(--gutter-width)))] bg-foreground/5 absolute top-10 z-20"></div>
+          <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="flex flex-col">
+              <div
+                className="sticky top-0 z-10 mb-[calc(100vh-284px)] pb-24 pt-[104px]"
+                style={{
+                  background: `linear-gradient(to bottom, 
+                  rgba(255, 255, 255, 1) 0%, 
+                  rgba(255, 255, 255, 1) 85%, 
+                  rgba(255, 255, 255, 0) 100%
+                )`,
+                }}
+              >
+                <h3 className="text-4xl font-bold mb-4 text-left">
+                  Our Approach
+                </h3>
+                <p className="text-foreground/40 text-xl">
+                  Where clinical expertise meets compassionate care.
+                </p>
+              </div>
+              <FeatureTextListing />
+            </div>
+
+            <div className="hidden lg:flex h-screen sticky top-0 items-center justify-center pt-24 not-last:pb-24">
+              <div className="relative w-full max-w-lg aspect-video">
+                <FeatureGraphicListing />
+              </div>
+            </div>
+          </div>
+        </section>
+      </FeatureContextProvider>
+      <section className="w-full min-h-fit py-24 flex gap-y-6 justify-center relative">
+        <Image
+          src="/images/galaxy.png"
+          alt="galaxy-background"
+          fill
+          className="-z-10 inset-0"
+        />
+        <div className="flex flex-col items-center text-accent gap-y-6 max-w-200">
+          <div className="flex flex-col gap-y-3 text-center">
+            <h3 className="text-4xl font-dm">Ready to Begin Your Journey?</h3>
+            <p className="text-center text-lg opacity-60">
+              Take the first step toward healing and growth with BeyondFaith.
+              We’re here to support you every step of the way.
+            </p>
+          </div>
+          <Button variant="accent" className="w-fit">
+            Book Your Appointment
+          </Button>
         </div>
       </section>
     </>

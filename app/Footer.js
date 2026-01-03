@@ -4,7 +4,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="flex justify-between items-center px-[var(--gutter-width)] py-6">
+    <footer className="flex justify-between items-center px-[var(--gutter-width)] py-6 border-t border-foreground/5">
       <h2 className="text-lg font-dm inline-block">
         <Image
           src="/images/beyondFaith-logo-black.svg"
