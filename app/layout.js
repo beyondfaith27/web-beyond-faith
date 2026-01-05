@@ -2,6 +2,7 @@ import { Geist, Geist_Mono, DM_Serif_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./Header";
 import Footer from "./Footer";
+import { Toaster } from "@/components/ui/toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,6 +36,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${dm_serif.variable} ${inter.variable} font-inter antialiased`}
       >
+        <Toaster />
         <Header />
         {children}
         <Footer />

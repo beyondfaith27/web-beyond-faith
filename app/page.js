@@ -1,3 +1,4 @@
+import ContactFormSheet from "@/components/ContactFormSheet";
 import InViewAnimateSection from "@/components/InViewAnimateSection";
 import {
   Accordion,
@@ -98,9 +99,11 @@ export default function Home() {
             Rediscover your potential with therapists who guide you toward a
             more peaceful you—grounded in faith.
           </p>
-          <Button variant="accent" className="w-fit">
-            Start Your Journey
-          </Button>
+          <ContactFormSheet>
+            <Button variant="accent" className="w-fit">
+              Start Your Journey
+            </Button>
+          </ContactFormSheet>
         </div>
       </InViewAnimateSection>
       <InViewAnimateSection

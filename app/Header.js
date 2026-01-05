@@ -10,6 +10,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import ContactFormSheet from "@/components/ContactFormSheet";
 
 const Header = () => {
   return (
@@ -33,9 +34,11 @@ const Header = () => {
         {/* <Link href="/#shop">Shop</Link> */}
       </nav>
       <div className="w-1/3 flex justify-end items-center">
-        <Button variant="outline" className="hidden tablet:flex">
-          Talk to Us
-        </Button>
+        <ContactFormSheet>
+          <Button variant="outline" className="hidden tablet:flex">
+            Talk to Us
+          </Button>
+        </ContactFormSheet>
       </div>
       <div className="w-fit tablet:hidden flex justify-end">
         <Sheet>
