@@ -51,29 +51,77 @@ const features = [
 
 const faqs = [
   {
-    question: "How to Schedule a Session?",
-    content:
-      "You can schedule a session by visiting our booking page, selecting your preferred date and time, and confirming your appointment. If you need assistance, feel free to contact us.",
+    question: "What are the charges for therapy sessions?",
+    content: (
+      <>
+        <p>Our standard charges are:</p>
+        <ul>
+          <li>Counseling Psychologist – INR 1127 per session</li>
+          <li>
+            Clinical Psychologist – Charges vary depending on the specialist.
+          </li>
+        </ul>
+        <p>Please contact us for details.</p>
+      </>
+    ),
   },
   {
-    question: "Is there any Free Trial Session?",
-    content:
-      "You can schedule a session by visiting our booking page, selecting your preferred date and time, and confirming your appointment. If you need assistance, feel free to contact us.",
+    question: "How do I book a session?",
+    content: (
+      <>
+        <p>Booking a session is simple:</p>
+        <ul>
+          <li>
+            Reach out to us via{" "}
+            <span className="font-semibold text-primary">
+              WhatsApp, Instagram, or Email
+            </span>
+            .
+          </li>
+          <li>Choose your preferred date and time slot.</li>
+          <li>Complete your payment to confirm the session.</li>
+          <li>
+            Once confirmed, you'll receive a consent form to sign before your
+            session.
+          </li>
+        </ul>
+      </>
+    ),
   },
   {
-    question: "Do you do In-Person Therapy?",
-    content:
-      "You can schedule a session by visiting our booking page, selecting your preferred date and time, and confirming your appointment. If you need assistance, feel free to contact us.",
+    question: "Can BeyondFaith help with obtaining a diagnosis?",
+    content: (
+      <p>
+        Yes! Our experienced{" "}
+        <span className="font-semibold text-primary">
+          Clinical Psychologists
+        </span>{" "}
+        can provide diagnostic evaluations to assess your mental health concerns
+        and recommend appropriate treatment.
+      </p>
+    ),
   },
   {
-    question: "Counseling vs. Clinical Psychologist",
-    content:
-      "You can schedule a session by visiting our booking page, selecting your preferred date and time, and confirming your appointment. If you need assistance, feel free to contact us.",
+    question: "How many sessions will I need?",
+    content: (
+      <p>
+        The number of sessions varies based on your concerns and goals. During
+        the initial session, your therapist will assess your needs and recommend
+        a tailored plan that aligns with your preferences and comfort.
+      </p>
+    ),
   },
   {
-    question: "Is there a Free Trial Sessions?",
-    content:
-      "You can schedule a session by visiting our booking page, selecting your preferred date and time, and confirming your appointment. If you need assistance, feel free to contact us.",
+    question: "Do you offer in-person therapy sessions?",
+    content: (
+      <p>
+        Yes, we offer{" "}
+        <span className="font-semibold text-primary">
+          in-person therapy sessions in Mumbai and Navi Mumbai
+        </span>
+        . Reach out to schedule a face-to-face appointment.
+      </p>
+    ),
   },
 ];
 
@@ -137,7 +185,9 @@ export default function Home() {
             })}
           </div>
           <div className="flex justify-center">
-            <Button>Talk to Us</Button>
+            <ContactFormSheet>
+              <Button>Talk to Us</Button>
+            </ContactFormSheet>
           </div>
         </div>
       </InViewAnimateSection>
@@ -245,14 +295,14 @@ export default function Home() {
                 <AccordionItem key={faq.question} value={faq.question}>
                   <AccordionTrigger>{faq.question}</AccordionTrigger>
                   <AccordionContent className="flex flex-col gap-4 text-balance">
-                    <p>{faq.content}</p>
+                    <div>{faq.content}</div>
                   </AccordionContent>
                 </AccordionItem>
               ))}
             </Accordion>
-            <Button variant="link" className="!px-0 py-5">
+            {/* <Button variant="link" className="!px-0 py-5">
               View More FAQ <ChevronRight />
-            </Button>
+            </Button> */}
           </div>
         </div>
       </InViewAnimateSection>
@@ -271,9 +321,11 @@ export default function Home() {
               We’re here to support you every step of the way.
             </p>
           </div>
-          <Button variant="accent" className="w-fit">
-            Book Your Appointment
-          </Button>
+          <ContactFormSheet>
+            <Button variant="accent" className="w-fit">
+              Book Your Appointment
+            </Button>
+          </ContactFormSheet>
         </div>
       </section>
     </>
