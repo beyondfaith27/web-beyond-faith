@@ -78,7 +78,7 @@ const About = () => {
       </section>
       <section className="!h-full flex items-center relative py-24 mt-10">
         <div className="w-full flex gap-8 items-center flex-col lg:flex-row justify-between">
-          <div className="px-10 py-32 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] max-w-120 flex flex-col gap-y-6 relative z-0 overflow-clip">
+          <div className="px-5 py-16 md:px-10 md:py-32 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] max-w-120 flex flex-col gap-y-6 relative z-0 overflow-clip">
             <div className="absolute top-0 right-0 -z-10 backdrop-blur-lg bg-white opacity-60 w-full h-full"></div>
             {/* <Image
               width={48}
@@ -95,7 +95,7 @@ const About = () => {
               replacing stigma with strength.
             </p>
           </div>
-          <div className="px-10 py-32 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] max-w-120 flex flex-col gap-y-6 relative z-0 overflow-clip">
+          <div className="px-5 py-16 md:px-10 md:py-32 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] max-w-120 flex flex-col gap-y-6 relative z-0 overflow-clip">
             <div className="absolute top-0 right-0 -z-10 backdrop-blur-lg bg-white opacity-60 w-full h-full"></div>
             {/* <Image
               width={48}
@@ -125,10 +125,10 @@ const About = () => {
       <FeatureContextProvider>
         <section className="relative bg-white">
           <div className="h-px w-[calc(100%-(2*var(--gutter-width)))] bg-foreground/5 absolute top-10 z-20"></div>
-          <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="container grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="flex flex-col">
               <div
-                className="sticky top-0 z-10 mb-[calc(100vh-284px)] pb-24 pt-[104px]"
+                className="md:sticky top-0 z-10 mb-[calc(100vh-284px)] pb-24 pt-[104px]"
                 style={{
                   background: `linear-gradient(to bottom, 
                   rgba(255, 255, 255, 1) 0%, 

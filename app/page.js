@@ -233,7 +233,9 @@ export default function Home() {
         className="!h-full flex justify-between py-24 overflow-clip"
       >
         <div className="w-full grid grid-cols-1 gap-y-6 tablet:grid-cols-2 my-auto">
-          <h3 className="text-4xl font-dm text-center tablet:text-left">Frequently Asked Questions</h3>
+          <h3 className="text-4xl font-dm text-center tablet:text-left">
+            Frequently Asked Questions
+          </h3>
           <div>
             <Accordion type="single" collapsible className="w-full">
               {faqs.map((faq) => (
