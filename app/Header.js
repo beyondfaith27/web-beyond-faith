@@ -27,10 +27,10 @@ const Header = () => {
         </span>
       </Link>
       <nav className="hidden tablet:flex items-center gap-x-10 font-inter text-sm w-1/3 justify-center">
-        <Link href="/#home">Home</Link>
+        <Link href="/">Home</Link>
         <Link href="/#services">Services</Link>
         <Link href="/about">About</Link>
-        <Link href="/#faq">FAQ</Link>
+        <Link href="/faq">FAQ</Link>
         {/* <Link href="/#shop">Shop</Link> */}
       </nav>
       <div className="w-1/3 flex justify-end items-center">
@@ -45,7 +45,7 @@ const Header = () => {
           <SheetTrigger>
             <Menu size={"28px"} />
           </SheetTrigger>
-          <SheetContent>
+          <SheetContent className="!w-full !max-w-56">
             <SheetTitle className="sr-only">Navigations</SheetTitle>
             <div className="pt-28 px-6 flex flex-col gap-y-6 [&>*]:font-bold text-xl">
               <SheetClose asChild>

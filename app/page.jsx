@@ -7,9 +7,11 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import FAQS from "@/lib/faqs";
 import { cj } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const solutions = [
   {
@@ -46,82 +48,6 @@ const features = [
     image: "/images/certificate.svg",
     heading: "Faith-Focused Growth",
     description: "Spiritual guidance with proven therapeutic techniques.",
-  },
-];
-
-const faqs = [
-  {
-    question: "What are the charges for therapy sessions?",
-    content: (
-      <>
-        <p>Our standard charges are:</p>
-        <ul>
-          <li>Counseling Psychologist – INR 1127 per session</li>
-          <li>
-            Clinical Psychologist – Charges vary depending on the specialist.
-          </li>
-        </ul>
-        <p>Please contact us for details.</p>
-      </>
-    ),
-  },
-  {
-    question: "How do I book a session?",
-    content: (
-      <>
-        <p>Booking a session is simple:</p>
-        <ul>
-          <li>
-            Reach out to us via{" "}
-            <span className="font-semibold text-primary">
-              WhatsApp, Instagram, or Email
-            </span>
-            .
-          </li>
-          <li>Choose your preferred date and time slot.</li>
-          <li>Complete your payment to confirm the session.</li>
-          <li>
-            Once confirmed, you'll receive a consent form to sign before your
-            session.
-          </li>
-        </ul>
-      </>
-    ),
-  },
-  {
-    question: "Can BeyondFaith help with obtaining a diagnosis?",
-    content: (
-      <p>
-        Yes! Our experienced{" "}
-        <span className="font-semibold text-primary">
-          Clinical Psychologists
-        </span>{" "}
-        can provide diagnostic evaluations to assess your mental health concerns
-        and recommend appropriate treatment.
-      </p>
-    ),
-  },
-  {
-    question: "How many sessions will I need?",
-    content: (
-      <p>
-        The number of sessions varies based on your concerns and goals. During
-        the initial session, your therapist will assess your needs and recommend
-        a tailored plan that aligns with your preferences and comfort.
-      </p>
-    ),
-  },
-  {
-    question: "Do you offer in-person therapy sessions?",
-    content: (
-      <p>
-        Yes, we offer{" "}
-        <span className="font-semibold text-primary">
-          in-person therapy sessions in Mumbai and Navi Mumbai
-        </span>
-        . Reach out to schedule a face-to-face appointment.
-      </p>
-    ),
   },
 ];
 
@@ -291,18 +217,26 @@ export default function Home() {
           </h3>
           <div>
             <Accordion type="single" collapsible className="w-full">
-              {faqs.map((faq) => (
-                <AccordionItem key={faq.question} value={faq.question}>
-                  <AccordionTrigger>{faq.question}</AccordionTrigger>
-                  <AccordionContent className="flex flex-col gap-4 text-balance">
-                    <div>{faq.content}</div>
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
+              {FAQS.map((faq) => {
+                const selected = faq.questionare[0];
+                return (
+                  <AccordionItem
+                    key={selected.question}
+                    value={selected.question}
+                  >
+                    <AccordionTrigger>{selected.question}</AccordionTrigger>
+                    <AccordionContent className="flex flex-col gap-4 text-balance">
+                      <div>{selected.answer}</div>
+                    </AccordionContent>
+                  </AccordionItem>
+                );
+              })}
             </Accordion>
-            {/* <Button variant="link" className="!px-0 py-5">
-              View More FAQ <ChevronRight />
-            </Button> */}
+            <Link href={"/faq"}>
+              <Button variant="link" className="!px-0 py-5">
+                View More FAQ <ChevronRight />
+              </Button>
+            </Link>
           </div>
         </div>
       </InViewAnimateSection>
