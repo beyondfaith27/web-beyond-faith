@@ -131,7 +131,7 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50 scroll-smooth;
+    @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground antialiased [--gutter-width:--spacing(6)] tablet:[--gutter-width:--spacing(8)] laptop:[--gutter-width:--spacing(12)] desktop:[--gutter-width:--spacing(30)];
