@@ -111,9 +111,9 @@ export default function Home() {
             })}
           </div>
           <div className="flex justify-center">
-            <ContactFormSheet>
-              <Button>Talk to Us</Button>
-            </ContactFormSheet>
+            <Link href={"/services"}>
+              <Button>Explore Our Services</Button>
+            </Link>
           </div>
         </div>
       </InViewAnimateSection>

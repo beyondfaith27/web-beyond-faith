@@ -148,12 +148,4 @@
   h2 {
     @apply text-4xl font-dm text-center;
   }
-
-  ul {
-    @apply list-disc list-inside ml-4 space-y-1 py-2;
-  }
-
-  ul li {
-    @apply text-gray-700;
-  }
 }

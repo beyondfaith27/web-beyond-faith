@@ -28,7 +28,7 @@ const Header = () => {
       </Link>
       <nav className="hidden tablet:flex items-center gap-x-10 font-inter text-sm w-1/3 justify-center">
         <Link href="/">Home</Link>
-        <Link href="/#services">Services</Link>
+        <Link href="/services">Services</Link>
         <Link href="/about">About</Link>
         <Link href="/faq">FAQ</Link>
         {/* <Link href="/#shop">Shop</Link> */}
