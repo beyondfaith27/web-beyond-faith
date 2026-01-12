@@ -62,8 +62,7 @@ export default function Home() {
           <Image
             alt="background-image-1"
             src={"/images/HeroImg.png"}
-            width={1512}
-            height={720}
+            fill
             className="h-full object-cover"
           />
         </div>
