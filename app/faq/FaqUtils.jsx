@@ -27,7 +27,7 @@ export const FaqTypeSelection = () => {
   const { selectedSection, setSelectedSection } = useContext(FaqContext);
 
   return (
-    <div className="flex gap-4 justify-center w-fit mx-auto">
+    <div className="flex flex-wrap gap-4 justify-center w-fit mx-auto">
       {FAQS.map((faq, idx) => {
         return (
           <div key={faq.sectionName} className="px-3 py-1 relative z-10">
@@ -35,7 +35,7 @@ export const FaqTypeSelection = () => {
               type="button"
               onClick={() => setSelectedSection(idx)}
               className={cj(
-                "relative z-10 transition-colors duration-200 font-semibold",
+                "relative z-10 transition-colors duration-200 font-semibold whitespace-nowrap",
                 idx === selectedSection ? "text-white" : "text-black"
               )}
             >

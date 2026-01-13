@@ -78,7 +78,7 @@ function AnimatedDialogContent({
           className={cn(
             "bg-colored-background/60 rounded-xl backdrop-blur-md",
             "fixed top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 z-50",
-            "w-full max-w-2xl max-h-[85vh]",
+            "w-[calc(100%-40px)] max-w-2xl max-h-[85vh] mx-auto",
             "shadow-2xl",
             "p-2",
             "outline-none will-change-transform",
