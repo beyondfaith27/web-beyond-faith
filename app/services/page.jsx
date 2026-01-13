@@ -7,7 +7,7 @@ import React from "react";
 const Services = () => {
   return (
     <>
-      <section className="relative w-full min-h-screen pt-24 pb-10 flex items-center">
+      <section className="relative w-full min-h-screen pt-40 md:pt-24 pb-10 flex items-center">
         <div className="absolute top-0 left-0 h-full w-full overflow-hidden">
           <Image src={"/images/balance.jpg"} alt="balance-bg-image" fill />
           <div
@@ -69,8 +69,8 @@ const Services = () => {
           </div>
         </div>
       </section>
-      <section className="pt-32 pb-20 md:pb-10 bg-muted">
-        <div className="flex flex-col-reverse md:flex-row md:items-center md:justify-between gap-y-12">
+      <section className="md:pt-20 pb-20 md:pb-10 bg-muted flex items-center">
+        <div className="w-full flex flex-col-reverse md:flex-row md:items-center my-auto md:justify-between gap-y-12">
           <div className="flex flex-col gap-y-12">
             {PROCESS_STEPS.map((step, idx) => {
               return (
@@ -93,7 +93,7 @@ const Services = () => {
               );
             })}
           </div>
-          <div className="max-w-150 flex flex-col md:items-end">
+          <div className="max-w-150 flex flex-col md:items-end pt-32 md:pt-0">
             <h3 className="text-4xl md:text-5xl font-bold">Our Process</h3>
             <p className="text-foreground/60 text-lg font-semibold text-balance md:text-right">
               A simple, supportive journey toward better mental well-being.
