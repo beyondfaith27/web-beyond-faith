@@ -47,12 +47,18 @@ const Header = () => {
           </SheetTrigger>
           <SheetContent className="!w-full !max-w-56">
             <SheetTitle className="sr-only">Navigations</SheetTitle>
-            <div className="pt-28 px-6 flex flex-col gap-y-6 [&>*]:font-bold text-xl">
+            <div className="pt-28 px-6 flex flex-col gap-y-10 [&>*]:font-bold text-xl">
               <SheetClose asChild>
                 <Link href="/">Home</Link>
               </SheetClose>
               <SheetClose asChild>
+                <Link href="/services">Services</Link>
+              </SheetClose>
+              <SheetClose asChild>
                 <Link href="/about">About</Link>
+              </SheetClose>
+              <SheetClose asChild>
+                <Link href="/faq">FAQ</Link>
               </SheetClose>
             </div>
           </SheetContent>
