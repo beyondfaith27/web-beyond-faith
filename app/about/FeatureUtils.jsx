@@ -42,7 +42,7 @@ function FeatureText({ feature, onInViewChange }) {
   return (
     <div
       ref={ref}
-      className="min-h-[40vh] lg:min-h-[60vh] flex flex-col justify-center"
+      className="min-h-[40vh] lg:min-h-[60vh] flex flex-col justify-center first:mt-24 lg:first:mt-0"
     >
       <h3 className="text-3xl font-bold mb-4">{feature.title}</h3>
       <p className="text-xl text-gray-600 leading-relaxed">{feature.desc}</p>
