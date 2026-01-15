@@ -28,7 +28,6 @@ const Header = () => {
       </Link>
       <nav className="hidden tablet:flex items-center gap-x-10 font-inter text-sm w-1/3 justify-center">
         <Link href="/">Home</Link>
-        <Link href="/services">Services</Link>
         <Link href="/about">About</Link>
         <Link href="/faq">FAQ</Link>
         {/* <Link href="/#shop">Shop</Link> */}
@@ -50,9 +49,6 @@ const Header = () => {
             <div className="pt-28 px-6 flex flex-col gap-y-10 [&>*]:font-bold text-xl">
               <SheetClose asChild>
                 <Link href="/">Home</Link>
-              </SheetClose>
-              <SheetClose asChild>
-                <Link href="/services">Services</Link>
               </SheetClose>
               <SheetClose asChild>
                 <Link href="/about">About</Link>

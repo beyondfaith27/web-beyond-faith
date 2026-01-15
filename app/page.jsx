@@ -1,4 +1,5 @@
 import ContactFormSheet from "@/components/ContactFormSheet";
+import { ExpandableCard } from "@/components/ExpandableCard";
 import InViewAnimateSection from "@/components/InViewAnimateSection";
 import {
   Accordion,
@@ -8,6 +9,8 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import FAQS from "@/lib/faqs";
+import PROCESS_STEPS from "@/lib/process-step";
+import SERVICES from "@/lib/services";
 import { cj } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
@@ -56,16 +59,17 @@ export default function Home() {
     <>
       <InViewAnimateSection
         id="home"
-        className="!h-full flex py-24 justify-center"
+        className="!h-full flex py-24 justify-center bg-colored-background"
       >
-        <div className="absolute inset-0 -z-10">
+        <div className="w-[calc(100%-var(--gutter-width))] absolute bottom-0 left-[var(--gutter-width)] h-px bg-border" />
+        {/* <div className="absolute inset-0 -z-10">
           <Image
             alt="background-image-1"
             src={"/images/HeroImg.png"}
             fill
             className="h-full object-cover"
           />
-        </div>
+        </div> */}
         <div className="flex flex-col items-center my-auto gap-y-6 text-accent max-w-178">
           <h1>BeyondFaith, Your Journey to Inner Strength</h1>
           <p className="font-inter text-xl tablet:text-2xl text-center font-light">
@@ -79,43 +83,100 @@ export default function Home() {
           </ContactFormSheet>
         </div>
       </InViewAnimateSection>
-      <InViewAnimateSection
-        id="services"
-        className="!h-full flex justify-center py-24 border-b border-foreground/5"
-      >
-        <div className="my-auto flex flex-col items-center gap-y-12">
-          <div className="flex flex-col gap-y-4 text-center">
-            <h2>Feeling Stuck? We’re Here to Help.</h2>
-            <p className="text-center max-w-134">
-              Life can feel overwhelming at times, but you don’t have to face it
-              alone. Let us guide you to clarity and strength.
-            </p>
+      <section className="relative w-full min-h-screen pt-40 md:pt-24 pb-10 flex items-center">
+        <div className="absolute top-0 left-0 h-full w-full overflow-hidden">
+          <Image src={"/images/balance.jpg"} alt="balance-bg-image" fill />
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: `
+                linear-gradient(
+                  to right,
+                  oklch(from var(--colored-background) l c h / 1) 0%,
+                  oklch(from var(--colored-background) l c h / 0.7) 20%,
+                  oklch(from var(--colored-background) l c h / 0.7) 80%,
+                  oklch(from var(--colored-background) l c h / 1) 100%
+                ),
+                linear-gradient(
+                  to bottom,
+                  oklch(from var(--colored-background) l c h / 1) 0%,
+                  oklch(from var(--colored-background) l c h / 0.7) 20%,
+                  oklch(from var(--colored-background) l c h / 0.7) 80%,
+                  oklch(from var(--colored-background) l c h / 1) 100%
+                )
+              `,
+            }}
+          ></div>
+        </div>
+        <div className="w-full h-full relative top-0 left-0 z-10 text-primary-foreground mb-10">
+          <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6 my-auto">
+            <div className="w-full h-full flex flex-col justify-center md:col-span-2">
+              <p className="text-2xl opacity-60 font-bold mb-8">Our Services</p>
+
+              <p className="text-xl max-w-200 group text-primary-foreground/80">
+                At{" "}
+                <span className="font-bold text-primary-foreground">
+                  BeyondFaith
+                </span>
+                , we empower individuals and organizations through a
+                comprehensive range of mental health services. From personal
+                therapy and assessments to organizational consultancy and
+                capacity building, our offerings are thoughtfully designed to
+                meet diverse needs — ensuring everyone has access to the{" "}
+                <span className="font-bold text-primary-foreground">
+                  support
+                </span>
+                ,{" "}
+                <span className="font-bold text-primary-foreground">
+                  guidance
+                </span>
+                , and{" "}
+                <span className="font-bold text-primary-foreground">care</span>{" "}
+                they deserve.
+              </p>
+            </div>
+            {SERVICES.map(({ explanation, ...props }) => {
+              return (
+                <ExpandableCard key={props.title} {...props}>
+                  {explanation}
+                </ExpandableCard>
+              );
+            })}
           </div>
-          <div className="w-full grid grid-cols-1 tablet:grid-cols-3 gap-6">
-            {solutions.map((solution) => {
+        </div>
+      </section>
+      <section className="md:pt-20 pb-20 md:pb-10 bg-muted flex items-center">
+        <div className="w-full flex flex-col-reverse md:flex-row md:items-center my-auto md:justify-between gap-y-12">
+          <div className="flex flex-col gap-y-12">
+            {PROCESS_STEPS.map((step, idx) => {
               return (
                 <div
-                  key={solution.image}
-                  className="flex flex-col items-center gap-y-4 p-10 rounded-lg bg-muted text-muted-foreground"
+                  key={step.heading}
+                  className="flex items-center group hover:scale-[1.01] transition ease-in-out"
                 >
-                  <Image
-                    src={solution.image}
-                    alt="maze-icon"
-                    width={96}
-                    height={96}
-                  />
-                  <p>{solution.heading}</p>
+                  <p className="font-bold text-3xl pr-5 border-r border-foreground/10 text-foreground/20 group-hover:text-primary/50 group-hover:border-primary/20 self-stretch flex items-center">
+                    0{idx + 1}
+                  </p>
+                  <div className="pl-5 max-w-150">
+                    <h4 className="font-bold text-xl group-hover:text-primary transition ease-in-out">
+                      {step.heading}
+                    </h4>
+                    <p className="text-foreground/40 text-balance">
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
               );
             })}
           </div>
-          <div className="flex justify-center">
-            <Link href={"/services"}>
-              <Button>Explore Our Services</Button>
-            </Link>
+          <div className="max-w-150 flex flex-col md:items-end pt-32 md:pt-0">
+            <h3 className="text-4xl md:text-5xl font-bold">Our Process</h3>
+            <p className="text-foreground/60 text-lg font-semibold text-balance md:text-right">
+              A simple, supportive journey toward better mental well-being.
+            </p>
           </div>
         </div>
-      </InViewAnimateSection>
+      </section>
       <InViewAnimateSection
         id="features"
         className="!h-full flex justify-center py-24"
