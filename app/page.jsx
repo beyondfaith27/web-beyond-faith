@@ -61,7 +61,7 @@ export default function Home() {
         id="home"
         className="!h-full flex py-24 justify-center bg-colored-background"
       >
-        <div className="w-[calc(100%-var(--gutter-width))] absolute bottom-0 left-[var(--gutter-width)] h-px bg-border" />
+        <div className="w-[calc(100%-2*var(--gutter-width))] absolute bottom-0 left-[var(--gutter-width)] h-px bg-border" />
         {/* <div className="absolute inset-0 -z-10">
           <Image
             alt="background-image-1"
