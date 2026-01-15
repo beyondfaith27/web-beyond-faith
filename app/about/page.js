@@ -43,7 +43,7 @@ const About = () => {
               self-belief
               <AnimatedUnderline />
             </span>{" "}
-            with the right support, transformation isn't just possible —{" "}
+            with the right support, transformation isn't just possible -{" "}
             <span className="font-bold relative">
               it’s inevitable
               <AnimatedUnderline withDelay />

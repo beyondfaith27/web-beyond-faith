@@ -74,7 +74,7 @@ export default function Home() {
           <h1>BeyondFaith, Your Journey to Inner Strength</h1>
           <p className="font-inter text-xl tablet:text-2xl text-center font-light">
             Rediscover your potential with therapists who guide you toward a
-            more peaceful you—grounded in faith.
+            more peaceful you - grounded in faith.
           </p>
           <ContactFormSheet>
             <Button variant="accent" className="w-fit">
@@ -122,7 +122,7 @@ export default function Home() {
                 comprehensive range of mental health services. From personal
                 therapy and assessments to organizational consultancy and
                 capacity building, our offerings are thoughtfully designed to
-                meet diverse needs — ensuring everyone has access to the{" "}
+                meet diverse needs - ensuring everyone has access to the{" "}
                 <span className="font-bold text-primary-foreground">
                   support
                 </span>
