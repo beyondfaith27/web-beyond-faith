@@ -4,51 +4,59 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="w-full grid grid-cols-2 md:grid-cols-3 gap-y-6 items-center px-[var(--gutter-width)] py-6 border-t border-foreground/5">
-      <h2 className="text-lg font-dm inline-block">
-        <Image
-          src="/images/beyondFaith-logo-black.svg"
-          alt="beyondFaith-logo"
-          width={120}
-          height={32}
-          draggable="false"
-        />
-      </h2>
-      <div className="flex items-center gap-x-6 tablet:gap-x-12 justify-end md:justify-center">
-        <Link href="#">
+    <footer className="w-full flex flex-col md:flex-row justify-between gap-y-6 items-center px-[var(--gutter-width)] py-6 border-t border-foreground/5">
+      <div className="w-fit h-full flex flex-col justify-center gap-y-4 my-auto">
+        <h2 className="text-lg font-dm inline-block">
           <Image
-            src="/images/instagram.svg"
-            alt="instagram"
-            width={32}
+            src="/images/beyondFaith-logo-black.svg"
+            alt="beyondFaith-logo"
+            width={120}
             height={32}
+            draggable="false"
           />
-        </Link>
-        <Link href="#">
-          <Image
-            src="/images/linkedIn.svg"
-            alt="linkedIn"
-            width={32}
-            height={32}
-          />
-        </Link>
-        <Link href="#">
-          <Image
-            src="/images/whatsapp.svg"
-            alt="whatsapp"
-            width={32}
-            height={32}
-          />
-        </Link>
+        </h2>
+        <span className="opacity-40 flex text-sm">© 2024 BeyondFaith</span>
       </div>
-      <div className="flex flex-col items-start md:items-end">
-        <div className="flex flex-col items-center">
+      <div className="flex flex-col items-start md:items-end gap-y-4 w-fit">
+        <div className="flex items-center w-full gap-x-6 tablet:gap-x-12 justify-center md:justify-end">
+          <Link href="#">
+            <Image
+              src="/images/instagram.svg"
+              alt="instagram"
+              width={32}
+              height={32}
+            />
+          </Link>
+          <Link href="#">
+            <Image
+              src="/images/linkedIn.svg"
+              alt="linkedIn"
+              width={32}
+              height={32}
+            />
+          </Link>
+          <Link href="#">
+            <Image
+              src="/images/whatsapp.svg"
+              alt="whatsapp"
+              width={32}
+              height={32}
+            />
+          </Link>
+        </div>
+        <div className="flex items-center flex-col md:flex-row gap-y-4">
           <Link
             href={"/terms-and-conditions"}
-            className="text-foreground/40 hover:text-colored-background transition ease-in-out flex text-sm"
+            className="text-foreground/40 hover:text-colored-background transition ease-in-out flex text-sm md:pr-5 md:border-r"
           >
             Terms and conditions
           </Link>
-          <span className="opacity-40 flex text-sm">© 2024 BeyondFaith</span>
+          <Link
+            href={"/privacy-policy"}
+            className="text-foreground/40 hover:text-colored-background transition ease-in-out flex text-sm md:ml-5"
+          >
+            Privacy policy
+          </Link>
         </div>
       </div>
     </footer>
