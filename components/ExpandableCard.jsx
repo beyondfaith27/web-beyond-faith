@@ -58,7 +58,7 @@ export function ExpandableCard({
         layoutId={imageSrc + "expandable-card"}
         onClick={() => setOpen(true)}
         transition={transition}
-        className={`bg-background/5 rounded-xl backdrop-blur-md p-6 group cursor-pointer 
+        className={`expandable-card bg-background/5 rounded-xl backdrop-blur-md p-6 group cursor-pointer 
           hover:bg-background/10 transition-colors will-change-transform ${
             className || ""
           }`}

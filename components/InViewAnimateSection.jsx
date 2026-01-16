@@ -11,7 +11,11 @@ import animFns from "@/lib/animationFuncs";
  * @param {InViewAnimateSectionPropType} param0
  * @returns
  */
-const InViewAnimateSection = ({ sectionAnimFuncName = "", children, ...props }) => {
+const InViewAnimateSection = ({
+  sectionAnimFuncName = "",
+  children,
+  ...props
+}) => {
   const [scope, animate] = useAnimate();
   const inView = useInView(scope, { once: true, amount: 0.2 });
 
