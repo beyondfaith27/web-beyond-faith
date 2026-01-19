@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="w-full flex flex-col md:flex-row justify-between gap-y-6 items-center px-[var(--gutter-width)] py-6 border-t border-foreground/5">
       <div className="w-fit h-full flex flex-col justify-center gap-y-4 my-auto">
-        <h2 className="text-lg font-dm inline-block">
+        <h2 className="text-lg inline-block">
           <Image
             src="/images/beyondFaith-logo-black.svg"
             alt="beyondFaith-logo"

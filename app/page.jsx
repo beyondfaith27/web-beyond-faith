@@ -9,6 +9,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import CONSTANTS from "@/lib/constants";
 import FAQS from "@/lib/faqs";
 import PROCESS_STEPS from "@/lib/process-step";
 import SERVICES from "@/lib/services";
@@ -17,20 +18,20 @@ import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const solutions = [
-  {
-    image: "/images/maze.svg",
-    heading: "Struggling with anxiety, stress, or depression?",
-  },
-  {
-    image: "/images/chat.svg",
-    heading: "Struggling with anxiety, stress, or depression?",
-  },
-  {
-    image: "/images/puzzle.svg",
-    heading: "Struggling with anxiety, stress, or depression?",
-  },
-];
+// const solutions = [
+//   {
+//     image: "/images/maze.svg",
+//     heading: "Struggling with anxiety, stress, or depression?",
+//   },
+//   {
+//     image: "/images/chat.svg",
+//     heading: "Struggling with anxiety, stress, or depression?",
+//   },
+//   {
+//     image: "/images/puzzle.svg",
+//     heading: "Struggling with anxiety, stress, or depression?",
+//   },
+// ];
 
 const features = [
   {
@@ -55,6 +56,41 @@ const features = [
   },
 ];
 
+const concerns = [
+  {
+    image: "/images/depression.png",
+    text: "Depression",
+  },
+  {
+    image: "/images/ptsd.png",
+    text: "PTSD",
+  },
+  {
+    image: "/images/anxiety.png",
+    text: "Anxiety",
+  },
+  {
+    image: "/images/stress.png",
+    text: "Stress",
+  },
+  {
+    image: "/images/trauma.png",
+    text: "Trauma",
+  },
+  {
+    image: "/images/adhd.png",
+    text: "ADHD",
+  },
+  {
+    image: "/images/autism.png",
+    text: "Autism",
+  },
+  {
+    image: "/images/relationships.png",
+    text: "Relationships",
+  },
+];
+
 export default function Home() {
   return (
     <>
@@ -73,16 +109,66 @@ export default function Home() {
           />
         </div> */}
         <div className="flex flex-col items-center my-auto gap-y-6 text-accent max-w-178">
-          <h1>BeyondFaith, Your Journey to Inner Strength</h1>
-          <p className="font-inter text-xl tablet:text-2xl text-center font-light">
+          <h1 className={`${CONSTANTS.style.animInitVal}`}>
+            BeyondFaith, Your Journey to Inner Strength
+          </h1>
+          <p
+            className={`font-inter text-xl tablet:text-2xl text-center font-light ${CONSTANTS.style.animInitVal}`}
+          >
             Rediscover your potential with therapists who guide you toward a
             more peaceful you - grounded in faith.
           </p>
           <ContactFormSheet>
-            <Button variant="accent" className="w-fit">
+            <Button
+              variant="accent"
+              className={`w-fit ${CONSTANTS.style.animInitVal}`}
+            >
               Start Your Journey
             </Button>
           </ContactFormSheet>
+        </div>
+      </InViewAnimateSection>
+      <InViewAnimateSection
+        sectionAnimFuncName="homeConcernSection"
+        className="!h-full flex py-24 justify-center items-center bg-muted relative min-h-screen"
+      >
+        <div className="">
+          <h3
+            className={
+              "text-2xl md:text-4xl text-center font-bold" +
+              CONSTANTS.style.animInitVal
+            }
+          >
+            Our Concerns
+          </h3>
+          <div className="grid grid-cols-3 gap-x-40 gap-y-14 mt-16">
+            {concerns.map((each) => {
+              return (
+                <div
+                  key={each.image}
+                  className={
+                    "concern flex flex-col gap-y-1 transition ease-in-out" +
+                    CONSTANTS.style.animInitVal
+                  }
+                >
+                  <div className="w-40 h-30 relative object-contain">
+                    <Image
+                      src={each.image}
+                      alt={each.text}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <p className="text-center font-bold uppercase">{each.text}</p>
+                </div>
+              );
+            })}
+            <div
+              className={`${CONSTANTS.style.animInitVal} concern flex items-center justify-center text-center font-bold uppercase`}
+            >
+              ... And Many More
+            </div>
+          </div>
         </div>
       </InViewAnimateSection>
       <InViewAnimateSection

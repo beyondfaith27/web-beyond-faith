@@ -16,7 +16,7 @@ const Header = () => {
   return (
     <header className="w-full h-20 flex items-center justify-between fixed top-0 bg-foreground/40 backdrop-blur-md px-[var(--gutter-width)] text-accent z-50">
       <Link href={"/#home"} className="w-5/6 tablet:w-1/3">
-        <span className="font-dm text-lg inline-block">
+        <span className="text-lg inline-block">
           <Image
             src={"/images/beyondFaith-logo-white.svg"}
             height={40}
