@@ -1,6 +1,7 @@
 import ContactFormSheet from "@/components/ContactFormSheet";
 import { ExpandableCard } from "@/components/ExpandableCard";
 import InViewAnimateSection from "@/components/InViewAnimateSection";
+import ParallaxBackground from "@/components/ParallaxBackground";
 import {
   Accordion,
   AccordionContent,
@@ -60,9 +61,9 @@ export default function Home() {
       <InViewAnimateSection
         id="home"
         sectionAnimFuncName="homeHeroSection"
-        className="!h-full flex py-24 justify-center bg-colored-background"
+        className="!h-full flex py-24 justify-center bg-colored-background relative min-h-screen"
       >
-        <div className="w-[calc(100%-2*var(--gutter-width))] absolute bottom-0 left-[var(--gutter-width)] h-px bg-border" />
+        {/* <div className="w-[calc(100%-2*var(--gutter-width))] absolute bottom-0 left-[var(--gutter-width)] h-px bg-border" /> */}
         {/* <div className="absolute inset-0 -z-10">
           <Image
             alt="background-image-1"
@@ -89,7 +90,7 @@ export default function Home() {
         sectionAnimFuncName="homeServicesSection"
         className="relative w-full min-h-screen pt-40 md:pt-24 pb-10 flex items-center"
       >
-        <div className="absolute top-0 left-0 h-full w-full overflow-hidden">
+        {/* <div className="absolute top-0 left-0 h-full w-full overflow-hidden">
           <Image src={"/images/balance.jpg"} alt="balance-bg-image" fill />
           <div
             className="absolute inset-0 pointer-events-none"
@@ -112,7 +113,8 @@ export default function Home() {
               `,
             }}
           ></div>
-        </div>
+        </div> */}
+        <ParallaxBackground src={"/images/balance.jpg"} />
         <div className="w-full h-full relative top-0 left-0 z-10 text-primary-foreground mb-10">
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6 my-auto">
             <div className="w-full h-full flex flex-col justify-center md:col-span-2">

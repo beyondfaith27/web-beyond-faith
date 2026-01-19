@@ -1,3 +1,4 @@
+import { cj } from "@/lib/utils";
 import React from "react";
 
 const PrivacyPolicy = () => {
