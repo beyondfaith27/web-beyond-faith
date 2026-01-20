@@ -7,6 +7,9 @@ import {
   FeatureGraphicListing,
   FeatureTextListing,
 } from "./FeatureUtils";
+import ContactFormSheet from "@/components/ContactFormSheet";
+import CONTENTS from "@/contents";
+import { cj } from "@/lib/utils";
 
 const About = () => {
   return (
@@ -52,7 +55,7 @@ const About = () => {
           </p>
         </div>
         <div className="absolute top-0 right-0 h-full w-full md:w-2/6  overflow-hidden">
-          <video src="/videos/yoga1.mp4" autoPlay muted loop controls={false} />
+          {/* <video src="/videos/yoga1.mp4" autoPlay muted loop controls={false} /> */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
@@ -76,85 +79,64 @@ const About = () => {
           ></div>
         </div>
       </section>
-      <section className="!h-full flex items-center relative py-24 mt-10">
-        <div className="w-full flex gap-8 items-center flex-col lg:flex-row justify-between">
-          <div className="px-5 py-16 md:px-10 md:py-32 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] max-w-120 flex flex-col gap-y-6 relative z-0 overflow-clip">
-            <div className="absolute top-0 right-0 -z-10 backdrop-blur-lg bg-white opacity-60 w-full h-full"></div>
-            {/* <Image
-              width={48}
-              height={48}
-              src="/images/empathy-icon.svg"
-              alt="empathy-icon"
-            /> */}
-            <h3 className="text-2xl text-primary font-bold">Our Mission</h3>
-            <p className="text-xl grow-0">
-              To <span className="text-primary">normalize</span> the
-              conversation around mental health. We{" "}
-              <span className="text-primary">empower</span> individuals to seek
-              support with <span className="text-primary">confidence</span>,
-              replacing stigma with strength.
-            </p>
-          </div>
-          <div className="px-5 py-16 md:px-10 md:py-32 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] max-w-120 flex flex-col gap-y-6 relative z-0 overflow-clip">
-            <div className="absolute top-0 right-0 -z-10 backdrop-blur-lg bg-white opacity-60 w-full h-full"></div>
-            {/* <Image
-              width={48}
-              height={48}
-              src="/images/rising-sun-icon.svg"
-              alt="rising-sun-icon"
-            /> */}
-            <h3 className="text-2xl text-primary font-bold">Our Vision</h3>
-            <p className="text-xl grow-0">
-              A world where mental wellness is a{" "}
-              <span className="text-primary">basic right</span>. We see a{" "}
-              <span className="text-primary">future</span> where individuals and
-              organizations embrace health as the key to{" "}
-              <span className="text-primary">fulfillment</span> .
-            </p>
-          </div>
-        </div>
-        <div className="absolute inset-0 -z-10">
-          <Image
-            src={"/images/compassion-blob-lady.jpg"}
-            alt="compassion-bg"
-            fill
-            className="object-contain scale-90"
-          />
-        </div>
-      </section>
-      <FeatureContextProvider>
-        <section className="relative bg-white">
-          <div className="h-px w-[calc(100%-(2*var(--gutter-width)))] bg-foreground/5 absolute top-10 z-20"></div>
-          <div className="container grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div className="flex flex-col">
-              <div
-                className="md:sticky top-0 z-10 mb-[calc(100vh-284px)] pb-24 pt-[104px]"
-                style={{
-                  background: `linear-gradient(to bottom, 
-                  rgba(255, 255, 255, 1) 0%, 
-                  rgba(255, 255, 255, 1) 85%, 
-                  rgba(255, 255, 255, 0) 100%
-                )`,
-                }}
-              >
-                <h3 className="text-4xl font-bold mb-4 text-left">
-                  Our Approach
-                </h3>
-                <p className="text-foreground/40 text-xl">
-                  Where clinical expertise meets compassionate care.
-                </p>
-              </div>
-              <FeatureTextListing />
-            </div>
+      <section className="!h-full flex flex-col gap-y-16 justify-center relative py-24">
+        {[
+          CONTENTS.ABOUT_CONTENT.OUR_MISSION,
+          CONTENTS.ABOUT_CONTENT.OUR_VISION,
+        ].map((content) => {
+          const isRight = content.align === "right";
 
-            <div className="hidden lg:flex h-screen sticky top-0 items-center justify-center pt-24 not-last:pb-24">
-              <div className="relative w-full max-w-lg aspect-video">
-                <FeatureGraphicListing />
+          return (
+            <div
+              key={content.heading}
+              className={cj(
+                "w-full max-w-7xl mx-auto",
+                isRight && "md:pl-60",
+                !isRight && "md:pr-60"
+              )}
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 items-center">
+                {/* Text */}
+                <div
+                  className={cj(
+                    "flex flex-col md:text-left justify-center items-center text-balance max-w-104 mx-auto",
+                    isRight &&
+                      "md:order-2 text-center md:text-left md:items-start",
+                    !isRight && "text-center md:text-right md:items-end"
+                  )}
+                >
+                  <h3 className="text-2xl md:text-3xl font-bold mb-4">
+                    {content.heading}
+                  </h3>
+
+                  <p className="text-foreground/70 text-sm md:text-base leading-relaxed">
+                    {content.description}
+                  </p>
+                </div>
+
+                {/* Illustration */}
+                <div
+                  className={cj(
+                    "flex justify-center",
+                    isRight && "md:order-1 md:justify-end",
+                    !isRight && "md:justify-start"
+                  )}
+                >
+                  <div className="relative w-full max-w-xs md:max-w-sm h-40 md:h-56">
+                    <Image
+                      src={content.illustration}
+                      alt={content.heading}
+                      fill
+                      className="object-contain"
+                      sizes="(min-width: 768px) 260px, 70vw"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
-      </FeatureContextProvider>
+          );
+        })}
+      </section>
       <section className="w-full min-h-fit py-24 flex gap-y-6 justify-center relative">
         <Image
           src="/images/galaxy.png"
@@ -170,9 +152,11 @@ const About = () => {
               We’re here to support you every step of the way.
             </p>
           </div>
-          <Button variant="accent" className="w-fit">
-            Book Your Appointment
-          </Button>
+          <ContactFormSheet>
+            <Button variant="accent" className="w-fit">
+              Book Your Appointment
+            </Button>
+          </ContactFormSheet>
         </div>
       </section>
     </>

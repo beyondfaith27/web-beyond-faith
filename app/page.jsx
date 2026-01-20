@@ -1,5 +1,6 @@
 import ContactFormSheet from "@/components/ContactFormSheet";
 import { ExpandableCard } from "@/components/ExpandableCard";
+import Honeycomb from "@/components/Honeycomb";
 import InViewAnimateSection from "@/components/InViewAnimateSection";
 import ParallaxBackground from "@/components/ParallaxBackground";
 import {
@@ -9,6 +10,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import CONTENTS from "@/contents";
+import HOME_CONTENT from "@/contents/home";
 import CONSTANTS from "@/lib/constants";
 import FAQS from "@/lib/faqs";
 import PROCESS_STEPS from "@/lib/process-step";
@@ -17,6 +20,7 @@ import { cj } from "@/lib/utils";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 
 // const solutions = [
 //   {
@@ -53,41 +57,6 @@ const features = [
     image: "/images/certificate.svg",
     heading: "Faith-Focused Growth",
     description: "Spiritual guidance with proven therapeutic techniques.",
-  },
-];
-
-const concerns = [
-  {
-    image: "/images/depression.png",
-    text: "Depression",
-  },
-  {
-    image: "/images/ptsd.png",
-    text: "PTSD",
-  },
-  {
-    image: "/images/anxiety.png",
-    text: "Anxiety",
-  },
-  {
-    image: "/images/stress.png",
-    text: "Stress",
-  },
-  {
-    image: "/images/trauma.png",
-    text: "Trauma",
-  },
-  {
-    image: "/images/adhd.png",
-    text: "ADHD",
-  },
-  {
-    image: "/images/autism.png",
-    text: "Autism",
-  },
-  {
-    image: "/images/relationships.png",
-    text: "Relationships",
   },
 ];
 
@@ -132,16 +101,39 @@ export default function Home() {
         sectionAnimFuncName="homeConcernSection"
         className="!h-full w-full flex py-24 justify-center items-center bg-muted relative min-h-screen"
       >
-        <div className="w-full">
-          <h3
-            className={
-              "text-2xl md:text-4xl text-center font-bold" +
-              CONSTANTS.style.animInitVal
-            }
-          >
-            Our Concerns
-          </h3>
-          <div className="w-full max-w-250 mx-auto grid grid-cols-2 md:grid-cols-3 gap-y-8 md:gap-y-14 mt-16">
+        <div className="w-full flex flex-col items-center md:flex-row md:items-center my-auto md:justify-between gap-y-12">
+          <div className="max-w-150 flex flex-col pt-0">
+            <h3
+              id="process-section-heading"
+              className="text-3xl md:text-5xl font-bold text-center md:text-left"
+            >
+              {HOME_CONTENT.CONCERNS.title}
+            </h3>
+            <p
+              id="process-section-description"
+              className="text-foreground/60 text-base md:text-lg font-semibold text-balance mt-8 text-center md:text-left"
+            >
+              {HOME_CONTENT.CONCERNS.generic_desc}
+              {HOME_CONTENT.CONCERNS.concern_list.map((each, idx) => (
+                <React.Fragment key={each.text}>
+                  <span className="font-bold text-primary">{each.text}</span>
+                  {idx === HOME_CONTENT.CONCERNS.concern_list.length - 1
+                    ? " "
+                    : ", "}
+                </React.Fragment>
+              ))}
+              and many more
+            </p>
+          </div>
+          <div className="w-fit">
+            <Honeycomb
+              images={HOME_CONTENT.CONCERNS.concern_list.map(
+                (each) => each.image
+              )}
+            />
+          </div>
+        </div>
+        {/* <div className="w-full max-w-250 mx-auto grid grid-cols-2 md:grid-cols-3 gap-y-8 md:gap-y-14 mt-16">
             {concerns.map((each) => {
               return (
                 <div
@@ -170,8 +162,7 @@ export default function Home() {
             >
               ... And Many More
             </div>
-          </div>
-        </div>
+          </div> */}
       </InViewAnimateSection>
       <InViewAnimateSection
         id="services"
