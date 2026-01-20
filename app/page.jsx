@@ -130,9 +130,9 @@ export default function Home() {
       </InViewAnimateSection>
       <InViewAnimateSection
         sectionAnimFuncName="homeConcernSection"
-        className="!h-full flex py-24 justify-center items-center bg-muted relative min-h-screen"
+        className="!h-full w-full flex py-24 justify-center items-center bg-muted relative min-h-screen"
       >
-        <div className="">
+        <div className="w-full">
           <h3
             className={
               "text-2xl md:text-4xl text-center font-bold" +
@@ -141,7 +141,7 @@ export default function Home() {
           >
             Our Concerns
           </h3>
-          <div className="grid grid-cols-3 gap-x-40 gap-y-14 mt-16">
+          <div className="w-full max-w-250 mx-auto grid grid-cols-2 md:grid-cols-3 gap-y-8 md:gap-y-14 mt-16">
             {concerns.map((each) => {
               return (
                 <div
@@ -151,7 +151,7 @@ export default function Home() {
                     CONSTANTS.style.animInitVal
                   }
                 >
-                  <div className="w-40 h-30 relative object-contain">
+                  <div className="w-30 md:w-40 h-20 md:h-30 relative object-contain mx-auto">
                     <Image
                       src={each.image}
                       alt={each.text}
@@ -159,12 +159,14 @@ export default function Home() {
                       className="object-contain"
                     />
                   </div>
-                  <p className="text-center font-bold uppercase">{each.text}</p>
+                  <p className="text-center text-sm md:text-base font-bold uppercase">
+                    {each.text}
+                  </p>
                 </div>
               );
             })}
             <div
-              className={`${CONSTANTS.style.animInitVal} concern flex items-center justify-center text-center font-bold uppercase`}
+              className={`${CONSTANTS.style.animInitVal} concern flex items-center justify-center text-center min-h-30 text-sm md:text-base font-bold uppercase`}
             >
               ... And Many More
             </div>
@@ -213,7 +215,7 @@ export default function Home() {
 
               <p
                 id="service-section-description"
-                className="text-xl max-w-200 group text-primary-foreground/80"
+                className="text-sm md:text-xl max-w-200 group text-primary-foreground/80"
               >
                 At{" "}
                 <span className="font-bold text-primary-foreground">
@@ -266,7 +268,7 @@ export default function Home() {
                     <h4 className="font-bold text-xl group-hover:text-primary transition ease-in-out">
                       {step.heading}
                     </h4>
-                    <p className="text-foreground/40 text-balance">
+                    <p className="text-foreground/40 text-balance text-sm md:text-base">
                       {step.description}
                     </p>
                   </div>
@@ -277,13 +279,13 @@ export default function Home() {
           <div className="max-w-150 flex flex-col md:items-end pt-32 md:pt-0">
             <h3
               id="process-section-heading"
-              className="text-4xl md:text-5xl font-bold"
+              className="text-3xl md:text-5xl font-bold"
             >
               Our Process
             </h3>
             <p
               id="process-section-description"
-              className="text-foreground/60 text-lg font-semibold text-balance md:text-right"
+              className="text-foreground/60 text-base md:text-lg font-semibold text-balance md:text-right"
             >
               A simple, supportive journey toward better mental well-being.
             </p>

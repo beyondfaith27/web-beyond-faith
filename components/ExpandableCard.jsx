@@ -58,7 +58,7 @@ export function ExpandableCard({
         layoutId={imageSrc + "expandable-card"}
         onClick={() => setOpen(true)}
         transition={transition}
-        className={`expandable-card bg-background/5 rounded-xl backdrop-blur-md p-6 group cursor-pointer 
+        className={`expandable-card bg-background/5 rounded-xl backdrop-blur-md p-3 md:p-6 group cursor-pointer 
           hover:bg-background/10 transition-colors will-change-transform ${
             className || ""
           }`}
@@ -86,7 +86,7 @@ export function ExpandableCard({
           layoutId={imageSrc + "card-title"}
           transition={transition}
           layout="preserve-aspect"
-          className="font-bold text-xl mt-8 mb-2 will-change-transform"
+          className="font-bold text-base md:text-xl mt-8 mb-2 will-change-transform"
         >
           {title}
         </motion.h4>
@@ -96,7 +96,7 @@ export function ExpandableCard({
           layoutId={imageSrc + "card-description"}
           layout="preserve-aspect"
           transition={transition}
-          className="text-primary-foreground/60 will-change-transform"
+          className="text-primary-foreground/60 will-change-transform text-sm md:text-base"
         >
           {description}{" "}
           <span className="relative inline-block group-hover:text-primary-foreground">

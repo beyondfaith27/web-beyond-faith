@@ -85,7 +85,7 @@ function AnimatedDialogContent({
             className
           )}
         >
-          <div className="overflow-y-auto p-6 max-h-[calc(85vh-3rem)]">
+          <div className="overflow-y-auto p-2 md:p-6 max-h-[calc(85vh-3rem)]">
             {children}
           </div>
 
@@ -131,7 +131,7 @@ function AnimatedDialogTitle({ className, layoutId, children, ...props }) {
         transition={transition}
         layout="preserve-aspect"
         className={cn(
-          "font-bold text-xl mt-8 mb-2 will-change-transform",
+          "font-bold text-base md:text-xl mt-8 mb-2 will-change-transform",
           className
         )}
       >
@@ -161,7 +161,7 @@ function AnimatedDialogDescription({
         layout="preserve-aspect"
         transition={transition}
         className={cn(
-          "text-primary-foreground/60 will-change-transform",
+          "text-primary-foreground/60 will-change-transform text-sm md:text-base",
           className
         )}
       >
