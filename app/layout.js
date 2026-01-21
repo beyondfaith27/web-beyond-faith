@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "./Header";
 import Footer from "./Footer";
 import { Toaster } from "@/components/ui/toast";
+import Retractable from "@/components/Retractable";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,7 +38,9 @@ export default function RootLayout({ children }) {
         className={`${dm_serif.variable} ${inter.variable} font-inter antialiased`}
       >
         <Toaster />
-        <Header />
+        <Retractable>
+          <Header />
+        </Retractable>
         {children}
         <Footer />
       </body>

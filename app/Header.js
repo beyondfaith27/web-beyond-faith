@@ -14,7 +14,7 @@ import ContactFormSheet from "@/components/ContactFormSheet";
 
 const Header = () => {
   return (
-    <header className="w-full h-20 flex items-center justify-between fixed top-0 bg-foreground/40 backdrop-blur-md px-[var(--gutter-width)] text-accent z-50">
+    <header className="w-full h-20 flex items-center justify-between bg-foreground/40 backdrop-blur-md px-[var(--gutter-width)] text-accent">
       <Link href={"/#home"} className="w-5/6 tablet:w-1/3">
         <span className="text-lg inline-block">
           <Image
