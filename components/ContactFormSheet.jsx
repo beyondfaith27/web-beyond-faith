@@ -11,6 +11,14 @@ import validationSchema from "@/lib/validationSchema";
 import { Button } from "./ui/button";
 import { toast } from "sonner";
 import { insertContactToSheet } from "@/app/actions/contact/action";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
+import SERVICES from "@/lib/services";
 
 const ContactFormSheet = ({ children }) => {
   const [open, setOpen] = useState(false);
@@ -19,7 +27,7 @@ const ContactFormSheet = ({ children }) => {
       name: "",
       email: "",
       phone: "",
-      subject: "",
+      service: "",
       message: "",
     },
     resolver: zodResolver(validationSchema.contact),
@@ -122,13 +130,33 @@ const ContactFormSheet = ({ children }) => {
                 />
 
                 <FormField
-                  name="subject"
+                  name="service"
                   control={form.control}
                   render={({ field }) => (
                     <FormItem>
-                      <FormControl>
-                        <Input placeholder="Subject" {...field} />
-                      </FormControl>
+                      <Select
+                        value={field.value}
+                        onValueChange={field.onChange}
+                        onOpenChange={(opx) => !opx && field.onBlur()}
+                      >
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Service" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {SERVICES.map((service) => {
+                            return (
+                              <SelectItem
+                                key={service.title}
+                                value={service.title}
+                              >
+                                {service.title}
+                              </SelectItem>
+                            );
+                          })}
+                        </SelectContent>
+                      </Select>
                       <FormMessage />
                     </FormItem>
                   )}

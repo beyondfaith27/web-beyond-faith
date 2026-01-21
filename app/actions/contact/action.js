@@ -43,8 +43,8 @@ function formToValues(formObj, keys) {
       formObj?.phone.replace(/[^0-9+]/g, ""),
       formObj?.email,
       new Date().toLocaleDateString(),
-      formObj?.course,
-      formObj?.extra,
+      formObj?.service,
+      formObj?.message,
     ];
   }
 
