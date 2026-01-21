@@ -109,7 +109,7 @@ const About = () => {
                     {content.heading}
                   </h3>
 
-                  <p className="text-foreground/70 text-sm md:text-base leading-relaxed">
+                  <p className="text-foreground/70 text-base md:text-lg leading-relaxed">
                     {content.description}
                   </p>
                 </div>
@@ -136,6 +136,31 @@ const About = () => {
             </div>
           );
         })}
+        <div className="absolute bottom-0 left-[var(--gutter-width)] w-[calc(100%-2*var(--gutter-width))] h-px bg-border"></div>
+      </section>
+      <section className="!h-fit min-h-fit flex flex-col gap-y-16 justify-center relative py-36">
+        <div className="max-w-200 mx-auto">
+          <h3 className="text-2xl md:text-4xl font-bold mb-8">Our Approach</h3>
+          <p className="text-base md:text-lg">
+            At BeyondFaith, we combine scientific methods with empathetic care
+            to create tailored mental well-being strategies. Our therapists and
+            professionals are dedicated to:
+          </p>
+          <ul className="ml-10 list-disc my-6 text-base md:text-lg">
+            <li>Building strong therapeutic alliances.</li>
+            <li>
+              Providing personalized care through evidence-based techniques.
+            </li>
+            <li>
+              Creating safe and inclusive spaces for meaningful conversations.
+            </li>
+          </ul>
+          <p className="text-base md:text-lg">
+            Whether you're seeking individual therapy, support for your team, or
+            insights for driving mental health awareness, BeyondFaith is your
+            trusted partner in well-being.
+          </p>
+        </div>
       </section>
       <section className="w-full min-h-fit py-24 flex gap-y-6 justify-center relative">
         <Image
