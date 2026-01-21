@@ -331,7 +331,7 @@ export default function Home() {
       >
         <div className="w-full my-auto grid grid-cols-1 tablet:grid-cols-[1fr_minmax(360,1fr)] laptop:grid-cols-[1fr_minmax(560,_1fr)] items-center gap-x-10 laptop:gap-x-55">
           <div className="relative">
-            <div className="w-full min-[500px]:w-[30%] mx-auto tablet:w-auto tablet:max-h-[calc(100vh-200px)] aspect-[41/56] relative">
+            <div className="w-full min-[500px]:w-[30%] mx-auto tablet:w-auto tablet:max-h-[calc(100vh-350px)] aspect-[41/56] relative">
               <Image src="/images/founder.png" alt="founder-image" fill />
               <div className="absolute -top-8 -left-8">
                 <Image
