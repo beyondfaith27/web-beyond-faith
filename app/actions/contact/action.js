@@ -1,6 +1,6 @@
 "use server";
 
-import validationSchema from "@/app/utils/validationSchema";
+import validationSchema from "@/lib/validationSchema";
 import { google } from "googleapis";
 
 async function getSheetIdByName(sheets, spreadsheetId, sheetName) {
@@ -24,7 +24,7 @@ async function getSheetIdByName(sheets, spreadsheetId, sheetName) {
  * @param {FormData} formData
  */
 function formToValues(formObj, keys) {
-  const result = validationSchema.contactPage.safeParse(formObj);
+  const result = validationSchema.contact.safeParse(formObj);
 
   if (!result.success) {
     throw result.error;
@@ -40,9 +40,9 @@ function formToValues(formObj, keys) {
   } else {
     formVals = [
       formObj?.name,
-      formObj?.phone.replace(/[^0-9+]/g, ""),
       formObj?.email,
-      new Date().toLocaleDateString(),
+      formObj?.phone.replace(/[^0-9+]/g, ""),
+      new Date().toLocaleDateString() + " -- " + new Date().toTimeString().split(" ")[0],
       formObj?.service,
       formObj?.message,
     ];

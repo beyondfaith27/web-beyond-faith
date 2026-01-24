@@ -1,12 +1,8 @@
 /**
  * Honeycomb
- *
- * A responsive, Next.js–friendly honeycomb layout using
- * proper flat-topped hexagon geometry with smooth hover animation.
- *
  * @component
  * @param {Object} props
- * @param {string[]} props.images - Array of image URLs.
+ * @param {{image: string, text: string}[]} props.imageObjs - Array of image URLs objs.
  * @param {number} [props.hexSize=120] - Width of each hexagon in pixels.
  */
 "use client";
@@ -14,9 +10,11 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
+import { useHoverHighlightContext } from "@/app/home/HoverHighlightProvider";
+import { cj } from "@/lib/utils";
 
-export default function Honeycomb({ images }) {
-  const [hexSize, setHexSize] = useState(160); // default
+export default function Honeycomb({ imageObjs }) {
+  const [hexSize, setHexSize] = useState(160);
 
   useEffect(() => {
     function updateHexSize() {
@@ -30,7 +28,7 @@ export default function Honeycomb({ images }) {
 
     return () => window.removeEventListener("resize", updateHexSize);
   }, []);
-  const rows = buildRows(images, 4);
+  const rows = buildRows(imageObjs, 4);
 
   const spacing = 10;
   const hexHeight = hexSize * 1.1547;
@@ -50,8 +48,8 @@ export default function Honeycomb({ images }) {
               gap: spacing,
             }}
           >
-            {row.map((src, index) => (
-              <Hex key={index} src={src} size={hexSize} />
+            {row.map((imageObj, index) => (
+              <Hex key={index} size={hexSize} imageObj={imageObj} />
             ))}
           </div>
         ))}
@@ -67,20 +65,22 @@ export default function Honeycomb({ images }) {
  * ultra-smooth hover scale animation.
  *
  * @param {Object} props
- * @param {string} props.src - Image URL.
+ * @param {{image: string, text: string}} props.imageObj - Image URL.
  * @param {number} props.size - Hexagon width.
  */
-function Hex({ src, size }) {
-  const [hovered, setHovered] = useState(false);
+function Hex({ imageObj, size }) {
+  const [hoveredItem, setHoveredItem] = useHoverHighlightContext()
+
+  const isItemHovered = hoveredItem === imageObj.text
 
   return (
     <motion.div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseEnter={() => setHoveredItem(imageObj.text)}
+      onMouseLeave={() => setHoveredItem(null)}
       animate={{
-        scale: hovered ? 1.6 : 1,
-        zIndex: hovered ? 10 : 1,
-        filter: hovered
+        scale: isItemHovered ? 1.6 : 1,
+        zIndex: isItemHovered ? 10 : 1,
+        filter: isItemHovered
           ? "drop-shadow(0px 18px 30px rgba(0,0,0,0.45))"
           : "drop-shadow(0px 0px 0px rgba(0,0,0,0))",
       }}
@@ -107,8 +107,9 @@ function Hex({ src, size }) {
             height: "calc(100% - 1px)",
           }}
         >
-          <div className="relative w-[75%] h-[75%]">
-            <Image src={src} alt="" fill className="object-contain" />
+          <div className={cj("relative w-[75%] h-[75%] transition ease-in-out",
+            hoveredItem !== imageObj.text && hoveredItem !== null && "opacity-30")}>
+            <Image src={imageObj.image} alt="" fill className="object-contain" />
           </div>
         </div>
       </div>
@@ -122,12 +123,12 @@ function Hex({ src, size }) {
  * Distributes images into interleaved rows
  * with a maximum number of rows.
  *
- * @param {string[]} images
+ * @param {any[]} items
  * @param {number} maxRows
  * @returns {string[][]}
  */
-function buildRows(images, maxRows) {
-  const count = images.length;
+function buildRows(items, maxRows) {
+  const count = items.length;
   const rows = Math.min(maxRows, Math.ceil(Math.sqrt(count)));
   const perRow = Math.ceil(count / rows);
 
@@ -137,7 +138,7 @@ function buildRows(images, maxRows) {
   for (let i = 0; i < rows; i++) {
     const remaining = count - index;
     const take = i === rows - 1 ? remaining : Math.min(perRow, remaining);
-    result.push(images.slice(index, index + take));
+    result.push(items.slice(index, index + take));
     index += take;
   }
 

@@ -21,6 +21,8 @@ import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { HoverHighlightProvider } from "./home/HoverHighlightProvider";
+import ConcernsHoverText from "@/components/ConcernsHoverText";
 
 // const solutions = [
 //   {
@@ -101,68 +103,61 @@ export default function Home() {
         sectionAnimFuncName="homeConcernSection"
         className="!h-full w-full flex py-24 justify-center items-center bg-muted relative min-h-screen"
       >
-        <div className="w-full flex flex-col items-center md:flex-row md:items-center my-auto md:justify-between gap-y-12">
-          <div className="max-w-150 flex flex-col pt-0">
-            <h3
-              id="process-section-heading"
-              className="text-3xl md:text-5xl font-bold text-center md:text-left"
-            >
-              {HOME_CONTENT.CONCERNS.title}
-            </h3>
-            <p
-              id="process-section-description"
-              className="text-foreground/60 text-base md:text-lg font-semibold text-balance mt-8 text-center md:text-left"
-            >
-              {HOME_CONTENT.CONCERNS.generic_desc}
-              {HOME_CONTENT.CONCERNS.concern_list.map((each, idx) => (
-                <React.Fragment key={each.text}>
-                  <span className="font-bold text-primary">{each.text}</span>
-                  {idx === HOME_CONTENT.CONCERNS.concern_list.length - 1
-                    ? " "
-                    : ", "}
-                </React.Fragment>
-              ))}
-              and many more
-            </p>
-          </div>
-          <div className="w-fit">
-            <Honeycomb
-              images={HOME_CONTENT.CONCERNS.concern_list.map(
-                (each) => each.image
-              )}
-            />
-          </div>
-        </div>
-        {/* <div className="w-full max-w-250 mx-auto grid grid-cols-2 md:grid-cols-3 gap-y-8 md:gap-y-14 mt-16">
-            {concerns.map((each) => {
-              return (
-                <div
-                  key={each.image}
-                  className={
-                    "concern flex flex-col gap-y-1 transition ease-in-out" +
-                    CONSTANTS.style.animInitVal
-                  }
-                >
-                  <div className="w-30 md:w-40 h-20 md:h-30 relative object-contain mx-auto">
-                    <Image
-                      src={each.image}
-                      alt={each.text}
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                  <p className="text-center text-sm md:text-base font-bold uppercase">
-                    {each.text}
-                  </p>
-                </div>
-              );
-            })}
-            <div
-              className={`${CONSTANTS.style.animInitVal} concern flex items-center justify-center text-center min-h-30 text-sm md:text-base font-bold uppercase`}
-            >
-              ... And Many More
+        <HoverHighlightProvider>
+          <div className="w-full flex flex-col items-center md:flex-row md:items-center my-auto md:justify-between gap-y-12">
+            <div className="max-w-150 flex flex-col pt-0">
+              <h3
+                id="process-section-heading"
+                className="text-3xl md:text-5xl font-bold text-center md:text-left"
+              >
+                {HOME_CONTENT.CONCERNS.title}
+              </h3>
+              <p
+                id="process-section-description"
+                className="text-foreground/60 text-base md:text-lg font-semibold text-balance mt-8 text-center md:text-left"
+              >
+                {HOME_CONTENT.CONCERNS.generic_desc}
+                <span className="hidden md:inline"><ConcernsHoverText concerns={HOME_CONTENT.CONCERNS.concern_list} /></span>
+                <span className="hidden md:inline">and many more</span>
+              </p>
             </div>
-          </div> */}
+            <div className="hidden md:block w-fit">
+              <Honeycomb
+                imageObjs={HOME_CONTENT.CONCERNS.concern_list}
+              />
+            </div>
+            <div className="w-full max-w-250 mx-auto grid md:hidden grid-cols-2 md:grid-cols-3 gap-y-8 md:gap-y-14">
+              {HOME_CONTENT.CONCERNS.concern_list.map((each) => {
+                return (
+                  <div
+                    key={each.image}
+                    className={
+                      "concern flex flex-col gap-y-1 transition ease-in-out" +
+                      CONSTANTS.style.animInitVal
+                    }
+                  >
+                    <div className="w-30 md:w-40 h-20 md:h-30 relative object-contain mx-auto">
+                      <Image
+                        src={each.image}
+                        alt={each.text}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                    <p className="text-center text-sm md:text-base font-bold uppercase">
+                      {each.text}
+                    </p>
+                  </div>
+                );
+              })}
+              <div
+                className={`${CONSTANTS.style.animInitVal} concern flex items-center justify-center text-center min-h-30 text-sm md:text-base font-bold uppercase`}
+              >
+                ... And Many More
+              </div>
+            </div>
+          </div>
+        </HoverHighlightProvider>
       </InViewAnimateSection>
       <InViewAnimateSection
         id="services"

@@ -19,6 +19,7 @@ import {
   SelectValue,
 } from "./ui/select";
 import SERVICES from "@/lib/services";
+import helpers from "@/lib/helpers";
 
 const ContactFormSheet = ({ children }) => {
   const [open, setOpen] = useState(false);
@@ -46,9 +47,8 @@ const ContactFormSheet = ({ children }) => {
     try {
       console.log("this is running .... ");
       const values = form.getValues();
-      // const response = await insertContactToSheet(values);
-      // await helpers.sleep(2000)
-      const response = { success: false };
+      const response = await insertContactToSheet(values);
+      await helpers.sleep(2000)
       if (!response.success) {
         throw response.error;
       }
