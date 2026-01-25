@@ -68,7 +68,7 @@ function formToValues(formObj, keys) {
 
 export async function insertContactToSheet(formData) {
   try {
-    const googleCreds = process.env.G_SERVICE_ACCOUNT_CRED;
+    const googleCreds = Buffer.from(process.env.G_SERVICE_ACCOUNT_CRED, 'base64').toString('utf-8');
     const spreadsheetId = process.env.CONTACT_SPREADSHEET_ID;
     const submissionSheetName = "submissions";
     const inferenceSheetName = "infer";

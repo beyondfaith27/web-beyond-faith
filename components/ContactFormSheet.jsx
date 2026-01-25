@@ -20,6 +20,7 @@ import {
 } from "./ui/select";
 import SERVICES from "@/lib/services";
 import helpers from "@/lib/helpers";
+import { Loader2 } from "lucide-react";
 
 const ContactFormSheet = ({ children }) => {
   const [open, setOpen] = useState(false);
@@ -180,8 +181,11 @@ const ContactFormSheet = ({ children }) => {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-fit px-10">
-                Submit
+              <Button type="submit" className="w-32 h-10" disabled={form.formState.isSubmitting}>
+                {form.formState.isSubmitting ? <Loader2
+                  className="!h-5 !w-5 animate-spin"
+                  strokeWidth={4}
+                /> : "Submit"}
               </Button>
             </form>
           </Form>
