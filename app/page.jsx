@@ -23,6 +23,7 @@ import Link from "next/link";
 import React from "react";
 import { HoverHighlightProvider } from "./home/HoverHighlightProvider";
 import ConcernsHoverText from "@/components/ConcernsHoverText";
+import AnimatedUnderline from "@/components/AnimatedUnderline";
 
 // const solutions = [
 //   {
@@ -280,7 +281,7 @@ export default function Home() {
       </InViewAnimateSection>
       <InViewAnimateSection
         id="features"
-        className="!h-full flex justify-center py-24"
+        className="!h-full flex md:hidden justify-center py-24"
       >
         <div className="my-auto flex flex-col gap-y-15 w-full">
           <div className="flex flex-col gap-y-4 text-center">
@@ -322,7 +323,7 @@ export default function Home() {
       </InViewAnimateSection>
       <InViewAnimateSection
         id="founder"
-        className="!h-full flex justify-between py-24 bg-muted overflow-clip"
+        className="!h-full flex md:hidden justify-between py-24 bg-muted overflow-clip"
       >
         <div className="w-full my-auto grid grid-cols-1 tablet:grid-cols-[1fr_minmax(360,1fr)] laptop:grid-cols-[1fr_minmax(560,_1fr)] items-center gap-x-10 laptop:gap-x-55">
           <div className="relative">
@@ -365,6 +366,67 @@ export default function Home() {
               supports you, helping you uncover your strength and face
               challenges with confidence.
             </p>
+          </div>
+        </div>
+      </InViewAnimateSection>
+      <InViewAnimateSection
+        id="to-about"
+        sectionAnimFuncName="homeToAboutSection"
+        amount={0.6}
+        className="!h-full hidden md:flex items-center py-24 relative"
+      >
+        <div className="h-px w-[calc(100%-(2*var(--gutter-width)))] absolute bottom-0 left-[var(--gutter-width)] bg-border/30" />
+        <div className="w-1/2 h-fit flex items-center justify-center">
+          <div id="founder-card" className="p-2 rounded-3xl bg-colored-background text-primary-foreground relative lg:-left-12 max-w-94 h-fit flex flex-col items-center z-10 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
+            <div id="founder-image" className="w-80 h-100 mt-4 relative rounded-3xl overflow-clip border-primary-foreground/20 border-8">
+              <Image fill src={"/images/founder.png"} alt={"founders-image"} className="object-cover" />
+            </div>
+            <div id="founder-message" className="mb-6 relative flex flex-col -mt-70 -z-10 px-4 text-balance text-center">
+              <h3 className="text-2xl font-bold text-center pt-4">
+                A Message from Our Founder
+              </h3>
+              <p className="pb-3 pt-6">
+                We believe your journey is a reflection of your innate strength. BeyondFaith offers the professional guidance and heartfelt support you need to trust your growth and overcome obstacles. Together, we help you embrace your story and move forward with confidence.
+              </p>
+              <div className="absolute top-10 -left-0 rotate-24 scale-60">
+                <Image
+                  src="/images/Stars.svg"
+                  width={48}
+                  height={48}
+                  alt="stars-decoration"
+                />
+              </div>
+              <div className="absolute -bottom-2 right-4 rotate-24 scale-60">
+                <Image
+                  src="/images/Stars.svg"
+                  width={48}
+                  height={48}
+                  alt="stars-decoration"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="w-1/2 px-10 max-w-200 mx-auto text-lg group">
+          <h3 className="text-4xl font-bold mb-6">Why Choose Us</h3>
+          <div className="text-balance">
+            <p>
+              Life can feel overwhelming at times, but you don’t have to face it
+              alone. Let us guide you
+              to clarity and strength.
+            </p>
+            <ul className="my-4 ml-8 list-disc [&>li]:mt-2">
+              <li>Our team includes <span className="group-hover:text-primary">qualified therapists, counselors, and
+                mental health experts</span> who specialize in various therapeutic modalities.</li>
+              <li>We understand that every individual and organization is unique,
+                and we <span className="group-hover:text-primary">tailor our services</span> to meet those specific needs.</li>
+              <li>From therapy sessions to workshops and capacity-building
+                programs, we provide <span className="group-hover:text-primary">comprehensive solutions for mental wellness.</span></li>
+              <li><span className="group-hover:text-primary">Compassion and understanding</span> are at the heart of everything we do.</li>
+            </ul>
+            <Link href="/about" className="mt-3 w-fit mb-6 whitespace-nowrap flex gap-x-2 items-center group relative text-colored-background hover:text-primary">know more about us <ChevronRight size={16} />
+              <AnimatedUnderline className="bg-primary" />
+            </Link>
           </div>
         </div>
       </InViewAnimateSection>

@@ -1,5 +1,5 @@
 const CONCERNS = {
-  title: "Our Concern",
+  title: "Concerns we deal with",
   generic_desc:
     "we provide compassionate, evidence-based support to help individuals and teams navigate mental health challenges; we address concerns such as ",
   concern_list: [

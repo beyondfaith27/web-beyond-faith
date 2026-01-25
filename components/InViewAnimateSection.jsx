@@ -4,7 +4,7 @@ import { useAnimate, useInView } from "motion/react";
 import React, { useEffect } from "react";
 import animFns from "@/lib/animationFuncs";
 
-/** @typedef {React.HTMLAttributes<HTMLDivElement> & {sectionAnimFuncName: keyof animFns, children: React.ReactNode}} InViewAnimateSectionPropType */
+/** @typedef {React.HTMLAttributes<HTMLDivElement> & {sectionAnimFuncName: keyof animFns, children: React.ReactNode, amount: number }} InViewAnimateSectionPropType */
 
 /**
  *
@@ -14,10 +14,11 @@ import animFns from "@/lib/animationFuncs";
 const InViewAnimateSection = ({
   sectionAnimFuncName = "",
   children,
+  amount = 0.2,
   ...props
 }) => {
   const [scope, animate] = useAnimate();
-  const inView = useInView(scope, { once: true, amount: 0.2 });
+  const inView = useInView(scope, { once: true, amount });
 
   useEffect(() => {
     if (inView && !!sectionAnimFuncName) {
