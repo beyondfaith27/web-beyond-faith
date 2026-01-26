@@ -3,6 +3,12 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import { FaqProvider, FaqTypeSelection, SectionFaqList } from "./FaqUtils";
 
+export const metadata = {
+  title: "Frequently Asked Questions",
+  description: "Find answers about therapy sessions, appointments, mental health diagnosis, assessments, payments, and our policies at BeyondFaith.",
+  keywords: ["therapy FAQ", "counseling appointments", "mental health assessments cost", "payment policies therapy", "how therapy works"],
+};
+
 const FAQ = () => {
   return (
     <section className="bg-muted pt-20">

@@ -1,6 +1,11 @@
 import { cj } from "@/lib/utils";
 import React from "react";
 
+export const metadata = {
+  title: "Terms and Conditions",
+  description: "The terms and conditions for using BeyondFaith counseling and consultancy services.",
+};
+
 const TermsAndConditions = () => {
   return (
     <section className={"bg-muted pt-24 pb-32"}>

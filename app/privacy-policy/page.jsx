@@ -1,6 +1,11 @@
 import { cj } from "@/lib/utils";
 import React from "react";
 
+export const metadata = {
+  title: "Privacy Policy",
+  description: "How BeyondFaith protects your data and ensures confidentiality in your mental health journey.",
+};
+
 const PrivacyPolicy = () => {
   return (
     <section className={"bg-muted pt-24 pb-32"}>

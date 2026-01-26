@@ -2,14 +2,15 @@ import AnimatedUnderline from "@/components/AnimatedUnderline";
 import Image from "next/image";
 import React from "react";
 import { Button } from "@/components/ui/button";
-import {
-  FeatureContextProvider,
-  FeatureGraphicListing,
-  FeatureTextListing,
-} from "./FeatureUtils";
 import ContactFormSheet from "@/components/ContactFormSheet";
 import CONTENTS from "@/contents";
 import { cj } from "@/lib/utils";
+
+export const metadata = {
+  title: "About Us",
+  description: "BeyondFaith was born to turn emotional resilience into inner strength. Learn about our mission to normalize mental health conversations and make wellness accessible to all.",
+  keywords: ["mental health mission", "emotional resilience", "inner strength", "destigmatizing mental health", "mental wellness vision"],
+};
 
 const About = () => {
   return (

@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import CONTENTS from "@/contents";
-import HOME_CONTENT from "@/contents/home";
 import CONSTANTS from "@/lib/constants";
 import FAQS from "@/lib/faqs";
 import PROCESS_STEPS from "@/lib/process-step";
@@ -63,23 +62,33 @@ const features = [
   },
 ];
 
+export const metadata = {
+  description: "BeyondFaith provides compassionate support for Depression, PTSD, Anxiety, Stress, Trauma, ADHD, Autism, and Relationships. Start your therapeutic journey today.",
+  keywords: [
+    "Depression therapy", "PTSD support", "Anxiety counseling", "Stress management",
+    "Trauma-informed care", "ADHD coaching", "Autism support for adults",
+    "Relationship therapy", "Employee Assistance Program", "Mental health consultancy"
+  ],
+};
+
 export default function Home() {
   return (
     <>
       <InViewAnimateSection
         id="home"
         sectionAnimFuncName="homeHeroSection"
-        className="!h-full flex py-24 justify-center bg-colored-background relative min-h-screen"
+        className="!h-full flex py-24 justify-center relative min-h-screen"
       >
-        {/* <div className="w-[calc(100%-2*var(--gutter-width))] absolute bottom-0 left-[var(--gutter-width)] h-px bg-border" /> */}
-        {/* <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-colored-background/85 backdrop-blur-[2px]"></div>
+        <div className="absolute inset-0 -z-10 select-none">
           <Image
             alt="background-image-1"
             src={"/images/HeroImg.png"}
             fill
             className="h-full object-cover"
+            priority
           />
-        </div> */}
+        </div>
         <div className="flex flex-col items-center my-auto gap-y-6 text-accent max-w-178">
           <h1 className={`${CONSTANTS.style.animInitVal}`}>
             BeyondFaith, Your Journey to Inner Strength
@@ -111,24 +120,24 @@ export default function Home() {
                 id="process-section-heading"
                 className="text-3xl md:text-5xl font-bold text-center md:text-left"
               >
-                {HOME_CONTENT.CONCERNS.title}
+                {CONTENTS.HOME_CONTENT.CONCERNS.title}
               </h3>
               <p
                 id="process-section-description"
                 className="text-foreground/60 text-base md:text-lg font-semibold text-balance mt-8 text-center md:text-left"
               >
-                {HOME_CONTENT.CONCERNS.generic_desc}
-                <span className="hidden md:inline"><ConcernsHoverText concerns={HOME_CONTENT.CONCERNS.concern_list} /></span>
+                {CONTENTS.HOME_CONTENT.CONCERNS.generic_desc}
+                <span className="hidden md:inline"><ConcernsHoverText concerns={CONTENTS.HOME_CONTENT.CONCERNS.concern_list} /></span>
                 <span className="hidden md:inline">and many more</span>
               </p>
             </div>
             <div className="hidden md:block w-fit">
               <Honeycomb
-                imageObjs={HOME_CONTENT.CONCERNS.concern_list}
+                imageObjs={CONTENTS.HOME_CONTENT.CONCERNS.concern_list}
               />
             </div>
             <div className="w-full max-w-250 mx-auto grid md:hidden grid-cols-2 md:grid-cols-3 gap-y-8 md:gap-y-14">
-              {HOME_CONTENT.CONCERNS.concern_list.map((each) => {
+              {CONTENTS.HOME_CONTENT.CONCERNS.concern_list.map((each) => {
                 return (
                   <div
                     key={each.image}
@@ -378,8 +387,8 @@ export default function Home() {
         <div className="h-px w-[calc(100%-(2*var(--gutter-width)))] absolute bottom-0 left-[var(--gutter-width)] bg-border/30" />
         <div className="w-1/2 h-fit flex items-center justify-center">
           <div id="founder-card" className="p-2 rounded-3xl bg-colored-background text-primary-foreground relative lg:-left-12 max-w-94 h-fit flex flex-col items-center z-10 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
-            <div id="founder-image" className="w-80 h-100 mt-4 relative rounded-3xl overflow-clip border-primary-foreground/20 border-8">
-              <Image fill src={"/images/founder.png"} alt={"founders-image"} className="object-cover" />
+            <div id="founder-image" className="w-80 h-90 mt-4 relative rounded-3xl overflow-clip border-primary-foreground/20 border-8">
+              <Image fill src={"/images/founder.png"} alt={"founders-image"} className="object-cover object-top" />
             </div>
             <div id="founder-message" className="mb-6 relative flex flex-col -mt-70 -z-10 px-4 text-balance text-center">
               <h3 className="text-2xl font-bold text-center pt-4">
@@ -416,15 +425,16 @@ export default function Home() {
               to clarity and strength.
             </p>
             <ul className="my-4 ml-8 list-disc [&>li]:mt-2">
-              <li>Our team includes <span className="group-hover:text-primary">qualified therapists, counselors, and
+              <li>Our team includes <span className="group-hover:text-primary transition ease-in-out duration-300">qualified therapists, counselors, and
                 mental health experts</span> who specialize in various therapeutic modalities.</li>
               <li>We understand that every individual and organization is unique,
-                and we <span className="group-hover:text-primary">tailor our services</span> to meet those specific needs.</li>
+                and we <span className="group-hover:text-primary transition ease-in-out duration-300">tailor our services</span> to meet those specific needs.</li>
               <li>From therapy sessions to workshops and capacity-building
-                programs, we provide <span className="group-hover:text-primary">comprehensive solutions for mental wellness.</span></li>
-              <li><span className="group-hover:text-primary">Compassion and understanding</span> are at the heart of everything we do.</li>
+                programs, we provide <span className="group-hover:text-primary transition ease-in-out duration-300">comprehensive solutions for mental wellness.</span></li>
+              <li><span className="group-hover:text-primary transition ease-in-out duration-300">Compassion and understanding</span> are at the heart of everything we do.</li>
             </ul>
-            <Link href="/about" className="mt-3 w-fit mb-6 whitespace-nowrap flex gap-x-2 items-center group relative text-colored-background hover:text-primary">know more about us <ChevronRight size={16} />
+            <Link href="/about" className="mt-3 w-fit mb-6 whitespace-nowrap flex gap-x-2 items-center group relative text-primary hover:text-primary">
+              know more about us <ChevronRight size={16} />
               <AnimatedUnderline className="bg-primary" />
             </Link>
           </div>
