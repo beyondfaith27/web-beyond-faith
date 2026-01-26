@@ -74,8 +74,8 @@ export default function RootLayout({ children }) {
     "@context": "https://schema.org",
     "@type": "MedicalOrganization",
     "name": "BeyondFaith",
-    "url": process.env.IS_DEV ? "https://web-beyond-faith.vercel.app" : "https://beyondfaith.co",
-    "logo": `${process.env.IS_DEV ? "https://web-beyond-faith.vercel.app" : "https://beyondfaith.co"}/images/beyondFaith-logo-black.png`,
+    "url": process.env.IS_DEV === "true" ? "https://web-beyond-faith.vercel.app" : "https://beyondfaith.co",
+    "logo": `${process.env.IS_DEV === "true" ? "https://web-beyond-faith.vercel.app" : "https://beyondfaith.co"}/images/beyondFaith-logo-black.png`,
     "description": "Virtual mental health counseling and therapy services for individuals and organizations worldwide.",
     "address": {
       "@type": "PostalAddress",
