@@ -387,8 +387,11 @@ export default function Home() {
         <div className="h-px w-[calc(100%-(2*var(--gutter-width)))] absolute bottom-0 left-[var(--gutter-width)] bg-border/30" />
         <div className="w-1/2 h-fit flex items-center justify-center">
           <div id="founder-card" className="p-2 rounded-3xl bg-colored-background text-primary-foreground relative lg:-left-12 max-w-94 h-fit flex flex-col items-center z-10 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)]">
-            <div id="founder-image" className="w-80 h-90 mt-4 relative rounded-3xl overflow-clip border-primary-foreground/20 border-8">
-              <Image fill src={"/images/founder.png"} alt={"founders-image"} className="object-cover object-top" />
+            <div className="relative z-10">
+              <div id="founder-image" className="w-80 h-90 mt-4 z-10 relative overflow-clip rounded-3xl border-primary-foreground/20 border-8">
+                <Image fill src={"/images/founder.png"} alt={"founders-image"} className="object-cover object-top relative" />
+              </div>
+              <div className="absolute -z-10 w-88 h-90 -left-4 top-4 bg-colored-background"></div>
             </div>
             <div id="founder-message" className="mb-6 relative flex flex-col -mt-70 -z-10 px-4 text-balance text-center">
               <h3 className="text-2xl font-bold text-center pt-4">

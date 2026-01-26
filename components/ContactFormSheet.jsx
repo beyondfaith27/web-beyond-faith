@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useId } from "react";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "./ui/sheet";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
@@ -21,9 +21,13 @@ import {
 import SERVICES from "@/lib/services";
 import helpers from "@/lib/helpers";
 import { Loader2 } from "lucide-react";
+import { useContactForm } from "@/lib/ContactFormContext";
 
 const ContactFormSheet = ({ children }) => {
-  const [open, setOpen] = useState(false);
+  const instanceId = useId();
+  const { activeInstanceId, openInstance, closeInstance, searchParams } = useContactForm();
+  const [isFirstInstance, setIsFirstInstance] = useState(false);
+
   const form = useForm({
     defaultValues: {
       name: "",
@@ -35,21 +39,51 @@ const ContactFormSheet = ({ children }) => {
     resolver: zodResolver(validationSchema.contact),
   });
 
-  function handleOpenChange(opx) {
-    if (opx) {
-      setOpen(true);
+  // Register as first instance if needed
+  useEffect(() => {
+    if (!window.__firstContactFormInstance) {
+      window.__firstContactFormInstance = instanceId;
+      setIsFirstInstance(true);
+    }
+
+    return () => {
+      if (window.__firstContactFormInstance === instanceId) {
+        delete window.__firstContactFormInstance;
+      }
+    };
+  }, [instanceId]);
+
+  // Auto-open first instance from URL on mount ONLY
+  useEffect(() => {
+    if (isFirstInstance) {
+      const contactFormParam = searchParams.get("contact-form");
+      const shouldBeOpen = contactFormParam === "true" || contactFormParam === "open";
+
+      if (shouldBeOpen && activeInstanceId === null) {
+        openInstance(instanceId);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isFirstInstance]);
+
+  const isOpen = activeInstanceId === instanceId;
+
+  function handleOpenChange(shouldOpen) {
+    if (shouldOpen) {
+      openInstance(instanceId);
     } else {
       form.reset();
-      setOpen(false);
+      closeInstance();
     }
   }
 
-  async function onSubmit() {
+  async function onSubmit(e) {
+    e.preventDefault();
     try {
       console.log("this is running .... ");
       const values = form.getValues();
       const response = await insertContactToSheet(values);
-      await helpers.sleep(2000)
+      await helpers.sleep(2000);
       if (!response.success) {
         throw response.error;
       }
@@ -67,17 +101,14 @@ const ContactFormSheet = ({ children }) => {
   }
 
   return (
-    <Sheet open={open} onOpenChange={handleOpenChange}>
+    <Sheet open={isOpen} onOpenChange={handleOpenChange}>
       <SheetTrigger asChild>{children}</SheetTrigger>
       <SheetContent className="w-full border-none rounded-none tablet:rounded-l-3xl">
         <SheetTitle className="sr-only">Contact Form</SheetTitle>
         <div className="py-24 px-[var(--gutter-width)] flex flex-col gap-y-8">
           <h3 className="text-2xl font-bold">Send Us a Message</h3>
           <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="flex flex-col gap-y-8"
-            >
+            <div className="flex flex-col gap-y-8">
               <div className="flex flex-col md:flex-row gap-y-8 gap-x-4">
                 <FormField
                   name="name"
@@ -181,13 +212,18 @@ const ContactFormSheet = ({ children }) => {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-32 h-10" disabled={form.formState.isSubmitting}>
+              <Button
+                type="button"
+                className="w-32 h-10"
+                disabled={form.formState.isSubmitting}
+                onClick={form.handleSubmit(onSubmit)}
+              >
                 {form.formState.isSubmitting ? <Loader2
                   className="!h-5 !w-5 animate-spin"
                   strokeWidth={4}
                 /> : "Submit"}
               </Button>
-            </form>
+            </div>
           </Form>
         </div>
       </SheetContent>

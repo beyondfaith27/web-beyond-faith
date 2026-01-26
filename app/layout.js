@@ -4,6 +4,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { Toaster } from "@/components/ui/toast";
 import Retractable from "@/components/Retractable";
+import { ContactFormProvider } from "@/lib/ContactFormContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,8 +28,8 @@ const inter = Inter({
 });
 
 export const metadata = {
-  metadataBase: new URL(process.env.IS_DEV === 'true' 
-    ? "https://web-beyond-faith.vercel.app" 
+  metadataBase: new URL(process.env.IS_DEV === 'true'
+    ? "https://web-beyond-faith.vercel.app"
     : "https://beyondfaith.co"),
   title: {
     default: "BeyondFaith | Your Journey to Inner Strength",
@@ -36,8 +37,8 @@ export const metadata = {
   },
   description: "BeyondFaith offers professional mental health counseling and therapy. Compassionate, evidence-based support for depression, anxiety, trauma, and more.",
   keywords: [
-    "mental health counseling", "therapy Kerala", "anxiety relief", "BeyondFaith", 
-    "Alfred Nelson", "depression therapy", "PTSD support", "ADHD coaching", 
+    "mental health counseling", "therapy Kerala", "anxiety relief", "BeyondFaith",
+    "Alfred Nelson", "depression therapy", "PTSD support", "ADHD coaching",
     "relationship counseling", "trauma recovery", "workplace mental health"
   ],
   authors: [{ name: "BeyondFaith Team" }, { name: "Dev - Alfred Nelson" }],
@@ -86,7 +87,7 @@ export default function RootLayout({ children }) {
       { "@type": "Country", "name": "India" },
       { "@type": "Country", "name": "United States" },
       { "@type": "Country", "name": "United Kingdom" },
-      { "@type": "GeoShape", "address": "Worldwide" } 
+      { "@type": "GeoShape", "address": "Worldwide" }
     ],
     // "sameAs": [
     //   "https://www.instagram.com/beyondfaith", 
@@ -104,11 +105,13 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <Toaster />
-        <Retractable>
-          <Header />
-        </Retractable>
-        {children}
-        <Footer />
+        <ContactFormProvider>
+          <Retractable>
+            <Header />
+          </Retractable>
+          {children}
+          <Footer />
+        </ContactFormProvider>
       </body>
     </html>
   );
