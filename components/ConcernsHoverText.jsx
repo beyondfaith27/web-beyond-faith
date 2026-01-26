@@ -1,6 +1,6 @@
 "use client"
 
-import { useHoverHighlightContext } from '@/app/home/HoverHighlightProvider'
+import { useHoverHighlightContext } from '@/app/(site)/home/HoverHighlightProvider'
 import React from 'react'
 import { motion } from 'motion/react'
 import { cj } from '@/lib/utils'

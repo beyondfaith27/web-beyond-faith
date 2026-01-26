@@ -1,10 +1,6 @@
 import { Geist, Geist_Mono, DM_Serif_Display, Inter } from "next/font/google";
 import "./globals.css";
-import Header from "./Header";
-import Footer from "./Footer";
 import { Toaster } from "@/components/ui/toast";
-import Retractable from "@/components/Retractable";
-import { ContactFormProvider } from "@/lib/ContactFormContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -105,13 +101,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <Toaster />
-        <ContactFormProvider>
-          <Retractable>
-            <Header />
-          </Retractable>
-          {children}
-          <Footer />
-        </ContactFormProvider>
+        {children}
       </body>
     </html>
   );

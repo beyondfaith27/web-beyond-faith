@@ -10,7 +10,7 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { useHoverHighlightContext } from "@/app/home/HoverHighlightProvider";
+import { useHoverHighlightContext } from "@/app/(site)/home/HoverHighlightProvider";
 import { cj } from "@/lib/utils";
 
 export default function Honeycomb({ imageObjs }) {
