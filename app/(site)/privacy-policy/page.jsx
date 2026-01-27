@@ -237,14 +237,6 @@ const PrivacyPolicy = () => {
           accordance with applicable laws. Responses may be limited to matters
           directly related to this Privacy Policy or the Terms and Conditions.
         </p>
-        <p>
-          Here is a{" "}
-          <span className="font-bold">clean, polished, original rewrite</span>{" "}
-          for <span className="font-bold">BeyondFaith</span>, keeping the same
-          flow and meaning but <span className="font-bold">not copying</span>{" "}
-          the wording. This is suitable for your website’s “How It Works” or
-          onboarding section.
-        </p>
 
         <h3>contact information</h3>
         <p>
