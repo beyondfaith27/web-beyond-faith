@@ -77,10 +77,8 @@ const ContactFormSheet = ({ children }) => {
     }
   }
 
-  async function onSubmit(e) {
-    e.preventDefault();
+  async function onSubmit() {
     try {
-      console.log("this is running .... ");
       const values = form.getValues();
       const response = await insertContactToSheet(values);
       await helpers.sleep(2000);
