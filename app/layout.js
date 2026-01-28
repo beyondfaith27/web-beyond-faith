@@ -26,7 +26,7 @@ const inter = Inter({
 export const metadata = {
   metadataBase: new URL(process.env.IS_DEV === 'true'
     ? "https://web-beyond-faith.vercel.app"
-    : "https://beyondfaith.co"),
+    : "https://beyondfaith.in"),
   title: {
     default: "BeyondFaith | Your Journey to Inner Strength",
     template: "%s | BeyondFaith",
@@ -70,8 +70,8 @@ export default function RootLayout({ children }) {
     "@context": "https://schema.org",
     "@type": "MedicalOrganization",
     "name": "BeyondFaith",
-    "url": process.env.IS_DEV === "true" ? "https://web-beyond-faith.vercel.app" : "https://beyondfaith.co",
-    "logo": `${process.env.IS_DEV === "true" ? "https://web-beyond-faith.vercel.app" : "https://beyondfaith.co"}/images/beyondFaith-logo-black.png`,
+    "url": process.env.IS_DEV === "true" ? "https://web-beyond-faith.vercel.app" : "https://beyondfaith.in",
+    "logo": `${process.env.IS_DEV === "true" ? "https://web-beyond-faith.vercel.app" : "https://beyondfaith.in"}/images/beyondFaith-logo-black.png`,
     "description": "Virtual mental health counseling and therapy services for individuals and organizations worldwide.",
     "address": {
       "@type": "PostalAddress",
