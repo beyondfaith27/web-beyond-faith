@@ -1,3 +1,4 @@
+import ContactFormSheet from "@/components/ContactFormSheet";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -16,7 +17,7 @@ const Footer = () => {
           />
         </h2>
         <span className="opacity-40 flex text-sm mb-2">© {new Date().getFullYear()} BeyondFaith</span>
-        {/* <span className="opacity-30 flex text-xs">Developed by Alfred Nelson</span> */}
+        <span className="opacity-30 flex text-xs">Developed by Alfred Nelson</span>
       </div>
       <div className="flex flex-col items-start md:items-end gap-y-4 w-fit">
         <div className="flex items-center w-full gap-x-6 tablet:gap-x-12 justify-center md:justify-end">
@@ -36,14 +37,16 @@ const Footer = () => {
               height={32}
             />
           </Link>
-          <Link href="#">
+          {/* <Link href="#"> */}
+          <ContactFormSheet>
             <Image
               src="/images/whatsapp.svg"
               alt="whatsapp"
               width={32}
               height={32}
             />
-          </Link>
+          </ContactFormSheet>
+          {/* </Link> */}
         </div>
         <div className="flex items-center flex-col md:flex-row gap-y-4">
           <Link
