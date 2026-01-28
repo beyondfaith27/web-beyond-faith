@@ -80,7 +80,7 @@ export default function Home() {
         className="!h-full flex py-24 justify-center relative min-h-screen"
       >
         <div className="absolute inset-0 bg-colored-background/85 backdrop-blur-[2px]"></div>
-        <div className="absolute inset-0 -z-10 select-none">
+        {/* <div className="absolute inset-0 -z-10 select-none">
           <Image
             alt="background-image-1"
             src={"/images/HeroImg.png"}
@@ -88,7 +88,8 @@ export default function Home() {
             className="h-full object-cover"
             priority
           />
-        </div>
+        </div> */}
+        <ParallaxBackground src={"/images/HeroImg.png"} />
         <div className="flex flex-col items-center my-auto gap-y-6 text-accent max-w-178">
           <h1 className={`${CONSTANTS.style.animInitVal}`}>
             BeyondFaith, Your Journey to Inner Strength
@@ -339,7 +340,7 @@ export default function Home() {
           <div className="relative">
             <div className="w-full min-[500px]:w-[30%] mx-auto tablet:w-auto tablet:max-h-[calc(100vh-350px)] aspect-[41/56] relative rounded-xl">
               <div className="w-full min-[500px]:w-[30%] mx-auto tablet:w-auto tablet:max-h-[calc(100vh-350px)] aspect-[41/56] rounded-xl overflow-clip">
-                <Image src="/images/founder-img.png" alt="founder-image" fill className="object-cover rounded-2xl shadow-2xl" />
+                <Image src="/images/founder-image.png" alt="founder-image" fill className="object-cover rounded-2xl shadow-2xl" />
               </div>
               <div className="absolute -top-8 -left-8">
                 <Image
