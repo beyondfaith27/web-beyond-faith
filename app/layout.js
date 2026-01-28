@@ -46,12 +46,17 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
+    url: process.env.IS_DEV === 'true'
+      ? "https://web-beyond-faith.vercel.app"
+      : "https://beyondfaith.in",
     siteName: "BeyondFaith",
     title: "BeyondFaith | Mental Health Counseling & Support",
     description: "Rediscover your potential with therapists who guide you toward a more peaceful you—grounded in faith.",
     images: [
       {
-        url: "/images/beyondFaith-logo-black.png",
+        url: `${process.env.IS_DEV === 'true'
+          ? "https://web-beyond-faith.vercel.app"
+          : "https://beyondfaith.in"}/images/beyondFaith-logo-black.png`,
         width: 1200,
         height: 630,
         alt: "BeyondFaith Logo",
@@ -60,6 +65,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    title: "BeyondFaith | Mental Health Counseling & Support",
+    description: "Rediscover your potential with therapists who guide you toward a more peaceful you—grounded in faith.",
     images: ["/images/beyondFaith-logo-black.png"],
   },
 };

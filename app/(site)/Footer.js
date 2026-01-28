@@ -20,7 +20,7 @@ const Footer = () => {
       </div>
       <div className="flex flex-col items-start md:items-end gap-y-4 w-fit">
         <div className="flex items-center w-full gap-x-6 tablet:gap-x-12 justify-center md:justify-end">
-          <Link href="#">
+          <Link target="_blank" href="https://www.instagram.com/wearebeyondfaith">
             <Image
               src="/images/instagram.svg"
               alt="instagram"
@@ -28,7 +28,7 @@ const Footer = () => {
               height={32}
             />
           </Link>
-          <Link href="#">
+          <Link target="_blank" href="https://www.linkedin.com/company/beyondfaith/">
             <Image
               src="/images/linkedIn.svg"
               alt="linkedIn"
