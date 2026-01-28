@@ -5,7 +5,7 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="w-full flex flex-col md:flex-row justify-between gap-y-6 items-center px-[var(--gutter-width)] py-6 border-t border-foreground/5">
-      <div className="w-fit h-full flex flex-col justify-center gap-y-4 my-auto">
+      <div className="w-fit h-full flex flex-col justify-center my-auto">
         <h2 className="text-lg inline-block">
           <Image
             src="/images/beyondFaith-logo-black.svg"
@@ -15,7 +15,8 @@ const Footer = () => {
             draggable="false"
           />
         </h2>
-        <span className="opacity-40 flex text-sm">© 2024 BeyondFaith</span>
+        <span className="opacity-40 flex text-sm mb-2">© {new Date().getFullYear()} BeyondFaith</span>
+        {/* <span className="opacity-30 flex text-xs">Developed by Alfred Nelson</span> */}
       </div>
       <div className="flex flex-col items-start md:items-end gap-y-4 w-fit">
         <div className="flex items-center w-full gap-x-6 tablet:gap-x-12 justify-center md:justify-end">
