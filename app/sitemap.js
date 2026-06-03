@@ -6,31 +6,31 @@ export default function sitemap() {
   return [
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: new Date('2026-01-28'),
       changeFrequency: 'monthly',
       priority: 1,
     },
     {
       url: `${baseUrl}/about`,
-      lastModified: new Date(),
+      lastModified: new Date('2026-01-27'),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/faq`,
-      lastModified: new Date(),
+      lastModified: new Date('2026-01-26'),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/privacy-policy`,
-      lastModified: new Date(),
+      lastModified: new Date('2026-01-26'),
       changeFrequency: 'yearly',
       priority: 0.3,
     },
     {
-      url: `${baseUrl}/terms`,
-      lastModified: new Date(),
+      url: `${baseUrl}/terms-and-conditions`,
+      lastModified: new Date('2026-01-26'),
       changeFrequency: 'yearly',
       priority: 0.3,
     },

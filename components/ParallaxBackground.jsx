@@ -48,7 +48,7 @@ export default function ParallaxBackground({
         className="absolute inset-0 will-change-transform"
         style={{ x: motionX, y: motionY, scale }}
       >
-        <Image src={src} alt={alt} fill priority className="object-cover" />
+        <Image src={src} alt={alt} fill priority sizes="100vw" className="object-cover" />
       </motion.div>
 
       {/* COLOR BASE — solid, non-moving */}

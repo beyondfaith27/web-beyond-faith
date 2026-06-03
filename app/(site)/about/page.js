@@ -1,5 +1,6 @@
 import AnimatedUnderline from "@/components/AnimatedUnderline";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import ContactFormSheet from "@/components/ContactFormSheet";
@@ -8,8 +9,20 @@ import { cj } from "@/lib/utils";
 
 export const metadata = {
   title: "About Us",
-  description: "BeyondFaith was born to turn emotional resilience into inner strength. Learn about our mission to normalize mental health conversations and make wellness accessible to all.",
+  description: "Learn how BeyondFaith turns emotional resilience into inner strength. Our mission: normalize mental health and make wellness accessible to all.",
   keywords: ["mental health mission", "emotional resilience", "inner strength", "destigmatizing mental health", "mental wellness vision"],
+  alternates: {
+    canonical: '/about',
+  },
+  openGraph: {
+    title: "About BeyondFaith | Our Mission & Vision",
+    description: "Learn how BeyondFaith turns emotional resilience into inner strength. Our mission: normalize mental health and make wellness accessible to all.",
+    url: '/about',
+  },
+  twitter: {
+    title: "About BeyondFaith | Our Mission & Vision",
+    description: "Learn how BeyondFaith turns emotional resilience into inner strength. Our mission: normalize mental health and make wellness accessible to all.",
+  },
 };
 
 const About = () => {
@@ -18,14 +31,14 @@ const About = () => {
       <section className="!h-full flex items-center relative py-24 bg-colored-background text-white">
         <div className="flex relative z-10 flex-col gap-y-4 h-fit group">
           <p className="text-2xl opacity-60 font-bold mb-8">About Us</p>
-          <h2 className="font-sans font-bold text-left">
+          <h1 className="font-sans font-bold text-left">
             Mental well-being is the{" "}
             <span className="relative">
               foundation of a full life
               <AnimatedUnderline />
             </span>
             .
-          </h2>
+          </h1>
           <p className="text-xl max-w-200 group">
             BeyondFaith was born from a simple mission: to provide the
             compassionate guidance needed to turn{" "}
@@ -106,9 +119,9 @@ const About = () => {
                     !isRight && "text-center md:text-right md:items-end"
                   )}
                 >
-                  <h3 className="text-2xl md:text-3xl font-bold mb-4">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-4">
                     {content.heading}
-                  </h3>
+                  </h2>
 
                   <p className="text-foreground/70 text-base md:text-lg leading-relaxed">
                     {content.description}
@@ -141,7 +154,7 @@ const About = () => {
       </section>
       <section className="!h-fit min-h-fit flex flex-col gap-y-16 justify-center relative py-36">
         <div className="max-w-200 mx-auto">
-          <h3 className="text-2xl md:text-4xl font-bold mb-8">Our Approach</h3>
+          <h2 className="text-2xl md:text-4xl font-bold mb-8">Our Approach</h2>
           <p className="text-base md:text-lg">
             At BeyondFaith, we combine scientific methods with empathetic care
             to create tailored mental well-being strategies. Our therapists and
@@ -161,6 +174,9 @@ const About = () => {
             insights for driving mental health awareness, BeyondFaith is your
             trusted partner in well-being.
           </p>
+          <Link href="/faq" className="inline-block mt-6 text-primary underline underline-offset-4 hover:opacity-80 transition-opacity text-base md:text-lg">
+            Have questions? Browse our FAQ →
+          </Link>
         </div>
       </section>
       <section className="w-full min-h-fit py-24 flex gap-y-6 justify-center relative">
@@ -168,11 +184,12 @@ const About = () => {
           src="/images/galaxy.png"
           alt="galaxy-background"
           fill
+          sizes="100vw"
           className="-z-10 inset-0"
         />
         <div className="flex flex-col items-center text-accent gap-y-6 max-w-200">
           <div className="flex flex-col gap-y-3 text-center">
-            <h3 className="text-4xl font-dm">Ready to Begin Your Journey?</h3>
+            <h2 className="text-4xl font-dm">Ready to Begin Your Journey?</h2>
             <p className="text-center text-lg opacity-60">
               Take the first step toward healing and growth with BeyondFaith.
               We’re here to support you every step of the way.

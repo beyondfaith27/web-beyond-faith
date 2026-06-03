@@ -109,7 +109,7 @@ function Hex({ imageObj, size }) {
         >
           <div className={cj("relative w-[75%] h-[75%] transition ease-in-out",
             hoveredItem !== imageObj.text && hoveredItem !== null && "opacity-30")}>
-            <Image src={imageObj.image} alt="" fill className="object-contain" />
+            <Image src={imageObj.image} alt="" fill sizes="(min-width: 1000px) 120px, 90px" className="object-contain" />
           </div>
         </div>
       </div>

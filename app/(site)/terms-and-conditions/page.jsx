@@ -4,6 +4,18 @@ import React from "react";
 export const metadata = {
   title: "Terms and Conditions",
   description: "The terms and conditions for using BeyondFaith counseling and consultancy services.",
+  alternates: {
+    canonical: '/terms-and-conditions',
+  },
+  openGraph: {
+    title: "Terms and Conditions | BeyondFaith",
+    description: "The terms and conditions for using BeyondFaith counseling and consultancy services.",
+    url: '/terms-and-conditions',
+  },
+  twitter: {
+    title: "Terms and Conditions | BeyondFaith",
+    description: "The terms and conditions for using BeyondFaith counseling and consultancy services.",
+  },
 };
 
 const TermsAndConditions = () => {

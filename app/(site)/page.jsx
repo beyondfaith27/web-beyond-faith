@@ -117,12 +117,12 @@ export default function Home() {
         <HoverHighlightProvider>
           <div className="w-full flex flex-col items-center md:flex-row md:items-center my-auto md:justify-between gap-y-12">
             <div className="max-w-150 flex flex-col pt-0">
-              <h3
+              <h2
                 id="process-section-heading"
                 className="text-3xl md:text-5xl font-bold text-center md:text-left text-pretty"
               >
                 {CONTENTS.HOME_CONTENT.CONCERNS.title}
-              </h3>
+              </h2>
               <p
                 id="process-section-description"
                 className="text-foreground/60 text-base md:text-lg font-semibold text-balance mt-8 text-center md:text-left"
@@ -152,6 +152,7 @@ export default function Home() {
                         src={each.image}
                         alt={each.text}
                         fill
+                        sizes="(min-width: 768px) 160px, 120px"
                         className="object-contain"
                       />
                     </div>
@@ -203,12 +204,12 @@ export default function Home() {
         <div className="w-full h-full relative top-0 left-0 z-10 text-primary-foreground mb-10">
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6 my-auto">
             <div className="w-full h-full flex flex-col justify-center md:col-span-2">
-              <p
+              <h2
                 id="service-section-heading"
                 className="text-2xl opacity-60 font-bold mb-8"
               >
                 Our Services
-              </p>
+              </h2>
 
               <p
                 id="service-section-description"
@@ -262,9 +263,9 @@ export default function Home() {
                     0{idx + 1}
                   </p>
                   <div className="pl-5 max-w-150">
-                    <h4 className="font-bold text-xl group-hover:text-primary transition ease-in-out">
+                    <h3 className="font-bold text-xl group-hover:text-primary transition ease-in-out">
                       {step.heading}
-                    </h4>
+                    </h3>
                     <p className="text-foreground/40 text-balance text-sm md:text-base">
                       {step.description}
                     </p>
@@ -274,12 +275,12 @@ export default function Home() {
             })}
           </div>
           <div className="max-w-150 flex flex-col md:items-end pt-32 md:pt-0">
-            <h3
+            <h2
               id="process-section-heading"
               className="text-3xl md:text-5xl font-bold"
             >
               Our Process
-            </h3>
+            </h2>
             <p
               id="process-section-description"
               className="text-foreground/60 text-base md:text-lg font-semibold text-balance md:text-right"
@@ -340,7 +341,7 @@ export default function Home() {
           <div className="relative">
             <div className="w-full min-[500px]:w-[30%] mx-auto tablet:w-auto tablet:max-h-[calc(100vh-350px)] aspect-[41/56] relative rounded-xl">
               <div className="w-full min-[500px]:w-[30%] mx-auto tablet:w-auto tablet:max-h-[calc(100vh-350px)] aspect-[41/56] rounded-xl overflow-clip">
-                <Image src="/images/founder-image.png" alt="founder-image" fill className="object-cover rounded-2xl shadow-2xl" />
+                <Image src="/images/founder-image.png" alt="founder-image" fill sizes="(min-width: 1300px) 50vw, (min-width: 800px) 40vw, (min-width: 500px) 30vw, 100vw" className="object-cover rounded-2xl shadow-2xl" />
               </div>
               <div className="absolute -top-8 -left-8">
                 <Image
@@ -362,9 +363,9 @@ export default function Home() {
                   alt="stars-decoration"
                 />
               </div>
-              <h3 className="text-4xl font-dm w-fit">
+              <h2 className="text-4xl font-dm w-fit">
                 A Message from Our Founder
-              </h3>
+              </h2>
             </div>
             <p className="text-lg">
               Your journey is yours alone. But it’s not a game of luck, it’s a
@@ -379,6 +380,9 @@ export default function Home() {
               supports you, helping you uncover your strength and face
               challenges with confidence.
             </p>
+            <Link href="/about" className="w-fit text-primary underline underline-offset-4 hover:opacity-80 transition-opacity text-base">
+              Learn more about BeyondFaith →
+            </Link>
           </div>
         </div>
       </InViewAnimateSection>
@@ -452,9 +456,9 @@ export default function Home() {
         className="!h-full flex justify-between py-24 overflow-clip"
       >
         <div className="w-full grid grid-cols-1 gap-y-6 tablet:grid-cols-2 my-auto">
-          <h3 className="text-4xl font-dm text-center tablet:text-left">
+          <h2 className="text-4xl font-dm text-center tablet:text-left">
             Frequently Asked Questions
-          </h3>
+          </h2>
           <div>
             <Accordion type="single" collapsible className="w-full">
               {FAQS.map((faq) => {
@@ -485,11 +489,12 @@ export default function Home() {
           src="/images/galaxy.png"
           alt="galaxy-background"
           fill
+          sizes="100vw"
           className="-z-10 inset-0"
         />
         <div className="flex flex-col items-center text-accent gap-y-6 max-w-200">
           <div className="flex flex-col gap-y-3 text-center">
-            <h3 className="text-4xl font-dm">Ready to Begin Your Journey?</h3>
+            <h2 className="text-4xl font-dm">Ready to Begin Your Journey?</h2>
             <p className="text-center text-lg opacity-60">
               Take the first step toward healing and growth with BeyondFaith.
               We’re here to support you every step of the way.

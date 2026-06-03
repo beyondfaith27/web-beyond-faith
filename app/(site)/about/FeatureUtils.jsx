@@ -53,6 +53,7 @@ function FeatureText({ feature, onInViewChange }) {
             src={feature.graphic}
             alt={feature.title}
             fill
+            sizes="256px"
             className="object-contain"
           />
         </div>
@@ -75,6 +76,7 @@ function FeatureGraphic({ feature, isActive }) {
           src={feature.graphic}
           alt={feature.title}
           fill
+          sizes="(min-width: 1024px) 50vw, 100vw"
           className="object-contain"
           priority={isActive}
         />
