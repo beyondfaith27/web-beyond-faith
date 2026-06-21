@@ -56,7 +56,9 @@ const About = () => {
           CONTENTS.ABOUT_CONTENT.OUR_VISION,
         ].map((content) => {
           const isRight = content.align === "right";
-          const Icon = content.icons;
+          // Each card pair gets its own tinted bg so transparent SVGs look intentional
+          const bgBack  = isRight ? "bg-indigo-50"  : "bg-amber-50/80";
+          const bgFront = isRight ? "bg-violet-50"  : "bg-orange-50/60";
 
           return (
             <div
@@ -70,9 +72,6 @@ const About = () => {
                   isRight && "tablet:order-2"
                 )}
               >
-                <div className="about-card-icon w-14 h-14 rounded-2xl bg-primary/12 flex items-center justify-center text-primary mb-6 shrink-0">
-                  <Icon size={26} />
-                </div>
                 <h3 className="font-dm text-4xl tablet:text-5xl text-foreground mb-5 leading-tight">
                   {content.heading}
                 </h3>
@@ -88,17 +87,17 @@ const About = () => {
                   isRight && "tablet:order-1"
                 )}
               >
-                {/* Back image — larger, rotated counter-clockwise */}
+                {/* Back image — larger, rotated */}
                 <div
                   className="absolute top-4 left-0 w-[65%] h-[68%]"
                   style={{ transform: `rotate(${isRight ? "3deg" : "-3deg"})` }}
                 >
-                  <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-lg shadow-black/15">
+                  <div className={`relative w-full h-full rounded-2xl overflow-hidden shadow-lg shadow-black/12 ${bgBack}`}>
                     <Image
                       src={content.illustration}
                       alt={content.heading}
                       fill
-                      className="object-cover"
+                      className="object-contain p-3"
                       sizes="(min-width: 1080px) 33vw, 65vw"
                     />
                   </div>
@@ -109,12 +108,12 @@ const About = () => {
                   className="absolute bottom-0 right-0 w-[58%] h-[60%]"
                   style={{ transform: `rotate(${isRight ? "-2.5deg" : "2.5deg"})` }}
                 >
-                  <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-xl shadow-black/20">
+                  <div className={`relative w-full h-full rounded-2xl overflow-hidden shadow-xl shadow-black/18 ${bgFront}`}>
                     <Image
                       src={content.illustration2}
                       alt={`${content.heading} secondary`}
                       fill
-                      className="object-cover"
+                      className="object-contain p-3"
                       sizes="(min-width: 1080px) 30vw, 58vw"
                     />
                   </div>

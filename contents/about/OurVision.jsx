@@ -10,8 +10,8 @@ const OUR_VISION = {
     </>
   ),
   icons: Sparkles,
-  illustration: "/images/people-collaboration.jpeg",
-  illustration2: "/images/compassion-blob-lady.jpg",
+  illustration: "/images/team-therapy.svg",
+  illustration2: "/images/undraw_feeling-proud.svg",
   align: "right",
 };
 
