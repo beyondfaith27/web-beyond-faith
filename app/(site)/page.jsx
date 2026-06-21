@@ -77,10 +77,8 @@ export default function Home() {
     <>
       <section
         id="home"
-        className="!h-full flex py-24 justify-center relative min-h-screen"
+        className="!h-full !px-0 relative min-h-screen bg-colored-background overflow-hidden"
       >
-        <div className="absolute inset-0 bg-colored-background/85 backdrop-blur-[2px]"></div>
-        <ParallaxBackground src={"/images/HeroImg.png"} />
         <HeroContent />
       </section>
       <InViewAnimateSection
