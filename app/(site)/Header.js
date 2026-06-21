@@ -5,6 +5,7 @@ import ContactFormSheet from "@/components/ContactFormSheet";
 import { cj } from "@/lib/utils";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 import { Menu } from "lucide-react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -22,7 +23,11 @@ const NAV_LINKS = [
   { label: "FAQ", href: "/faq" },
 ];
 
+// Pages whose top section has a light background — header must start dark
+const LIGHT_HERO_PATHS = ["/faq", "/privacy-policy", "/terms-and-conditions"];
+
 const Header = () => {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const { scrollY } = useScroll();
 
@@ -30,11 +35,14 @@ const Header = () => {
     setScrolled(latest > 80);
   });
 
+  // On light-hero pages the header is always in "scrolled" (dark) mode
+  const isDark = scrolled || LIGHT_HERO_PATHS.some((p) => pathname.startsWith(p));
+
   return (
     <header
       className={cj(
         "w-full h-20 flex items-center justify-between px-[var(--gutter-width)] transition-all duration-300",
-        scrolled
+        isDark
           ? "bg-background shadow-sm text-foreground"
           : "bg-transparent text-accent"
       )}
@@ -43,7 +51,7 @@ const Header = () => {
       <Link href="/#home" className="w-5/6 tablet:w-1/3">
         <Image
           src={
-            scrolled
+            isDark
               ? "/images/beyondFaith-logo-black.svg"
               : "/images/beyondFaith-logo-white.svg"
           }
@@ -72,7 +80,7 @@ const Header = () => {
       <div className="w-1/3 hidden tablet:flex justify-end">
         <ContactFormSheet>
           <Button
-            variant={scrolled ? "default" : "outline"}
+            variant={isDark ? "default" : "outline"}
             shape="curved-box"
             className="text-sm"
           >

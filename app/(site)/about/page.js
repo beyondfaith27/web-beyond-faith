@@ -36,57 +36,86 @@ const About = () => {
       {/* Mission + Vision */}
       <InViewAnimateSection
         sectionAnimFuncName="aboutMissionVisionSection"
-        className="!h-full flex flex-col gap-y-16 justify-center relative py-24"
+        className="!h-full flex flex-col gap-y-8 justify-center relative py-28 overflow-hidden"
       >
+        {/* Background ambiance */}
+        <div className="absolute top-16 right-[10%] w-[420px] h-[420px] rounded-full bg-primary/5 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-16 left-[6%] w-80 h-80 rounded-full bg-muted blur-2xl pointer-events-none" />
+
+        {/* Section header */}
+        <div id="mv-section-title" className="flex flex-col items-center gap-y-4 mb-4">
+          <span className="w-fit font-inter text-xs tracking-widest uppercase text-primary/60 border border-primary/20 rounded-full px-3 py-1.5">
+            About BeyondFaith
+          </span>
+          <h2 className="!text-5xl tablet:!text-6xl">Our Mission &amp; Vision</h2>
+        </div>
+
+        {/* Cards */}
         {[
           CONTENTS.ABOUT_CONTENT.OUR_MISSION,
           CONTENTS.ABOUT_CONTENT.OUR_VISION,
         ].map((content) => {
           const isRight = content.align === "right";
+          const Icon = content.icons;
 
           return (
             <div
               key={content.heading}
-              className={cj(
-                "about-card w-full max-w-7xl mx-auto",
-                isRight && "md:pl-60",
-                !isRight && "md:pr-60"
-              )}
+              className="about-card grid grid-cols-1 tablet:grid-cols-2 gap-12 tablet:gap-16 items-center py-4"
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 items-center">
-                {/* Text */}
-                <div
-                  className={cj(
-                    "flex flex-col md:text-left justify-center items-center text-balance max-w-104 mx-auto",
-                    isRight &&
-                      "md:order-2 text-center md:text-left md:items-start",
-                    !isRight && "text-center md:text-right md:items-end"
-                  )}
-                >
-                  <h2 className="text-2xl md:text-3xl font-bold mb-4">
-                    {content.heading}
-                  </h2>
-
-                  <p className="text-foreground/70 text-base md:text-lg leading-relaxed">
-                    {content.description}
-                  </p>
+              {/* Text side */}
+              <div
+                className={cj(
+                  "flex flex-col",
+                  isRight && "tablet:order-2"
+                )}
+              >
+                <div className="about-card-icon w-14 h-14 rounded-2xl bg-primary/12 flex items-center justify-center text-primary mb-6 shrink-0">
+                  <Icon size={26} />
                 </div>
+                <h3 className="font-dm text-4xl tablet:text-5xl text-foreground mb-5 leading-tight">
+                  {content.heading}
+                </h3>
+                <p className="font-inter text-foreground/60 text-base tablet:text-lg leading-relaxed">
+                  {content.description}
+                </p>
+              </div>
 
-                {/* Illustration */}
+              {/* Photo collage */}
+              <div
+                className={cj(
+                  "relative h-80 tablet:h-96 w-full",
+                  isRight && "tablet:order-1"
+                )}
+              >
+                {/* Back image — larger, rotated counter-clockwise */}
                 <div
-                  className={cj(
-                    "flex justify-center",
-                    isRight && "md:order-1 md:justify-end",
-                    !isRight && "md:justify-start"
-                  )}
+                  className="absolute top-4 left-0 w-[65%] h-[68%]"
+                  style={{ transform: `rotate(${isRight ? "3deg" : "-3deg"})` }}
                 >
-                  <div className="relative w-full max-w-xs md:max-w-sm h-40 md:h-56">
+                  <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-lg shadow-black/15">
                     <Image
                       src={content.illustration}
                       alt={content.heading}
                       fill
-                      className="object-contain"
-                      sizes="(min-width: 768px) 260px, 70vw"
+                      className="object-cover"
+                      sizes="(min-width: 1080px) 33vw, 65vw"
+                    />
+                  </div>
+                </div>
+
+                {/* Front image — smaller, opposite rotation, bottom-right */}
+                <div
+                  className="absolute bottom-0 right-0 w-[58%] h-[60%]"
+                  style={{ transform: `rotate(${isRight ? "-2.5deg" : "2.5deg"})` }}
+                >
+                  <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-xl shadow-black/20">
+                    <Image
+                      src={content.illustration2}
+                      alt={`${content.heading} secondary`}
+                      fill
+                      className="object-cover"
+                      sizes="(min-width: 1080px) 30vw, 58vw"
                     />
                   </div>
                 </div>
@@ -94,7 +123,9 @@ const About = () => {
             </div>
           );
         })}
-        <div className="absolute bottom-0 left-[var(--gutter-width)] w-[calc(100%-2*var(--gutter-width))] h-px bg-border"></div>
+
+        {/* Section divider */}
+        <div className="w-full h-px bg-border/40 my-4" />
       </InViewAnimateSection>
 
       {/* Our Approach */}

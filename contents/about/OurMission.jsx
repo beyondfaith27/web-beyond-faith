@@ -11,6 +11,7 @@ const OUR_MISSION = {
   ),
   icons: Sprout,
   illustration: "/images/mindful-nature-light.jpeg",
+  illustration2: "/images/peace.jpg",
   align: "left",
 };
 
