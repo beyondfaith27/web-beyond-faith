@@ -23,6 +23,7 @@ import AnimatedUnderline from "@/components/AnimatedUnderline";
 import HeroContent from "@/components/HeroContent";
 import ShootingStars from "@/components/ShootingStars";
 import ProcessTimeline from "@/components/ProcessTimeline";
+import CTABanner from "@/components/CTABanner";
 
 // const solutions = [
 //   {
@@ -470,12 +471,37 @@ export default function Home() {
       <InViewAnimateSection
         id="faq"
         sectionAnimFuncName="homeFaqSection"
-        className="!h-full flex justify-between py-24 overflow-clip"
+        className="!h-full flex py-28 overflow-hidden relative"
       >
-        <div className="w-full grid grid-cols-1 gap-y-6 tablet:grid-cols-2 my-auto">
-          <h2 className="text-4xl font-dm text-center tablet:text-left">
-            Frequently Asked Questions
-          </h2>
+        {/* Background decoration */}
+        <div className="absolute -left-24 top-1/3 w-[420px] h-[420px] rounded-full bg-primary/5 blur-3xl pointer-events-none" />
+        <div className="absolute right-0 bottom-0 w-72 h-72 rounded-full bg-muted blur-2xl pointer-events-none" />
+        <Sparkles className="absolute top-[15%] right-[45%] text-primary/20 w-5 h-5 pointer-events-none" style={{ animation: "twinkle 3.4s ease-in-out infinite" }} />
+        <Sparkles className="absolute bottom-[18%] right-[12%] text-primary/15 w-4 h-4 pointer-events-none" style={{ animation: "twinkle 4.2s ease-in-out 1.1s infinite" }} />
+
+        <div className="w-full grid grid-cols-1 gap-y-14 tablet:grid-cols-2 tablet:gap-x-16 my-auto items-start relative z-10">
+
+          {/* Left — heading block */}
+          <div id="faq-left" className="flex flex-col gap-y-6 tablet:sticky tablet:top-36 tablet:self-start">
+            <span className="w-fit font-inter text-xs tracking-widest uppercase text-primary/70 border border-primary/20 rounded-full px-3 py-1.5">
+              Got Questions?
+            </span>
+            <h2 className="!text-left !text-5xl tablet:!text-6xl leading-tight">
+              Frequently<br />Asked<br />Questions
+            </h2>
+            <p id="faq-tagline" className="font-inter text-foreground/55 text-lg max-w-xs">
+              Everything you need to know about therapy at BeyondFaith.
+            </p>
+            <div id="faq-cta">
+              <ContactFormSheet>
+                <Button variant="default" shape="curved-box" size="lg">
+                  Still have questions? Ask us
+                </Button>
+              </ContactFormSheet>
+            </div>
+          </div>
+
+          {/* Right — accordion */}
           <div className="faq-content">
             <Accordion type="single" collapsible className="w-full">
               {FAQS.map((faq) => {
@@ -484,46 +510,37 @@ export default function Home() {
                   <AccordionItem
                     key={selected.question}
                     value={selected.question}
+                    className="faq-item group border-b border-border/60"
                   >
-                    <AccordionTrigger>{selected.question}</AccordionTrigger>
-                    <AccordionContent className="flex flex-col gap-4 text-balance">
-                      <div>{selected.answer}</div>
+                    <AccordionTrigger className="py-5 hover:no-underline">
+                      <div className="flex items-center gap-x-4 text-left pr-4">
+                        <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0 transition-all duration-300 group-hover:bg-primary group-hover:text-white">
+                          {selected.icon}
+                        </div>
+                        <span className="font-inter text-base font-medium text-foreground transition-colors duration-300 group-hover:text-primary">
+                          {selected.question}
+                        </span>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="pl-14 pb-5 text-foreground/60 text-base font-inter">
+                      {selected.answer}
                     </AccordionContent>
                   </AccordionItem>
                 );
               })}
             </Accordion>
-            <Link href={"/faq"}>
-              <Button variant="link" className="!px-0 py-5">
-                View More FAQ <ChevronRight />
-              </Button>
-            </Link>
+
+            <div className="mt-8">
+              <Link href="/faq">
+                <Button variant="outline" shape="curved-box" className="gap-x-2">
+                  View All FAQs <ChevronRight size={15} />
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </InViewAnimateSection>
-      <section className="w-full min-h-fit py-24 flex gap-y-6 justify-center relative">
-        <Image
-          src="/images/galaxy.png"
-          alt="galaxy-background"
-          fill
-          sizes="100vw"
-          className="-z-10 inset-0"
-        />
-        <div className="flex flex-col items-center text-accent gap-y-6 max-w-200">
-          <div className="flex flex-col gap-y-3 text-center">
-            <h2 className="text-4xl font-dm">Ready to Begin Your Journey?</h2>
-            <p className="text-center text-lg opacity-60">
-              Take the first step toward healing and growth with BeyondFaith.
-              We’re here to support you every step of the way.
-            </p>
-          </div>
-          <ContactFormSheet>
-            <Button variant="accent" className="w-fit">
-              Book Your Appointment
-            </Button>
-          </ContactFormSheet>
-        </div>
-      </section>
+      <CTABanner />
     </>
   );
 }

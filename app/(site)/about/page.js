@@ -1,4 +1,5 @@
 import AboutHeroContent from "@/components/AboutHeroContent";
+import CTABanner from "@/components/CTABanner";
 import InViewAnimateSection from "@/components/InViewAnimateSection";
 import Image from "next/image";
 import Link from "next/link";
@@ -130,30 +131,7 @@ const About = () => {
         </div>
       </InViewAnimateSection>
 
-      {/* CTA */}
-      <section className="w-full min-h-fit py-24 flex gap-y-6 justify-center relative">
-        <Image
-          src="/images/galaxy.png"
-          alt="galaxy-background"
-          fill
-          sizes="100vw"
-          className="-z-10 inset-0"
-        />
-        <div className="flex flex-col items-center text-accent gap-y-6 max-w-200">
-          <div className="flex flex-col gap-y-3 text-center">
-            <h2 className="text-4xl font-dm">Ready to Begin Your Journey?</h2>
-            <p className="text-center text-lg opacity-60">
-              Take the first step toward healing and growth with BeyondFaith.
-              We're here to support you every step of the way.
-            </p>
-          </div>
-          <ContactFormSheet>
-            <Button variant="accent" className="w-fit">
-              Book Your Appointment
-            </Button>
-          </ContactFormSheet>
-        </div>
-      </section>
+      <CTABanner />
     </>
   );
 };
