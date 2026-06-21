@@ -21,6 +21,7 @@ import Link from "next/link";
 import React from "react";
 import AnimatedUnderline from "@/components/AnimatedUnderline";
 import HeroContent from "@/components/HeroContent";
+import ShootingStars from "@/components/ShootingStars";
 
 // const solutions = [
 //   {
@@ -194,46 +195,29 @@ export default function Home() {
       <InViewAnimateSection
         id="services"
         sectionAnimFuncName="homeServicesSection"
-        className="relative w-full min-h-screen pt-40 md:pt-24 pb-10 flex items-center"
+        className="relative w-full min-h-screen pt-40 md:pt-24 pb-10 flex items-center overflow-hidden"
       >
-        {/* <div className="absolute top-0 left-0 h-full w-full overflow-hidden">
-          <Image src={"/images/balance.jpg"} alt="balance-bg-image" fill />
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: `
-                linear-gradient(
-                  to right,
-                  oklch(from var(--colored-background) l c h / 1) 0%,
-                  oklch(from var(--colored-background) l c h / 0.7) 20%,
-                  oklch(from var(--colored-background) l c h / 0.7) 80%,
-                  oklch(from var(--colored-background) l c h / 1) 100%
-                ),
-                linear-gradient(
-                  to bottom,
-                  oklch(from var(--colored-background) l c h / 1) 0%,
-                  oklch(from var(--colored-background) l c h / 0.7) 20%,
-                  oklch(from var(--colored-background) l c h / 0.7) 80%,
-                  oklch(from var(--colored-background) l c h / 1) 100%
-                )
-              `,
-            }}
-          ></div>
-        </div> */}
         <ParallaxBackground src={"/images/balance.jpg"} />
+
+        {/* Four independent shooting stars, staggered so they feel organic */}
+        <ShootingStars initialDelay={0} />
+        <ShootingStars initialDelay={1400} />
+        <ShootingStars initialDelay={2900} />
+        <ShootingStars initialDelay={4500} />
+
         <div className="w-full h-full relative top-0 left-0 z-10 text-primary-foreground mb-10">
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6 my-auto">
             <div className="w-full h-full flex flex-col justify-center md:col-span-2">
               <h2
                 id="service-section-heading"
-                className="text-2xl opacity-60 font-bold mb-8"
+                className="font-dm text-4xl tablet:text-5xl mb-6 !text-left text-primary-foreground"
               >
                 Our Services
               </h2>
 
               <p
                 id="service-section-description"
-                className="text-sm md:text-xl max-w-200 group text-primary-foreground/80"
+                className="text-base tablet:text-xl text-primary-foreground/80"
               >
                 At{" "}
                 <span className="font-bold text-primary-foreground">
@@ -269,41 +253,51 @@ export default function Home() {
       <InViewAnimateSection
         id="process-section"
         sectionAnimFuncName="homeProcessSection"
-        className="md:pt-20 pb-20 md:pb-10 bg-muted flex items-center"
+        className="!h-full py-28 bg-muted flex items-center"
       >
-        <div className="w-full flex flex-col-reverse md:flex-row md:items-center my-auto md:justify-between gap-y-12">
-          <div className="flex flex-col gap-y-12">
-            {PROCESS_STEPS.map((step, idx) => {
-              return (
-                <div
-                  key={step.heading}
-                  className="process-step flex items-center group hover:scale-[1.01] transition ease-in-out"
-                >
-                  <p className="font-bold text-3xl pr-5 border-r border-foreground/10 text-foreground/20 group-hover:text-primary/50 group-hover:border-primary/20 self-stretch flex items-center">
-                    0{idx + 1}
-                  </p>
-                  <div className="pl-5 max-w-150">
-                    <h3 className="font-bold text-xl group-hover:text-primary transition ease-in-out">
-                      {step.heading}
-                    </h3>
-                    <p className="text-foreground/40 text-balance text-sm md:text-base">
-                      {step.description}
-                    </p>
-                  </div>
+        <div className="w-full flex flex-col-reverse tablet:flex-row tablet:items-start tablet:justify-between gap-y-16 gap-x-16">
+
+          {/* Left — vertical timeline */}
+          <div className="relative flex flex-col">
+            {/* Connecting line — grows top-to-bottom on animation */}
+            <div className="process-line absolute left-5 top-5 bottom-5 w-px bg-primary/25 origin-top" />
+
+            {PROCESS_STEPS.map((step, idx) => (
+              <div
+                key={step.heading}
+                className="process-step group flex items-start gap-x-6 pb-10 last:pb-0"
+              >
+                {/* Numbered circle */}
+                <div className="process-circle relative z-10 shrink-0 w-10 h-10 rounded-full border-2 border-primary/35 bg-muted flex items-center justify-center transition-all duration-300 group-hover:bg-primary group-hover:border-primary">
+                  <span className="font-inter text-xs font-bold text-primary transition-colors duration-300 group-hover:text-white">
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
                 </div>
-              );
-            })}
+
+                {/* Content */}
+                <div className="pt-1">
+                  <h3 className="font-dm text-2xl tablet:text-3xl text-foreground mb-2 transition-colors duration-300 group-hover:text-primary">
+                    {step.heading}
+                  </h3>
+                  <p className="font-inter text-foreground/50 text-base max-w-sm">
+                    {step.description}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
-          <div className="max-w-150 flex flex-col md:items-end pt-32 md:pt-0">
+
+          {/* Right — heading block, sticky on tablet+ */}
+          <div className="tablet:sticky tablet:top-40 tablet:self-start flex flex-col tablet:items-end tablet:text-right">
             <h2
               id="process-section-heading"
-              className="text-3xl md:text-5xl font-bold"
+              className="!text-5xl tablet:!text-6xl tablet:!text-right"
             >
               Our Process
             </h2>
             <p
               id="process-section-description"
-              className="text-foreground/60 text-base md:text-lg font-semibold text-balance md:text-right"
+              className="font-inter text-foreground/55 text-lg mt-4 max-w-xs"
             >
               A simple, supportive journey toward better mental well-being.
             </p>
