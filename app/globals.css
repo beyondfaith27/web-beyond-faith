@@ -129,6 +129,22 @@
   --font-inter: var(--inter-dm);
 }
 
+@keyframes svgFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-16px); }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.75); }
+  50%       { opacity: 1;   transform: scale(1.2); }
+}
+@keyframes cardSway {
+  0%, 100% { transform: rotate(-1.5deg) translateY(0px); }
+  50%       { transform: rotate(-0.6deg) translateY(-7px); }
+}
+@keyframes slowRotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
 @keyframes marqueeLeft {
   from { transform: translateX(0); }
   to   { transform: translateX(-33.333%); }
