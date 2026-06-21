@@ -307,16 +307,17 @@ export default function Home() {
       </InViewAnimateSection> */}
       <InViewAnimateSection
         id="founder"
+        sectionAnimFuncName="homeFounderSection"
         className="!h-full flex justify-between py-24 bg-muted overflow-clip"
       >
         <div className="h-px w-[calc(100%-(2*var(--gutter-width)))] absolute top-0 left-[var(--gutter-width)] bg-colored-background/30" />
         <div className="w-full my-auto grid grid-cols-1 tablet:grid-cols-[1fr_minmax(360,1fr)] laptop:grid-cols-[1fr_minmax(560,_1fr)] items-center gap-x-10 laptop:gap-x-55">
-          <div className="relative">
+          <div id="founder-photo" className="relative">
             <div className="w-full min-[500px]:w-[30%] mx-auto tablet:w-auto tablet:max-h-[calc(100vh-350px)] aspect-[41/56] relative rounded-xl">
               <div className="w-full min-[500px]:w-[30%] mx-auto tablet:w-auto tablet:max-h-[calc(100vh-350px)] aspect-[41/56] rounded-xl overflow-clip">
                 <Image src="/images/founder-image.png" alt="founder-image" fill sizes="(min-width: 1300px) 50vw, (min-width: 800px) 40vw, (min-width: 500px) 30vw, 100vw" className="object-cover rounded-2xl shadow-2xl" />
               </div>
-              <div className="absolute -top-8 -left-8">
+              <div className="founder-star absolute -top-8 -left-8">
                 <Image
                   src="/images/Stars.svg"
                   width={48}
@@ -326,9 +327,9 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="w-full flex tablet:pr-20 text-pretty  flex-col h-fit gap-y-6 relative text-center mt-14 tablet:mt-0">
+          <div id="founder-content" className="w-full flex tablet:pr-20 text-pretty  flex-col h-fit gap-y-6 relative text-center mt-14 tablet:mt-0">
             <div className="w-fit relative mx-auto">
-              <div className="absolute -top-8 -right-8 -rotate-120">
+              <div className="founder-star absolute -top-8 -right-8 -rotate-120">
                 <Image
                   src="/images/Stars.svg"
                   width={48}
@@ -426,13 +427,14 @@ export default function Home() {
       </InViewAnimateSection> */}
       <InViewAnimateSection
         id="faq"
+        sectionAnimFuncName="homeFaqSection"
         className="!h-full flex justify-between py-24 overflow-clip"
       >
         <div className="w-full grid grid-cols-1 gap-y-6 tablet:grid-cols-2 my-auto">
           <h2 className="text-4xl font-dm text-center tablet:text-left">
             Frequently Asked Questions
           </h2>
-          <div>
+          <div className="faq-content">
             <Accordion type="single" collapsible className="w-full">
               {FAQS.map((faq) => {
                 const selected = faq.questionare[0];
