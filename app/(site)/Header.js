@@ -5,7 +5,7 @@ import ContactFormSheet from "@/components/ContactFormSheet";
 import { cj } from "@/lib/utils";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 import { Menu } from "lucide-react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -28,8 +28,35 @@ const LIGHT_HERO_PATHS = ["/faq", "/privacy-policy", "/terms-and-conditions"];
 
 const Header = () => {
   const pathname = usePathname();
+  const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const { scrollY } = useScroll();
+
+  const smoothScrollTop = () => {
+    const startY = window.scrollY;
+    const duration = 1200;
+    const startTime = performance.now();
+    const easeInOutCubic = (t) =>
+      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+    const step = (now) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      window.scrollTo(0, startY * (1 - easeInOutCubic(progress)));
+      if (progress < 1) requestAnimationFrame(step);
+    };
+
+    requestAnimationFrame(step);
+  };
+
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    if (pathname === href) {
+      smoothScrollTop();
+    } else {
+      router.push(href);
+    }
+  };
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 80);
@@ -48,7 +75,11 @@ const Header = () => {
       )}
     >
       {/* Logo */}
-      <Link href="/#home" className="w-5/6 tablet:w-1/3">
+      <a
+        href="/"
+        onClick={(e) => handleNavClick(e, "/")}
+        className="w-5/6 tablet:w-1/3 cursor-pointer"
+      >
         <Image
           src={
             isDark
@@ -61,18 +92,19 @@ const Header = () => {
           className="translate-y-1"
           style={{ width: "auto", height: "40px" }}
         />
-      </Link>
+      </a>
 
       {/* Desktop nav */}
       <nav className="hidden tablet:flex items-center gap-x-10 font-inter text-sm w-1/3 justify-center">
         {NAV_LINKS.map(({ label, href }) => (
-          <Link
+          <a
             key={href}
             href={href}
-            className="hover:opacity-60 transition-opacity"
+            onClick={(e) => handleNavClick(e, href)}
+            className="hover:opacity-60 transition-opacity cursor-pointer"
           >
             {label}
-          </Link>
+          </a>
         ))}
       </nav>
 
@@ -100,7 +132,9 @@ const Header = () => {
             <div className="pt-28 px-6 flex flex-col gap-y-10 [&>*]:font-bold text-xl">
               {NAV_LINKS.map(({ label, href }) => (
                 <SheetClose key={href} asChild>
-                  <Link href={href}>{label}</Link>
+                  <a href={href} onClick={(e) => handleNavClick(e, href)} className="cursor-pointer">
+                    {label}
+                  </a>
                 </SheetClose>
               ))}
             </div>
