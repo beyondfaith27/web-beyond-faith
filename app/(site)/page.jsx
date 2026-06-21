@@ -80,16 +80,16 @@ export default function Home() {
       </section>
       <InViewAnimateSection
         sectionAnimFuncName="homeConcernSection"
-        className="!h-full w-full flex flex-col py-24 bg-muted relative min-h-screen justify-center gap-y-14 overflow-hidden"
+        className="!h-full w-full flex flex-col py-28 bg-muted relative min-h-screen justify-center gap-y-16 overflow-hidden"
       >
         {/* Heading */}
-        <div className="flex flex-col gap-y-4 max-w-2xl">
-          <h2 id="process-section-heading" className="!text-left">
+        <div className="flex flex-col gap-y-5 max-w-3xl">
+          <h2 id="process-section-heading" className="!text-left !text-5xl tablet:!text-6xl">
             {CONTENTS.HOME_CONTENT.CONCERNS.title}
           </h2>
           <p
             id="process-section-description"
-            className="text-foreground/60 text-lg font-light"
+            className="text-foreground/60 text-xl font-light"
           >
             {CONTENTS.HOME_CONTENT.CONCERNS.generic_desc} and many more.
           </p>
@@ -98,11 +98,11 @@ export default function Home() {
         {/* Marquee rows — negative margin bleeds to viewport edges */}
         <div
           id="concern-marquee"
-          className="-mx-[var(--gutter-width)] flex flex-col gap-y-4"
+          className="-mx-[var(--gutter-width)] flex flex-col gap-y-5"
         >
           {/* Row 1 — scrolls left */}
           <div
-            className="flex gap-x-4 w-max"
+            className="flex gap-x-5 w-max"
             style={{ animation: "marqueeLeft 32s linear infinite" }}
           >
             {[
@@ -112,27 +112,27 @@ export default function Home() {
             ].map((concern, i) => (
               <div
                 key={i}
-                className="flex items-center gap-x-3 bg-white border border-border rounded-xl px-5 py-3 shadow-sm shrink-0"
+                className="flex items-center gap-x-4 bg-white border border-border rounded-2xl px-6 py-4 shadow-sm shrink-0"
               >
-                <div className="relative w-8 h-8 shrink-0">
+                <div className="relative w-12 h-12 shrink-0">
                   <Image
                     src={concern.image}
                     alt={concern.text}
                     fill
-                    sizes="32px"
+                    sizes="48px"
                     className="object-contain"
                   />
                 </div>
-                <span className="font-inter text-sm font-semibold text-foreground/75 whitespace-nowrap">
+                <span className="font-inter text-base font-semibold text-foreground/75 whitespace-nowrap">
                   {concern.text}
                 </span>
               </div>
             ))}
           </div>
 
-          {/* Row 2 — scrolls right, reversed order for variety */}
+          {/* Row 2 — scrolls right, reversed order */}
           <div
-            className="flex gap-x-4 w-max"
+            className="flex gap-x-5 w-max"
             style={{ animation: "marqueeRight 26s linear infinite" }}
           >
             {[
@@ -142,18 +142,48 @@ export default function Home() {
             ].map((concern, i) => (
               <div
                 key={i}
-                className="flex items-center gap-x-3 bg-white border border-border rounded-xl px-5 py-3 shadow-sm shrink-0"
+                className="flex items-center gap-x-4 bg-white border border-border rounded-2xl px-6 py-4 shadow-sm shrink-0"
               >
-                <div className="relative w-8 h-8 shrink-0">
+                <div className="relative w-12 h-12 shrink-0">
                   <Image
                     src={concern.image}
                     alt={concern.text}
                     fill
-                    sizes="32px"
+                    sizes="48px"
                     className="object-contain"
                   />
                 </div>
-                <span className="font-inter text-sm font-semibold text-foreground/75 whitespace-nowrap">
+                <span className="font-inter text-base font-semibold text-foreground/75 whitespace-nowrap">
+                  {concern.text}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Row 3 — scrolls left, original order */}
+          <div
+            className="flex gap-x-5 w-max"
+            style={{ animation: "marqueeLeft 38s linear infinite" }}
+          >
+            {[
+              ...CONTENTS.HOME_CONTENT.CONCERNS.concern_list,
+              ...CONTENTS.HOME_CONTENT.CONCERNS.concern_list,
+              ...CONTENTS.HOME_CONTENT.CONCERNS.concern_list,
+            ].map((concern, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-x-4 bg-white border border-border rounded-2xl px-6 py-4 shadow-sm shrink-0"
+              >
+                <div className="relative w-12 h-12 shrink-0">
+                  <Image
+                    src={concern.image}
+                    alt={concern.text}
+                    fill
+                    sizes="48px"
+                    className="object-contain"
+                  />
+                </div>
+                <span className="font-inter text-base font-semibold text-foreground/75 whitespace-nowrap">
                   {concern.text}
                 </span>
               </div>
