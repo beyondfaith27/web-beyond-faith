@@ -23,6 +23,7 @@ import React from "react";
 import { HoverHighlightProvider } from "./home/HoverHighlightProvider";
 import ConcernsHoverText from "@/components/ConcernsHoverText";
 import AnimatedUnderline from "@/components/AnimatedUnderline";
+import HeroContent from "@/components/HeroContent";
 
 // const solutions = [
 //   {
@@ -74,42 +75,14 @@ export const metadata = {
 export default function Home() {
   return (
     <>
-      <InViewAnimateSection
+      <section
         id="home"
-        sectionAnimFuncName="homeHeroSection"
         className="!h-full flex py-24 justify-center relative min-h-screen"
       >
         <div className="absolute inset-0 bg-colored-background/85 backdrop-blur-[2px]"></div>
-        {/* <div className="absolute inset-0 -z-10 select-none">
-          <Image
-            alt="background-image-1"
-            src={"/images/HeroImg.png"}
-            fill
-            className="h-full object-cover"
-            priority
-          />
-        </div> */}
         <ParallaxBackground src={"/images/HeroImg.png"} />
-        <div className="flex flex-col items-center my-auto gap-y-6 text-accent max-w-178">
-          <h1 className={`${CONSTANTS.style.animInitVal}`}>
-            BeyondFaith, Your Journey to Inner Strength
-          </h1>
-          <p
-            className={`font-inter text-xl tablet:text-2xl text-center font-light ${CONSTANTS.style.animInitVal}`}
-          >
-            Rediscover your potential with therapists who guide you toward a
-            more peaceful you - grounded in faith.
-          </p>
-          <ContactFormSheet>
-            <Button
-              variant="accent"
-              className={`w-fit ${CONSTANTS.style.animInitVal}`}
-            >
-              Start Your Journey
-            </Button>
-          </ContactFormSheet>
-        </div>
-      </InViewAnimateSection>
+        <HeroContent />
+      </section>
       <InViewAnimateSection
         sectionAnimFuncName="homeConcernSection"
         className="!h-full w-full flex py-24 justify-center items-center bg-muted relative min-h-screen"
