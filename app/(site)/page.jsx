@@ -15,7 +15,7 @@ import FAQS from "@/lib/faqs";
 import PROCESS_STEPS from "@/lib/process-step";
 import SERVICES from "@/lib/services";
 import { cj } from "@/lib/utils";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -323,55 +323,82 @@ export default function Home() {
       <InViewAnimateSection
         id="founder"
         sectionAnimFuncName="homeFounderSection"
-        className="!h-full flex justify-between py-24 bg-muted overflow-clip"
+        className="!h-full flex justify-between py-28 bg-muted overflow-hidden relative"
       >
+        {/* ── Background decorative layer ── */}
+        {/* Soft ambient orbs */}
+        <div className="absolute -left-40 -bottom-20 w-[520px] h-[520px] rounded-full bg-primary/6 blur-3xl pointer-events-none" />
+        <div className="absolute right-0 top-0 w-80 h-80 rounded-full bg-colored-background/6 blur-3xl pointer-events-none" />
+        <div className="absolute left-[40%] top-[10%] w-48 h-48 rounded-full bg-primary/4 blur-2xl pointer-events-none" />
+
+        {/* Large decorative quote mark */}
+        <div className="absolute top-6 left-[var(--gutter-width)] font-dm text-[160px] leading-none text-primary/6 pointer-events-none select-none">
+          &ldquo;
+        </div>
+
+        {/* Floating sparkles */}
+        <Sparkles className="absolute top-[18%] right-[44%] text-primary/30 w-5 h-5 pointer-events-none" style={{ animation: "twinkle 3.2s ease-in-out infinite" }} />
+        <Sparkles className="absolute bottom-[24%] left-[38%] text-primary/20 w-4 h-4 pointer-events-none" style={{ animation: "twinkle 4.1s ease-in-out 0.9s infinite" }} />
+        <Sparkles className="absolute top-[62%] right-[22%] text-primary/25 w-3 h-3 pointer-events-none" style={{ animation: "twinkle 3.7s ease-in-out 1.6s infinite" }} />
+
+        {/* Section divider */}
         <div className="h-px w-[calc(100%-(2*var(--gutter-width)))] absolute top-0 left-[var(--gutter-width)] bg-colored-background/30" />
-        <div className="w-full my-auto grid grid-cols-1 tablet:grid-cols-[1fr_minmax(360,1fr)] laptop:grid-cols-[1fr_minmax(560,_1fr)] items-center gap-x-10 laptop:gap-x-55">
-          <div id="founder-photo" className="relative">
-            <div className="w-full min-[500px]:w-[30%] mx-auto tablet:w-auto tablet:max-h-[calc(100vh-350px)] aspect-[41/56] relative rounded-xl">
-              <div className="w-full min-[500px]:w-[30%] mx-auto tablet:w-auto tablet:max-h-[calc(100vh-350px)] aspect-[41/56] rounded-xl overflow-clip">
-                <Image src="/images/founder-image.png" alt="founder-image" fill sizes="(min-width: 1300px) 50vw, (min-width: 800px) 40vw, (min-width: 500px) 30vw, 100vw" className="object-cover rounded-2xl shadow-2xl" />
-              </div>
-              <div className="founder-star absolute -top-8 -left-8">
-                <Image
-                  src="/images/Stars.svg"
-                  width={48}
-                  height={48}
-                  alt="stars-decoration"
-                />
+
+        <div className="w-full my-auto grid grid-cols-1 tablet:grid-cols-[1fr_minmax(360px,1fr)] laptop:grid-cols-[1fr_minmax(560px,_1fr)] items-center gap-x-10 laptop:gap-x-24 relative z-10">
+
+          {/* Photo — outer wrapper carries the float, Motion targets the inner #founder-photo */}
+          <div style={{ animation: "svgFloat 6s ease-in-out 0.9s infinite" }}>
+            <div id="founder-photo" className="relative">
+              <div className="w-full min-[500px]:w-[30%] mx-auto tablet:w-auto tablet:max-h-[calc(100vh-350px)] aspect-[41/56] relative rounded-2xl">
+                <div className="w-full min-[500px]:w-[30%] mx-auto tablet:w-auto tablet:max-h-[calc(100vh-350px)] aspect-[41/56] rounded-2xl overflow-clip shadow-2xl">
+                  <Image
+                    src="/images/founder-image.png"
+                    alt="founder-image"
+                    fill
+                    sizes="(min-width: 1300px) 50vw, (min-width: 800px) 40vw, (min-width: 500px) 30vw, 100vw"
+                    className="object-cover rounded-2xl"
+                  />
+                </div>
+                <div className="founder-star absolute -top-8 -left-8">
+                  <Image src="/images/Stars.svg" width={48} height={48} alt="stars-decoration" />
+                </div>
               </div>
             </div>
           </div>
-          <div id="founder-content" className="w-full flex tablet:pr-20 text-pretty  flex-col h-fit gap-y-6 relative text-center mt-14 tablet:mt-0">
+
+          {/* Content */}
+          <div id="founder-content" className="w-full flex tablet:pr-12 text-pretty flex-col h-fit gap-y-6 relative text-center mt-14 tablet:mt-0">
             <div className="w-fit relative mx-auto">
-              <div className="founder-star absolute -top-8 -right-8 -rotate-120">
-                <Image
-                  src="/images/Stars.svg"
-                  width={48}
-                  height={48}
-                  alt="stars-decoration"
-                />
+              <div className="founder-star absolute -top-8 -right-8 -rotate-12">
+                <Image src="/images/Stars.svg" width={48} height={48} alt="stars-decoration" />
               </div>
-              <h2 className="text-4xl font-dm w-fit">
-                A Message from Our Founder
+              <h2 className="!text-5xl tablet:!text-6xl font-dm w-fit leading-tight">
+                A Message from<br />Our Founder
               </h2>
             </div>
-            <p className="text-lg">
-              Your journey is yours alone. But it’s not a game of luck, it’s a
+
+            <p className="founder-para text-lg text-foreground/65">
+              Your journey is yours alone. But it&apos;s not a game of luck, it&apos;s a
               testament to the strength that already exists within you.
             </p>
-            <p className="text-lg">
-              Faith isn’t just about belief; it’s about trust—trusting yourself,
+            <p className="founder-para text-lg text-foreground/65">
+              Faith isn&apos;t just about belief; it&apos;s about trust—trusting yourself,
               your story, and the process of growth.
             </p>
-            <p className="text-lg">
+            <p className="founder-para text-lg text-foreground/65">
               At BeyondFaith, we help you embrace this journey. Our team
               supports you, helping you uncover your strength and face
               challenges with confidence.
             </p>
-            <Link href="/about" className="w-fit text-primary underline underline-offset-4 hover:opacity-80 transition-opacity text-base">
-              Learn more about BeyondFaith →
-            </Link>
+
+            {/* CTA — centred, prominent */}
+            <div id="founder-cta" className="flex justify-center pt-3">
+              <Button variant="default" size="lg" shape="curved-box" asChild>
+                <Link href="/about">
+                  Learn More About BeyondFaith →
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </InViewAnimateSection>
