@@ -22,6 +22,7 @@ import React from "react";
 import AnimatedUnderline from "@/components/AnimatedUnderline";
 import HeroContent from "@/components/HeroContent";
 import ShootingStars from "@/components/ShootingStars";
+import ProcessTimeline from "@/components/ProcessTimeline";
 
 // const solutions = [
 //   {
@@ -257,47 +258,20 @@ export default function Home() {
       >
         <div className="w-full flex flex-col-reverse tablet:flex-row tablet:items-start tablet:justify-between gap-y-16 gap-x-16">
 
-          {/* Left — vertical timeline */}
-          <div className="relative flex flex-col">
-            {/* Connecting line — grows top-to-bottom on animation */}
-            <div className="process-line absolute left-5 top-5 bottom-5 w-px bg-primary/25 origin-top" />
+          {/* Left — auto-cycling timeline */}
+          <ProcessTimeline />
 
-            {PROCESS_STEPS.map((step, idx) => (
-              <div
-                key={step.heading}
-                className="process-step group flex items-start gap-x-6 pb-10 last:pb-0"
-              >
-                {/* Numbered circle */}
-                <div className="process-circle relative z-10 shrink-0 w-10 h-10 rounded-full border-2 border-primary/35 bg-muted flex items-center justify-center transition-all duration-300 group-hover:bg-primary group-hover:border-primary">
-                  <span className="font-inter text-xs font-bold text-primary transition-colors duration-300 group-hover:text-white">
-                    {String(idx + 1).padStart(2, "0")}
-                  </span>
-                </div>
-
-                {/* Content */}
-                <div className="pt-1">
-                  <h3 className="font-dm text-2xl tablet:text-3xl text-foreground mb-2 transition-colors duration-300 group-hover:text-primary">
-                    {step.heading}
-                  </h3>
-                  <p className="font-inter text-foreground/50 text-base max-w-sm">
-                    {step.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Right — heading block, sticky on tablet+ */}
-          <div className="tablet:sticky tablet:top-40 tablet:self-start flex flex-col tablet:items-end tablet:text-right">
+          {/* Right — heading, sticky on tablet+ */}
+          <div className="tablet:sticky tablet:top-36 tablet:self-start flex flex-col tablet:items-end tablet:text-right">
             <h2
               id="process-section-heading"
-              className="!text-5xl tablet:!text-6xl tablet:!text-right"
+              className="!text-6xl tablet:!text-7xl tablet:!text-right leading-tight"
             >
               Our Process
             </h2>
             <p
               id="process-section-description"
-              className="font-inter text-foreground/55 text-lg mt-4 max-w-xs"
+              className="font-inter text-foreground/55 text-lg mt-5 max-w-xs"
             >
               A simple, supportive journey toward better mental well-being.
             </p>
