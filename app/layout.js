@@ -1,6 +1,7 @@
 import { DM_Serif_Display, Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toast";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const dm_serif = DM_Serif_Display({
   weight: ["400"],
@@ -111,7 +112,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(founderJsonLd) }}
         />
         <Toaster />
-        {children}
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );
