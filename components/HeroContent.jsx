@@ -112,6 +112,35 @@ export default function HeroContent() {
         />
       </div>
 
+      {/* Floating card — bottom-right of right panel (laptop+) */}
+      <div
+        className="hidden laptop:block absolute bottom-20 right-[calc(var(--gutter-width)+2rem)] z-20"
+        style={{ animation: "heroFadeIn 0.9s ease-out 1.6s both" }}
+      >
+        <div className="relative w-52" style={{ transform: "rotate(-1.5deg)" }}>
+          {/* Photo */}
+          <div className="relative w-52 h-52 rounded-2xl overflow-hidden shadow-2xl">
+            <Image
+              src="/images/peace.jpg"
+              alt="A moment of peace"
+              fill
+              className="object-cover object-top"
+              sizes="208px"
+            />
+          </div>
+
+          {/* Text overlay card */}
+          <div className="absolute -bottom-5 left-3 bg-white/96 backdrop-blur-sm px-4 py-3 w-40 shadow-xl rounded-sm">
+            <p className="text-[9px] tracking-[0.15em] uppercase text-foreground/40 mb-1.5 font-inter">
+              A space to →
+            </p>
+            <p className="font-dm text-sm leading-snug text-foreground/85">
+              slow down, understand, and begin <em>again</em>.
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Scroll indicator */}
       <div
         className="absolute bottom-8 left-[var(--gutter-width)] flex items-center gap-x-2 text-accent/35"
