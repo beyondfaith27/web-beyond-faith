@@ -129,6 +129,14 @@
   --font-inter: var(--inter-dm);
 }
 
+@keyframes marqueeLeft {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.333%); }
+}
+@keyframes marqueeRight {
+  from { transform: translateX(-33.333%); }
+  to   { transform: translateX(0); }
+}
 @keyframes aboutH1In {
   from { opacity: 0; transform: translateY(36px); }
   to   { opacity: 1; transform: translateY(0px); }

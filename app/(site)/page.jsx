@@ -1,6 +1,5 @@
 import ContactFormSheet from "@/components/ContactFormSheet";
 import { ExpandableCard } from "@/components/ExpandableCard";
-import Honeycomb from "@/components/Honeycomb";
 import InViewAnimateSection from "@/components/InViewAnimateSection";
 import ParallaxBackground from "@/components/ParallaxBackground";
 import {
@@ -20,8 +19,6 @@ import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { HoverHighlightProvider } from "./home/HoverHighlightProvider";
-import ConcernsHoverText from "@/components/ConcernsHoverText";
 import AnimatedUnderline from "@/components/AnimatedUnderline";
 import HeroContent from "@/components/HeroContent";
 
@@ -83,64 +80,86 @@ export default function Home() {
       </section>
       <InViewAnimateSection
         sectionAnimFuncName="homeConcernSection"
-        className="!h-full w-full flex py-24 justify-center items-center bg-muted relative min-h-screen"
+        className="!h-full w-full flex flex-col py-24 bg-muted relative min-h-screen justify-center gap-y-14 overflow-hidden"
       >
-        <HoverHighlightProvider>
-          <div className="w-full flex flex-col items-center md:flex-row md:items-center my-auto md:justify-between gap-y-12">
-            <div className="max-w-150 flex flex-col pt-0">
-              <h2
-                id="process-section-heading"
-                className="text-3xl md:text-5xl font-bold text-center md:text-left text-pretty"
-              >
-                {CONTENTS.HOME_CONTENT.CONCERNS.title}
-              </h2>
-              <p
-                id="process-section-description"
-                className="text-foreground/60 text-base md:text-lg font-semibold text-balance mt-8 text-center md:text-left"
-              >
-                {CONTENTS.HOME_CONTENT.CONCERNS.generic_desc}
-                <span className="hidden md:inline"><ConcernsHoverText concerns={CONTENTS.HOME_CONTENT.CONCERNS.concern_list} /></span>
-                <span className="hidden md:inline">and many more</span>
-              </p>
-            </div>
-            <div className="hidden md:block w-fit">
-              <Honeycomb
-                imageObjs={CONTENTS.HOME_CONTENT.CONCERNS.concern_list}
-              />
-            </div>
-            <div className="w-full max-w-250 mx-auto grid md:hidden grid-cols-2 md:grid-cols-3 gap-y-8 md:gap-y-14">
-              {CONTENTS.HOME_CONTENT.CONCERNS.concern_list.map((each) => {
-                return (
-                  <div
-                    key={each.image}
-                    className={
-                      "concern flex flex-col gap-y-1 transition ease-in-out" +
-                      CONSTANTS.style.animInitVal
-                    }
-                  >
-                    <div className="w-30 md:w-40 h-20 md:h-30 relative object-contain mx-auto">
-                      <Image
-                        src={each.image}
-                        alt={each.text}
-                        fill
-                        sizes="(min-width: 768px) 160px, 120px"
-                        className="object-contain"
-                      />
-                    </div>
-                    <p className="text-center text-sm md:text-base font-bold uppercase">
-                      {each.text}
-                    </p>
-                  </div>
-                );
-              })}
+        {/* Heading */}
+        <div className="flex flex-col gap-y-4 max-w-2xl">
+          <h2 id="process-section-heading" className="!text-left">
+            {CONTENTS.HOME_CONTENT.CONCERNS.title}
+          </h2>
+          <p
+            id="process-section-description"
+            className="text-foreground/60 text-lg font-light"
+          >
+            {CONTENTS.HOME_CONTENT.CONCERNS.generic_desc} and many more.
+          </p>
+        </div>
+
+        {/* Marquee rows — negative margin bleeds to viewport edges */}
+        <div
+          id="concern-marquee"
+          className="-mx-[var(--gutter-width)] flex flex-col gap-y-4"
+        >
+          {/* Row 1 — scrolls left */}
+          <div
+            className="flex gap-x-4 w-max"
+            style={{ animation: "marqueeLeft 32s linear infinite" }}
+          >
+            {[
+              ...CONTENTS.HOME_CONTENT.CONCERNS.concern_list,
+              ...CONTENTS.HOME_CONTENT.CONCERNS.concern_list,
+              ...CONTENTS.HOME_CONTENT.CONCERNS.concern_list,
+            ].map((concern, i) => (
               <div
-                className={`${CONSTANTS.style.animInitVal} concern flex items-center justify-center text-center min-h-30 text-sm md:text-base font-bold uppercase`}
+                key={i}
+                className="flex items-center gap-x-3 bg-white border border-border rounded-xl px-5 py-3 shadow-sm shrink-0"
               >
-                ... And Many More
+                <div className="relative w-8 h-8 shrink-0">
+                  <Image
+                    src={concern.image}
+                    alt={concern.text}
+                    fill
+                    sizes="32px"
+                    className="object-contain"
+                  />
+                </div>
+                <span className="font-inter text-sm font-semibold text-foreground/75 whitespace-nowrap">
+                  {concern.text}
+                </span>
               </div>
-            </div>
+            ))}
           </div>
-        </HoverHighlightProvider>
+
+          {/* Row 2 — scrolls right, reversed order for variety */}
+          <div
+            className="flex gap-x-4 w-max"
+            style={{ animation: "marqueeRight 26s linear infinite" }}
+          >
+            {[
+              ...[...CONTENTS.HOME_CONTENT.CONCERNS.concern_list].reverse(),
+              ...[...CONTENTS.HOME_CONTENT.CONCERNS.concern_list].reverse(),
+              ...[...CONTENTS.HOME_CONTENT.CONCERNS.concern_list].reverse(),
+            ].map((concern, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-x-3 bg-white border border-border rounded-xl px-5 py-3 shadow-sm shrink-0"
+              >
+                <div className="relative w-8 h-8 shrink-0">
+                  <Image
+                    src={concern.image}
+                    alt={concern.text}
+                    fill
+                    sizes="32px"
+                    className="object-contain"
+                  />
+                </div>
+                <span className="font-inter text-sm font-semibold text-foreground/75 whitespace-nowrap">
+                  {concern.text}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
       </InViewAnimateSection>
       <InViewAnimateSection
         id="services"
