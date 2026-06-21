@@ -1,6 +1,5 @@
 import ContactFormSheet from "@/components/ContactFormSheet";
 import { ExpandableCard } from "@/components/ExpandableCard";
-import Honeycomb from "@/components/Honeycomb";
 import InViewAnimateSection from "@/components/InViewAnimateSection";
 import ParallaxBackground from "@/components/ParallaxBackground";
 import {
@@ -16,13 +15,15 @@ import FAQS from "@/lib/faqs";
 import PROCESS_STEPS from "@/lib/process-step";
 import SERVICES from "@/lib/services";
 import { cj } from "@/lib/utils";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { HoverHighlightProvider } from "./home/HoverHighlightProvider";
-import ConcernsHoverText from "@/components/ConcernsHoverText";
 import AnimatedUnderline from "@/components/AnimatedUnderline";
+import HeroContent from "@/components/HeroContent";
+import ShootingStars from "@/components/ShootingStars";
+import ProcessTimeline from "@/components/ProcessTimeline";
+import CTABanner from "@/components/CTABanner";
 
 // const solutions = [
 //   {
@@ -74,146 +75,151 @@ export const metadata = {
 export default function Home() {
   return (
     <>
-      <InViewAnimateSection
+      <section
         id="home"
-        sectionAnimFuncName="homeHeroSection"
-        className="!h-full flex py-24 justify-center relative min-h-screen"
+        className="!h-full !px-0 relative min-h-screen bg-colored-background overflow-hidden"
       >
-        <div className="absolute inset-0 bg-colored-background/85 backdrop-blur-[2px]"></div>
-        {/* <div className="absolute inset-0 -z-10 select-none">
-          <Image
-            alt="background-image-1"
-            src={"/images/HeroImg.png"}
-            fill
-            className="h-full object-cover"
-            priority
-          />
-        </div> */}
-        <ParallaxBackground src={"/images/HeroImg.png"} />
-        <div className="flex flex-col items-center my-auto gap-y-6 text-accent max-w-178">
-          <h1 className={`${CONSTANTS.style.animInitVal}`}>
-            BeyondFaith, Your Journey to Inner Strength
-          </h1>
-          <p
-            className={`font-inter text-xl tablet:text-2xl text-center font-light ${CONSTANTS.style.animInitVal}`}
-          >
-            Rediscover your potential with therapists who guide you toward a
-            more peaceful you - grounded in faith.
-          </p>
-          <ContactFormSheet>
-            <Button
-              variant="accent"
-              className={`w-fit ${CONSTANTS.style.animInitVal}`}
-            >
-              Start Your Journey
-            </Button>
-          </ContactFormSheet>
-        </div>
-      </InViewAnimateSection>
+        <HeroContent />
+      </section>
       <InViewAnimateSection
         sectionAnimFuncName="homeConcernSection"
-        className="!h-full w-full flex py-24 justify-center items-center bg-muted relative min-h-screen"
+        className="!h-full w-full flex flex-col py-28 bg-muted relative min-h-screen justify-center gap-y-16 overflow-hidden"
       >
-        <HoverHighlightProvider>
-          <div className="w-full flex flex-col items-center md:flex-row md:items-center my-auto md:justify-between gap-y-12">
-            <div className="max-w-150 flex flex-col pt-0">
-              <h2
-                id="process-section-heading"
-                className="text-3xl md:text-5xl font-bold text-center md:text-left text-pretty"
-              >
-                {CONTENTS.HOME_CONTENT.CONCERNS.title}
-              </h2>
-              <p
-                id="process-section-description"
-                className="text-foreground/60 text-base md:text-lg font-semibold text-balance mt-8 text-center md:text-left"
-              >
-                {CONTENTS.HOME_CONTENT.CONCERNS.generic_desc}
-                <span className="hidden md:inline"><ConcernsHoverText concerns={CONTENTS.HOME_CONTENT.CONCERNS.concern_list} /></span>
-                <span className="hidden md:inline">and many more</span>
-              </p>
-            </div>
-            <div className="hidden md:block w-fit">
-              <Honeycomb
-                imageObjs={CONTENTS.HOME_CONTENT.CONCERNS.concern_list}
-              />
-            </div>
-            <div className="w-full max-w-250 mx-auto grid md:hidden grid-cols-2 md:grid-cols-3 gap-y-8 md:gap-y-14">
-              {CONTENTS.HOME_CONTENT.CONCERNS.concern_list.map((each) => {
-                return (
-                  <div
-                    key={each.image}
-                    className={
-                      "concern flex flex-col gap-y-1 transition ease-in-out" +
-                      CONSTANTS.style.animInitVal
-                    }
-                  >
-                    <div className="w-30 md:w-40 h-20 md:h-30 relative object-contain mx-auto">
-                      <Image
-                        src={each.image}
-                        alt={each.text}
-                        fill
-                        sizes="(min-width: 768px) 160px, 120px"
-                        className="object-contain"
-                      />
-                    </div>
-                    <p className="text-center text-sm md:text-base font-bold uppercase">
-                      {each.text}
-                    </p>
-                  </div>
-                );
-              })}
+        {/* Heading */}
+        <div className="flex flex-col gap-y-5 max-w-3xl">
+          <h2 id="process-section-heading" className="!text-left !text-5xl tablet:!text-6xl">
+            {CONTENTS.HOME_CONTENT.CONCERNS.title}
+          </h2>
+          <p
+            id="process-section-description"
+            className="text-foreground/60 text-xl font-light"
+          >
+            {CONTENTS.HOME_CONTENT.CONCERNS.generic_desc} and many more.
+          </p>
+        </div>
+
+        {/* Marquee rows — negative margin bleeds to viewport edges */}
+        <div
+          id="concern-marquee"
+          className="-mx-[var(--gutter-width)] flex flex-col gap-y-5"
+        >
+          {/* Row 1 — scrolls left */}
+          <div
+            className="flex gap-x-5 w-max"
+            style={{ animation: "marqueeLeft 32s linear infinite" }}
+          >
+            {[
+              ...CONTENTS.HOME_CONTENT.CONCERNS.concern_list,
+              ...CONTENTS.HOME_CONTENT.CONCERNS.concern_list,
+              ...CONTENTS.HOME_CONTENT.CONCERNS.concern_list,
+            ].map((concern, i) => (
               <div
-                className={`${CONSTANTS.style.animInitVal} concern flex items-center justify-center text-center min-h-30 text-sm md:text-base font-bold uppercase`}
+                key={i}
+                className="flex items-center gap-x-4 bg-white border border-border rounded-2xl px-6 py-4 shadow-sm shrink-0"
               >
-                ... And Many More
+                <div className="relative w-12 h-12 shrink-0">
+                  <Image
+                    src={concern.image}
+                    alt={concern.text}
+                    fill
+                    sizes="48px"
+                    className="object-contain"
+                  />
+                </div>
+                <span className="font-inter text-base font-semibold text-foreground/75 whitespace-nowrap">
+                  {concern.text}
+                </span>
               </div>
-            </div>
+            ))}
           </div>
-        </HoverHighlightProvider>
+
+          {/* Row 2 — scrolls right, reversed order */}
+          <div
+            className="flex gap-x-5 w-max"
+            style={{ animation: "marqueeRight 26s linear infinite" }}
+          >
+            {[
+              ...[...CONTENTS.HOME_CONTENT.CONCERNS.concern_list].reverse(),
+              ...[...CONTENTS.HOME_CONTENT.CONCERNS.concern_list].reverse(),
+              ...[...CONTENTS.HOME_CONTENT.CONCERNS.concern_list].reverse(),
+            ].map((concern, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-x-4 bg-white border border-border rounded-2xl px-6 py-4 shadow-sm shrink-0"
+              >
+                <div className="relative w-12 h-12 shrink-0">
+                  <Image
+                    src={concern.image}
+                    alt={concern.text}
+                    fill
+                    sizes="48px"
+                    className="object-contain"
+                  />
+                </div>
+                <span className="font-inter text-base font-semibold text-foreground/75 whitespace-nowrap">
+                  {concern.text}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Row 3 — scrolls left, original order */}
+          <div
+            className="flex gap-x-5 w-max"
+            style={{ animation: "marqueeLeft 38s linear infinite" }}
+          >
+            {[
+              ...CONTENTS.HOME_CONTENT.CONCERNS.concern_list,
+              ...CONTENTS.HOME_CONTENT.CONCERNS.concern_list,
+              ...CONTENTS.HOME_CONTENT.CONCERNS.concern_list,
+            ].map((concern, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-x-4 bg-white border border-border rounded-2xl px-6 py-4 shadow-sm shrink-0"
+              >
+                <div className="relative w-12 h-12 shrink-0">
+                  <Image
+                    src={concern.image}
+                    alt={concern.text}
+                    fill
+                    sizes="48px"
+                    className="object-contain"
+                  />
+                </div>
+                <span className="font-inter text-base font-semibold text-foreground/75 whitespace-nowrap">
+                  {concern.text}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
       </InViewAnimateSection>
       <InViewAnimateSection
         id="services"
         sectionAnimFuncName="homeServicesSection"
-        className="relative w-full min-h-screen pt-40 md:pt-24 pb-10 flex items-center"
+        className="relative w-full min-h-screen pt-40 md:pt-24 pb-10 flex items-center overflow-hidden"
       >
-        {/* <div className="absolute top-0 left-0 h-full w-full overflow-hidden">
-          <Image src={"/images/balance.jpg"} alt="balance-bg-image" fill />
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: `
-                linear-gradient(
-                  to right,
-                  oklch(from var(--colored-background) l c h / 1) 0%,
-                  oklch(from var(--colored-background) l c h / 0.7) 20%,
-                  oklch(from var(--colored-background) l c h / 0.7) 80%,
-                  oklch(from var(--colored-background) l c h / 1) 100%
-                ),
-                linear-gradient(
-                  to bottom,
-                  oklch(from var(--colored-background) l c h / 1) 0%,
-                  oklch(from var(--colored-background) l c h / 0.7) 20%,
-                  oklch(from var(--colored-background) l c h / 0.7) 80%,
-                  oklch(from var(--colored-background) l c h / 1) 100%
-                )
-              `,
-            }}
-          ></div>
-        </div> */}
         <ParallaxBackground src={"/images/balance.jpg"} />
+
+        {/* Four independent shooting stars, staggered so they feel organic */}
+        <ShootingStars initialDelay={0} />
+        <ShootingStars initialDelay={1400} />
+        <ShootingStars initialDelay={2900} />
+        <ShootingStars initialDelay={4500} />
+
         <div className="w-full h-full relative top-0 left-0 z-10 text-primary-foreground mb-10">
           <div className="w-full grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6 my-auto">
             <div className="w-full h-full flex flex-col justify-center md:col-span-2">
               <h2
                 id="service-section-heading"
-                className="text-2xl opacity-60 font-bold mb-8"
+                className="font-dm text-4xl tablet:text-5xl mb-6 !text-left text-primary-foreground"
               >
                 Our Services
               </h2>
 
               <p
                 id="service-section-description"
-                className="text-sm md:text-xl max-w-200 group text-primary-foreground/80"
+                className="text-base tablet:text-xl text-primary-foreground/80"
               >
                 At{" "}
                 <span className="font-bold text-primary-foreground">
@@ -249,41 +255,24 @@ export default function Home() {
       <InViewAnimateSection
         id="process-section"
         sectionAnimFuncName="homeProcessSection"
-        className="md:pt-20 pb-20 md:pb-10 bg-muted flex items-center"
+        className="!h-full py-28 bg-muted flex items-center"
       >
-        <div className="w-full flex flex-col-reverse md:flex-row md:items-center my-auto md:justify-between gap-y-12">
-          <div className="flex flex-col gap-y-12">
-            {PROCESS_STEPS.map((step, idx) => {
-              return (
-                <div
-                  key={step.heading}
-                  className="process-step flex items-center group hover:scale-[1.01] transition ease-in-out"
-                >
-                  <p className="font-bold text-3xl pr-5 border-r border-foreground/10 text-foreground/20 group-hover:text-primary/50 group-hover:border-primary/20 self-stretch flex items-center">
-                    0{idx + 1}
-                  </p>
-                  <div className="pl-5 max-w-150">
-                    <h3 className="font-bold text-xl group-hover:text-primary transition ease-in-out">
-                      {step.heading}
-                    </h3>
-                    <p className="text-foreground/40 text-balance text-sm md:text-base">
-                      {step.description}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-          <div className="max-w-150 flex flex-col md:items-end pt-32 md:pt-0">
+        <div className="w-full flex flex-col-reverse tablet:flex-row tablet:items-start tablet:justify-between gap-y-16 gap-x-16">
+
+          {/* Left — auto-cycling timeline */}
+          <ProcessTimeline />
+
+          {/* Right — heading, sticky on tablet+ */}
+          <div className="tablet:sticky tablet:top-36 tablet:self-start flex flex-col tablet:items-end tablet:text-right">
             <h2
               id="process-section-heading"
-              className="text-3xl md:text-5xl font-bold"
+              className="!text-6xl tablet:!text-7xl tablet:!text-right leading-tight"
             >
               Our Process
             </h2>
             <p
               id="process-section-description"
-              className="text-foreground/60 text-base md:text-lg font-semibold text-balance md:text-right"
+              className="font-inter text-foreground/55 text-lg mt-5 max-w-xs"
             >
               A simple, supportive journey toward better mental well-being.
             </p>
@@ -334,55 +323,83 @@ export default function Home() {
       </InViewAnimateSection> */}
       <InViewAnimateSection
         id="founder"
-        className="!h-full flex justify-between py-24 bg-muted overflow-clip"
+        sectionAnimFuncName="homeFounderSection"
+        className="!h-full flex justify-between py-28 bg-muted overflow-hidden relative"
       >
+        {/* ── Background decorative layer ── */}
+        {/* Soft ambient orbs */}
+        <div className="absolute -left-40 -bottom-20 w-[520px] h-[520px] rounded-full bg-primary/6 blur-3xl pointer-events-none" />
+        <div className="absolute right-0 top-0 w-80 h-80 rounded-full bg-colored-background/6 blur-3xl pointer-events-none" />
+        <div className="absolute left-[40%] top-[10%] w-48 h-48 rounded-full bg-primary/4 blur-2xl pointer-events-none" />
+
+        {/* Large decorative quote mark */}
+        <div className="absolute top-6 left-[var(--gutter-width)] font-dm text-[160px] leading-none text-primary/6 pointer-events-none select-none">
+          &ldquo;
+        </div>
+
+        {/* Floating sparkles */}
+        <Sparkles className="absolute top-[18%] right-[44%] text-primary/30 w-5 h-5 pointer-events-none" style={{ animation: "twinkle 3.2s ease-in-out infinite" }} />
+        <Sparkles className="absolute bottom-[24%] left-[38%] text-primary/20 w-4 h-4 pointer-events-none" style={{ animation: "twinkle 4.1s ease-in-out 0.9s infinite" }} />
+        <Sparkles className="absolute top-[62%] right-[22%] text-primary/25 w-3 h-3 pointer-events-none" style={{ animation: "twinkle 3.7s ease-in-out 1.6s infinite" }} />
+
+        {/* Section divider */}
         <div className="h-px w-[calc(100%-(2*var(--gutter-width)))] absolute top-0 left-[var(--gutter-width)] bg-colored-background/30" />
-        <div className="w-full my-auto grid grid-cols-1 tablet:grid-cols-[1fr_minmax(360,1fr)] laptop:grid-cols-[1fr_minmax(560,_1fr)] items-center gap-x-10 laptop:gap-x-55">
-          <div className="relative">
-            <div className="w-full min-[500px]:w-[30%] mx-auto tablet:w-auto tablet:max-h-[calc(100vh-350px)] aspect-[41/56] relative rounded-xl">
-              <div className="w-full min-[500px]:w-[30%] mx-auto tablet:w-auto tablet:max-h-[calc(100vh-350px)] aspect-[41/56] rounded-xl overflow-clip">
-                <Image src="/images/founder-image.png" alt="founder-image" fill sizes="(min-width: 1300px) 50vw, (min-width: 800px) 40vw, (min-width: 500px) 30vw, 100vw" className="object-cover rounded-2xl shadow-2xl" />
-              </div>
-              <div className="absolute -top-8 -left-8">
-                <Image
-                  src="/images/Stars.svg"
-                  width={48}
-                  height={48}
-                  alt="stars-decoration"
-                />
+
+        <div className="w-full my-auto grid grid-cols-1 tablet:grid-cols-[1fr_minmax(360px,1fr)] laptop:grid-cols-[1fr_minmax(560px,_1fr)] items-center gap-x-10 laptop:gap-x-24 relative z-10">
+
+          {/* Photo — outer wrapper carries the float, Motion targets the inner #founder-photo */}
+          <div style={{ animation: "svgFloat 6s ease-in-out 0.9s infinite" }}>
+            <div id="founder-photo" className="relative">
+              <div className="w-full min-[500px]:w-[30%] mx-auto tablet:w-auto tablet:max-h-[calc(100vh-350px)] aspect-[41/56] relative rounded-2xl">
+                <div className="w-full min-[500px]:w-[30%] mx-auto tablet:w-auto tablet:max-h-[calc(100vh-350px)] aspect-[41/56] rounded-2xl overflow-clip shadow-2xl">
+                  <Image
+                    src="/images/founder-image.png"
+                    alt="founder-image"
+                    fill
+                    sizes="(min-width: 1300px) 50vw, (min-width: 800px) 40vw, (min-width: 500px) 30vw, 100vw"
+                    className="object-cover rounded-2xl"
+                  />
+                </div>
+                <div className="founder-star absolute -top-8 -left-8">
+                  <Image src="/images/Stars.svg" width={48} height={48} alt="stars-decoration" />
+                </div>
               </div>
             </div>
           </div>
-          <div className="w-full flex tablet:pr-20 text-pretty  flex-col h-fit gap-y-6 relative text-center mt-14 tablet:mt-0">
+
+          {/* Content */}
+          <div id="founder-content" className="w-full flex tablet:pr-12 text-pretty flex-col h-fit gap-y-6 relative text-center mt-14 tablet:mt-0">
             <div className="w-fit relative mx-auto">
-              <div className="absolute -top-8 -right-8 -rotate-120">
-                <Image
-                  src="/images/Stars.svg"
-                  width={48}
-                  height={48}
-                  alt="stars-decoration"
-                />
+              <div className="founder-star absolute -top-8 -right-8 -rotate-12">
+                <Image src="/images/Stars.svg" width={48} height={48} alt="stars-decoration" />
               </div>
-              <h2 className="text-4xl font-dm w-fit">
-                A Message from Our Founder
+              <h2 className="!text-5xl tablet:!text-6xl font-dm w-fit leading-tight">
+                A Message from<br />Our Founder
               </h2>
             </div>
-            <p className="text-lg">
-              Your journey is yours alone. But it’s not a game of luck, it’s a
+
+            <p className="founder-para text-lg text-foreground/65">
+              Your journey is yours alone. But it&apos;s not a game of luck, it&apos;s a
               testament to the strength that already exists within you.
             </p>
-            <p className="text-lg">
-              Faith isn’t just about belief; it’s about trust—trusting yourself,
+            <p className="founder-para text-lg text-foreground/65">
+              Faith isn&apos;t just about belief; it&apos;s about trust—trusting yourself,
               your story, and the process of growth.
             </p>
-            <p className="text-lg">
+            <p className="founder-para text-lg text-foreground/65">
               At BeyondFaith, we help you embrace this journey. Our team
               supports you, helping you uncover your strength and face
               challenges with confidence.
             </p>
-            <Link href="/about" className="w-fit text-primary underline underline-offset-4 hover:opacity-80 transition-opacity text-base">
-              Learn more about BeyondFaith →
-            </Link>
+
+            {/* CTA — centred, prominent */}
+            <div id="founder-cta" className="flex justify-center pt-3">
+              <Button variant="default" size="lg" shape="curved-box" asChild>
+                <Link href="/about">
+                  Learn More About BeyondFaith →
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </InViewAnimateSection>
@@ -453,13 +470,39 @@ export default function Home() {
       </InViewAnimateSection> */}
       <InViewAnimateSection
         id="faq"
-        className="!h-full flex justify-between py-24 overflow-clip"
+        sectionAnimFuncName="homeFaqSection"
+        className="!h-full flex py-28 overflow-hidden relative"
       >
-        <div className="w-full grid grid-cols-1 gap-y-6 tablet:grid-cols-2 my-auto">
-          <h2 className="text-4xl font-dm text-center tablet:text-left">
-            Frequently Asked Questions
-          </h2>
-          <div>
+        {/* Background decoration */}
+        <div className="absolute -left-24 top-1/3 w-[420px] h-[420px] rounded-full bg-primary/5 blur-3xl pointer-events-none" />
+        <div className="absolute right-0 bottom-0 w-72 h-72 rounded-full bg-muted blur-2xl pointer-events-none" />
+        <Sparkles className="absolute top-[15%] right-[45%] text-primary/20 w-5 h-5 pointer-events-none" style={{ animation: "twinkle 3.4s ease-in-out infinite" }} />
+        <Sparkles className="absolute bottom-[18%] right-[12%] text-primary/15 w-4 h-4 pointer-events-none" style={{ animation: "twinkle 4.2s ease-in-out 1.1s infinite" }} />
+
+        <div className="w-full grid grid-cols-1 gap-y-14 tablet:grid-cols-2 tablet:gap-x-16 my-auto items-start relative z-10">
+
+          {/* Left — heading block */}
+          <div id="faq-left" className="flex flex-col gap-y-6 tablet:sticky tablet:top-36 tablet:self-start">
+            <span className="w-fit font-inter text-xs tracking-widest uppercase text-primary/70 border border-primary/20 rounded-full px-3 py-1.5">
+              Got Questions?
+            </span>
+            <h2 className="!text-left !text-5xl tablet:!text-6xl leading-tight">
+              Frequently<br />Asked<br />Questions
+            </h2>
+            <p id="faq-tagline" className="font-inter text-foreground/55 text-lg max-w-xs">
+              Everything you need to know about therapy at BeyondFaith.
+            </p>
+            <div id="faq-cta">
+              <ContactFormSheet>
+                <Button variant="default" shape="curved-box" size="lg">
+                  Still have questions? Ask us
+                </Button>
+              </ContactFormSheet>
+            </div>
+          </div>
+
+          {/* Right — accordion */}
+          <div className="faq-content">
             <Accordion type="single" collapsible className="w-full">
               {FAQS.map((faq) => {
                 const selected = faq.questionare[0];
@@ -467,46 +510,37 @@ export default function Home() {
                   <AccordionItem
                     key={selected.question}
                     value={selected.question}
+                    className="faq-item group border-b border-border/60"
                   >
-                    <AccordionTrigger>{selected.question}</AccordionTrigger>
-                    <AccordionContent className="flex flex-col gap-4 text-balance">
-                      <div>{selected.answer}</div>
+                    <AccordionTrigger className="py-5 hover:no-underline">
+                      <div className="flex items-center gap-x-4 text-left pr-4">
+                        <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0 transition-all duration-300 group-hover:bg-primary group-hover:text-white">
+                          {selected.icon}
+                        </div>
+                        <span className="font-inter text-base font-medium text-foreground transition-colors duration-300 group-hover:text-primary">
+                          {selected.question}
+                        </span>
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="pl-14 pb-5 text-foreground/60 text-base font-inter">
+                      {selected.answer}
                     </AccordionContent>
                   </AccordionItem>
                 );
               })}
             </Accordion>
-            <Link href={"/faq"}>
-              <Button variant="link" className="!px-0 py-5">
-                View More FAQ <ChevronRight />
-              </Button>
-            </Link>
+
+            <div className="mt-8">
+              <Link href="/faq">
+                <Button variant="outline" shape="curved-box" className="gap-x-2">
+                  View All FAQs <ChevronRight size={15} />
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </InViewAnimateSection>
-      <section className="w-full min-h-fit py-24 flex gap-y-6 justify-center relative">
-        <Image
-          src="/images/galaxy.png"
-          alt="galaxy-background"
-          fill
-          sizes="100vw"
-          className="-z-10 inset-0"
-        />
-        <div className="flex flex-col items-center text-accent gap-y-6 max-w-200">
-          <div className="flex flex-col gap-y-3 text-center">
-            <h2 className="text-4xl font-dm">Ready to Begin Your Journey?</h2>
-            <p className="text-center text-lg opacity-60">
-              Take the first step toward healing and growth with BeyondFaith.
-              We’re here to support you every step of the way.
-            </p>
-          </div>
-          <ContactFormSheet>
-            <Button variant="accent" className="w-fit">
-              Book Your Appointment
-            </Button>
-          </ContactFormSheet>
-        </div>
-      </section>
+      <CTABanner />
     </>
   );
 }

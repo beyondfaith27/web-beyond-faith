@@ -1,4 +1,6 @@
-import AnimatedUnderline from "@/components/AnimatedUnderline";
+import AboutHeroContent from "@/components/AboutHeroContent";
+import CTABanner from "@/components/CTABanner";
+import InViewAnimateSection from "@/components/InViewAnimateSection";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -6,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import ContactFormSheet from "@/components/ContactFormSheet";
 import CONTENTS from "@/contents";
 import { cj } from "@/lib/utils";
+import { Handshake, FlaskConical, ShieldCheck, ChevronRight } from "lucide-react";
 
 export const metadata = {
   title: "About Us",
@@ -28,121 +31,91 @@ export const metadata = {
 const About = () => {
   return (
     <>
-      <section className="!h-full flex items-center relative py-24 bg-colored-background text-white">
-        <div className="flex relative z-10 flex-col gap-y-4 h-fit group">
-          <p className="text-2xl opacity-60 font-bold mb-8">About Us</p>
-          <h1 className="font-sans font-bold text-left">
-            Mental well-being is the{" "}
-            <span className="relative">
-              foundation of a full life
-              <AnimatedUnderline />
-            </span>
-            .
-          </h1>
-          <p className="text-xl max-w-200 group">
-            BeyondFaith was born from a simple mission: to provide the
-            compassionate guidance needed to turn{" "}
-            <span className="font-bold relative">
-              emotional resilience
-              <AnimatedUnderline />
-            </span>{" "}
-            into
-            <span className="font-bold ml-1 relative">
-              inner strength
-              <AnimatedUnderline withDelay />
-            </span>
-            .
-          </p>
-          <p className="text-xl max-w-200 group">
-            Our name represents the bridge between where you are and who you can
-            become. We believe that when you combine{" "}
-            <span className="font-bold relative">
-              self-belief
-              <AnimatedUnderline />
-            </span>{" "}
-            with the right support, transformation isn't just possible -{" "}
-            <span className="font-bold relative">
-              it’s inevitable
-              <AnimatedUnderline withDelay />
-            </span>
-            .
-          </p>
+      {/* Hero */}
+      <AboutHeroContent />
+
+      {/* Mission + Vision */}
+      <InViewAnimateSection
+        sectionAnimFuncName="aboutMissionVisionSection"
+        className="!h-full flex flex-col gap-y-8 justify-center relative py-28 overflow-hidden"
+      >
+        {/* Background ambiance */}
+        <div className="absolute top-16 right-[10%] w-[420px] h-[420px] rounded-full bg-primary/5 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-16 left-[6%] w-80 h-80 rounded-full bg-muted blur-2xl pointer-events-none" />
+
+        {/* Section header */}
+        <div id="mv-section-title" className="flex flex-col items-center gap-y-4 mb-4">
+          <span className="w-fit font-inter text-xs tracking-widest uppercase text-primary/60 border border-primary/20 rounded-full px-3 py-1.5">
+            About BeyondFaith
+          </span>
+          <h2 className="!text-5xl tablet:!text-6xl">Our Mission &amp; Vision</h2>
         </div>
-        <div className="absolute top-0 right-0 h-full w-full md:w-2/6  overflow-hidden">
-          {/* <video src="/videos/yoga1.mp4" autoPlay muted loop controls={false} /> */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: `
-                  linear-gradient(
-                    to right,
-                    oklch(from var(--colored-background) l c h / 1) 0%,
-                    oklch(from var(--colored-background) l c h / 0.6) 20%,
-                    oklch(from var(--colored-background) l c h / 0.6) 80%,
-                    oklch(from var(--colored-background) l c h / 1) 100%
-                  ),
-                  linear-gradient(
-                    to bottom,
-                    oklch(from var(--colored-background) l c h / 1) 0%,
-                    oklch(from var(--colored-background) l c h / 0.6) 20%,
-                    oklch(from var(--colored-background) l c h / 0.6) 80%,
-                    oklch(from var(--colored-background) l c h / 1) 100%
-                  )
-                `,
-            }}
-          ></div>
-        </div>
-      </section>
-      <section className="!h-full flex flex-col gap-y-16 justify-center relative py-24">
+
+        {/* Cards */}
         {[
           CONTENTS.ABOUT_CONTENT.OUR_MISSION,
           CONTENTS.ABOUT_CONTENT.OUR_VISION,
         ].map((content) => {
           const isRight = content.align === "right";
+          // Each card pair gets its own tinted bg so transparent SVGs look intentional
+          const bgBack  = isRight ? "bg-indigo-50"  : "bg-amber-50/80";
+          const bgFront = isRight ? "bg-violet-50"  : "bg-orange-50/60";
 
           return (
             <div
               key={content.heading}
-              className={cj(
-                "w-full max-w-7xl mx-auto",
-                isRight && "md:pl-60",
-                !isRight && "md:pr-60"
-              )}
+              className="about-card grid grid-cols-1 tablet:grid-cols-2 gap-12 tablet:gap-16 items-center py-4"
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 items-center">
-                {/* Text */}
-                <div
-                  className={cj(
-                    "flex flex-col md:text-left justify-center items-center text-balance max-w-104 mx-auto",
-                    isRight &&
-                      "md:order-2 text-center md:text-left md:items-start",
-                    !isRight && "text-center md:text-right md:items-end"
-                  )}
-                >
-                  <h2 className="text-2xl md:text-3xl font-bold mb-4">
-                    {content.heading}
-                  </h2>
+              {/* Text side */}
+              <div
+                className={cj(
+                  "flex flex-col",
+                  isRight && "tablet:order-2"
+                )}
+              >
+                <h3 className="font-dm text-4xl tablet:text-5xl text-foreground mb-5 leading-tight">
+                  {content.heading}
+                </h3>
+                <p className="font-inter text-foreground/60 text-base tablet:text-lg leading-relaxed">
+                  {content.description}
+                </p>
+              </div>
 
-                  <p className="text-foreground/70 text-base md:text-lg leading-relaxed">
-                    {content.description}
-                  </p>
-                </div>
-
-                {/* Illustration */}
+              {/* Photo collage */}
+              <div
+                className={cj(
+                  "relative h-80 tablet:h-96 w-full",
+                  isRight && "tablet:order-1"
+                )}
+              >
+                {/* Back image — larger, rotated */}
                 <div
-                  className={cj(
-                    "flex justify-center",
-                    isRight && "md:order-1 md:justify-end",
-                    !isRight && "md:justify-start"
-                  )}
+                  className="absolute top-4 left-0 w-[65%] h-[68%]"
+                  style={{ transform: `rotate(${isRight ? "3deg" : "-3deg"})` }}
                 >
-                  <div className="relative w-full max-w-xs md:max-w-sm h-40 md:h-56">
+                  <div className={`relative w-full h-full rounded-2xl overflow-hidden shadow-lg shadow-black/12 ${bgBack}`}>
                     <Image
                       src={content.illustration}
                       alt={content.heading}
                       fill
-                      className="object-contain"
-                      sizes="(min-width: 768px) 260px, 70vw"
+                      className="object-contain p-3"
+                      sizes="(min-width: 1080px) 33vw, 65vw"
+                    />
+                  </div>
+                </div>
+
+                {/* Front image — smaller, opposite rotation, bottom-right */}
+                <div
+                  className="absolute bottom-0 right-0 w-[58%] h-[60%]"
+                  style={{ transform: `rotate(${isRight ? "-2.5deg" : "2.5deg"})` }}
+                >
+                  <div className={`relative w-full h-full rounded-2xl overflow-hidden shadow-xl shadow-black/18 ${bgFront}`}>
+                    <Image
+                      src={content.illustration2}
+                      alt={`${content.heading} secondary`}
+                      fill
+                      className="object-contain p-3"
+                      sizes="(min-width: 1080px) 30vw, 58vw"
                     />
                   </div>
                 </div>
@@ -150,58 +123,88 @@ const About = () => {
             </div>
           );
         })}
-        <div className="absolute bottom-0 left-[var(--gutter-width)] w-[calc(100%-2*var(--gutter-width))] h-px bg-border"></div>
-      </section>
-      <section className="!h-fit min-h-fit flex flex-col gap-y-16 justify-center relative py-36">
-        <div className="max-w-200 mx-auto">
-          <h2 className="text-2xl md:text-4xl font-bold mb-8">Our Approach</h2>
-          <p className="text-base md:text-lg">
-            At BeyondFaith, we combine scientific methods with empathetic care
-            to create tailored mental well-being strategies. Our therapists and
-            professionals are dedicated to:
-          </p>
-          <ul className="ml-10 list-disc my-6 text-base md:text-lg">
-            <li>Building strong therapeutic alliances.</li>
-            <li>
-              Providing personalized care through evidence-based techniques.
-            </li>
-            <li>
-              Creating safe and inclusive spaces for meaningful conversations.
-            </li>
-          </ul>
-          <p className="text-base md:text-lg">
-            Whether you're seeking individual therapy, support for your team, or
-            insights for driving mental health awareness, BeyondFaith is your
-            trusted partner in well-being.
-          </p>
-          <Link href="/faq" className="inline-block mt-6 text-primary underline underline-offset-4 hover:opacity-80 transition-opacity text-base md:text-lg">
-            Have questions? Browse our FAQ →
-          </Link>
-        </div>
-      </section>
-      <section className="w-full min-h-fit py-24 flex gap-y-6 justify-center relative">
-        <Image
-          src="/images/galaxy.png"
-          alt="galaxy-background"
-          fill
-          sizes="100vw"
-          className="-z-10 inset-0"
-        />
-        <div className="flex flex-col items-center text-accent gap-y-6 max-w-200">
-          <div className="flex flex-col gap-y-3 text-center">
-            <h2 className="text-4xl font-dm">Ready to Begin Your Journey?</h2>
-            <p className="text-center text-lg opacity-60">
-              Take the first step toward healing and growth with BeyondFaith.
-              We’re here to support you every step of the way.
-            </p>
+
+        {/* Section divider */}
+        <div className="w-full h-px bg-border/40 my-4" />
+      </InViewAnimateSection>
+
+      {/* Our Approach */}
+      <InViewAnimateSection
+        sectionAnimFuncName="aboutApproachSection"
+        className="!h-fit flex items-center justify-center relative py-28 overflow-hidden"
+      >
+        {/* Background tint + orbs */}
+        <div className="absolute inset-0 bg-muted/25 pointer-events-none" />
+        <div className="absolute top-12 left-[4%] w-80 h-80 rounded-full bg-primary/5 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-12 right-[6%] w-72 h-72 rounded-full bg-primary/8 blur-2xl pointer-events-none" />
+
+        <div className="relative z-10 w-full grid grid-cols-1 tablet:grid-cols-2 gap-16 items-center">
+
+          {/* Left — heading + intro */}
+          <div className="flex flex-col gap-y-6">
+            <span className="w-fit font-inter text-xs tracking-widest uppercase text-primary/60 border border-primary/20 rounded-full px-3 py-1.5">
+              Our Methodology
+            </span>
+            <h2 id="approach-heading" className="!text-left !text-5xl tablet:!text-6xl leading-tight">
+              Our<br />Approach
+            </h2>
+            <div id="approach-body" className="flex flex-col gap-y-4">
+              <p className="font-inter text-foreground/60 text-base tablet:text-lg leading-relaxed">
+                At BeyondFaith, we combine scientific methods with empathetic
+                care to create tailored mental well-being strategies.
+              </p>
+              <p className="font-inter text-foreground/60 text-base tablet:text-lg leading-relaxed">
+                Whether you&apos;re seeking individual therapy, team support, or
+                insights for driving mental health awareness — we&apos;re your
+                trusted partner in well-being.
+              </p>
+            </div>
+            <div className="mt-2">
+              <Link href="/faq">
+                <Button variant="outline" shape="curved-box" className="gap-x-2">
+                  Browse our FAQ <ChevronRight size={15} />
+                </Button>
+              </Link>
+            </div>
           </div>
-          <ContactFormSheet>
-            <Button variant="accent" className="w-fit">
-              Book Your Appointment
-            </Button>
-          </ContactFormSheet>
+
+          {/* Right — feature cards */}
+          <div className="flex flex-col gap-y-4">
+            {[
+              {
+                Icon: Handshake,
+                heading: "Therapeutic Alliances",
+                body: "We build deep, trusting connections between therapist and client — the foundation of effective and lasting healing.",
+              },
+              {
+                Icon: FlaskConical,
+                heading: "Evidence-Based Personalized Care",
+                body: "Every strategy is tailored to you, grounded in proven clinical techniques and adapted to your unique needs.",
+              },
+              {
+                Icon: ShieldCheck,
+                heading: "Safe & Inclusive Spaces",
+                body: "We create environments where meaningful conversations happen freely, without hesitation or judgment.",
+              },
+            ].map(({ Icon, heading, body }) => (
+              <div
+                key={heading}
+                className="approach-card flex items-start gap-x-5 rounded-2xl border border-primary/10 bg-background/80 backdrop-blur-sm p-6 hover:border-primary/30 hover:bg-primary/[0.03] transition-all duration-300"
+              >
+                <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0 mt-0.5">
+                  <Icon size={22} />
+                </div>
+                <div>
+                  <h3 className="font-dm text-xl text-foreground mb-1.5">{heading}</h3>
+                  <p className="font-inter text-sm text-foreground/55 leading-relaxed">{body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </section>
+      </InViewAnimateSection>
+
+      <CTABanner />
     </>
   );
 };

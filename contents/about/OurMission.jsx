@@ -10,7 +10,8 @@ const OUR_MISSION = {
     </>
   ),
   icons: Sprout,
-  illustration: "/images/mindful-nature-light.jpeg",
+  illustration: "/images/undraw_meditation.svg",
+  illustration2: "/images/Mental health-rafiki.svg",
   align: "left",
 };
 
