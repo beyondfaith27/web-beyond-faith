@@ -1,4 +1,6 @@
 import { ImageResponse } from 'next/og';
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
 
 export const alt = 'BeyondFaith | Mental Health Counseling & Support';
 export const size = { width: 1200, height: 630 };
@@ -7,19 +9,9 @@ export const contentType = 'image/png';
 export default async function Image() {
   let fontData;
   try {
-    const css = await fetch(
-      'https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap',
-      {
-        headers: {
-          'User-Agent':
-            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        },
-      }
-    ).then((r) => r.text());
-    const fontUrl = css.match(/url\((https:\/\/fonts\.gstatic\.com\/[^)]+)\)/)?.[1];
-    if (fontUrl) {
-      fontData = await fetch(fontUrl).then((r) => r.arrayBuffer());
-    }
+    fontData = await readFile(
+      join(process.cwd(), 'public/fonts/DMSerifDisplay-Regular.ttf')
+    );
   } catch {
     // fall back to system serif
   }
