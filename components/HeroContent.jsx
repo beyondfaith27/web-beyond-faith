@@ -92,34 +92,34 @@ export default function HeroContent() {
         </div>
       </div>
 
-      {/* Right panel — animated illustration (tablet+) */}
-      <div className="opacity-0 tablet:opacity-100 absolute right-0 top-0 h-full w-[50%] pointer-events-none select-none flex items-center justify-center px-8">
+      {/* Right panel — animated illustration (faint background on mobile, full presence tablet+) */}
+      <div className="z-0 absolute inset-0 tablet:inset-auto tablet:right-0 tablet:top-0 h-full w-full tablet:w-[50%] opacity-[0.08] tablet:opacity-100 pointer-events-none select-none flex items-center justify-center px-8">
         {/* Ambient glow orb */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="w-80 h-80 rounded-full bg-accent/5 blur-3xl" />
         </div>
 
-        {/* Decorative sparkles */}
+        {/* Decorative sparkles (tablet+ only) */}
         <Sparkles
-          className="absolute top-[22%] right-[12%] text-accent/50 w-5 h-5"
+          className="hidden tablet:block absolute top-[22%] right-[12%] text-accent/50 w-5 h-5"
           style={{ animation: "twinkle 2.6s ease-in-out infinite" }}
         />
         <Sparkles
-          className="absolute top-[40%] right-[6%] text-accent/30 w-3.5 h-3.5"
+          className="hidden tablet:block absolute top-[40%] right-[6%] text-accent/30 w-3.5 h-3.5"
           style={{ animation: "twinkle 3.8s ease-in-out 0.9s infinite" }}
         />
         <Sparkles
-          className="absolute bottom-[28%] right-[18%] text-accent/40 w-4 h-4"
+          className="hidden tablet:block absolute bottom-[28%] right-[18%] text-accent/40 w-4 h-4"
           style={{ animation: "twinkle 3.1s ease-in-out 1.6s infinite" }}
         />
         <Sparkles
-          className="absolute top-[30%] left-[8%] text-accent/25 w-3 h-3"
+          className="hidden tablet:block absolute top-[30%] left-[8%] text-accent/25 w-3 h-3"
           style={{ animation: "twinkle 4.2s ease-in-out 0.4s infinite" }}
         />
 
-        {/* Slow-rotating decorative ring */}
+        {/* Slow-rotating decorative ring (tablet+ only) */}
         <div
-          className="absolute top-[18%] right-[10%] w-20 h-20 rounded-full border border-accent/12"
+          className="hidden tablet:block absolute top-[18%] right-[10%] w-20 h-20 rounded-full border border-accent/12"
           style={{ animation: "slowRotate 22s linear infinite" }}
         >
           <div className="absolute -top-1 left-1/2 w-2 h-2 rounded-full bg-accent/25 -translate-x-1/2" />
@@ -127,7 +127,7 @@ export default function HeroContent() {
 
         {/* Main illustration — floating */}
         <div
-          className="relative w-full h-[82%]"
+          className="relative w-full h-[60%] tablet:h-[82%]"
           style={{ animation: "svgFloat 5.5s ease-in-out infinite" }}
         >
           <Image
@@ -136,7 +136,7 @@ export default function HeroContent() {
             fill
             className="object-contain object-center"
             priority
-            sizes="50vw"
+            sizes="(max-width: 1080px) 100vw, 50vw"
           />
         </div>
       </div>
