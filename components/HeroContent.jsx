@@ -143,7 +143,7 @@ export default function HeroContent() {
 
       {/* Floating card — bottom-right (laptop+) */}
       <div
-        className="opacity-0 laptop:opacity-100 absolute bottom-20 right-[calc(var(--gutter-width)+2rem)] z-20"
+        className="hidden laptop:block absolute bottom-20 right-[calc(var(--gutter-width)+2rem)] z-20"
         style={{ animation: "heroFadeIn 0.9s ease-out 1.6s both" }}
       >
         <div

@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import ContactFormSheet from "@/components/ContactFormSheet";
 import { cj } from "@/lib/utils";
-import { useScroll, useMotionValueEvent } from "framer-motion";
+import { useScroll, useMotionValueEvent } from "motion/react";
 import { Menu } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
