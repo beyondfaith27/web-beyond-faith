@@ -73,13 +73,6 @@ export async function insertContactToSheet(formData) {
     const submissionSheetName = "submissions";
     const inferenceSheetName = "infer";
 
-    console.log("\n\n**************************\n\n");
-    console.log(
-      { googleCreds, spreadsheetId },
-      "wht is wrong ... I don't understand"
-    );
-    console.log("\n\n**************************\n\n");
-
     if (!googleCreds) {
       throw new Error("Contact handler not found");
     }
@@ -88,10 +81,6 @@ export async function insertContactToSheet(formData) {
     }
 
     const parsedCreds = JSON.parse(googleCreds);
-
-    console.log("\n\n**************************\n\n");
-    console.log(parsedCreds);
-    console.log("\n\n**************************\n\n");
 
     const gAuth = new google.auth.GoogleAuth({
       credentials: parsedCreds,
@@ -113,8 +102,6 @@ export async function insertContactToSheet(formData) {
       spreadsheetId,
       inferenceSheetName
     );
-
-    console.log(JSON.stringify({ submissionSheet, inferenceSheet }), "china");
 
     const insertRowRequest_submission = {
       insertDimension: {
@@ -186,28 +173,14 @@ export async function insertContactToSheet(formData) {
       },
     };
 
-    console.log(
-      "\n\nchina insertRowRequest START \n\n" +
-        JSON.stringify({ batchUpdateRequest }) +
-        "\n\nchina insertRowRequest END \n\n"
-    );
-
     const response = await glSheets.spreadsheets.batchUpdate(
       batchUpdateRequest
     );
 
-    console.log(
-      "\n\nchina insertRowRequest START \n\n" +
-        JSON.stringify({ response }) +
-        "\n\nchina insertRowRequest END \n\n"
-    );
-
     return { success: true, data: response.data };
   } catch (error) {
-    console.log("\n\nError from here .... ");
-    console.log(JSON.stringify(error));
     console.error("Error inserting row with style:", error);
-    return { success: false, error: error };
+    return { success: false, error: error?.message || "Something went wrong" };
   }
 }
 
