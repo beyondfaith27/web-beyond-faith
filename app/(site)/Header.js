@@ -20,11 +20,12 @@ import {
 const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
+  { label: "Blog", href: "/blog" },
   { label: "FAQ", href: "/faq" },
 ];
 
 // Pages whose top section has a light background — header must start dark
-const LIGHT_HERO_PATHS = ["/faq", "/privacy-policy", "/terms-and-conditions"];
+const LIGHT_HERO_PATHS = ["/faq", "/privacy-policy", "/terms-and-conditions", "/blog"];
 
 const Header = () => {
   const pathname = usePathname();

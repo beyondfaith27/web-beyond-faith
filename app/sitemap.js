@@ -1,7 +1,16 @@
+import { getAllBlogs } from "@/lib/blogs";
+
 export default function sitemap() {
   const baseUrl = process.env.IS_DEV === 'true'
     ? 'https://web-beyond-faith.vercel.app'
     : 'https://beyondfaith.in';
+
+  const blogRoutes = getAllBlogs().map((blog) => ({
+    url: `${baseUrl}/blog/${blog.slug}`,
+    lastModified: new Date(blog.date),
+    changeFrequency: 'yearly',
+    priority: 0.6,
+  }));
 
   return [
     {
@@ -16,6 +25,13 @@ export default function sitemap() {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    ...blogRoutes,
     {
       url: `${baseUrl}/faq`,
       lastModified: new Date('2026-01-26'),
