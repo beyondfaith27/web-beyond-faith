@@ -5,12 +5,19 @@ export default function sitemap() {
     ? 'https://web-beyond-faith.vercel.app'
     : 'https://beyondfaith.in';
 
-  const blogRoutes = getAllBlogs().map((blog) => ({
+  const blogs = getAllBlogs();
+
+  const blogRoutes = blogs.map((blog) => ({
     url: `${baseUrl}/blog/${blog.slug}`,
     lastModified: new Date(blog.date),
     changeFrequency: 'yearly',
     priority: 0.6,
   }));
+
+  const latestBlogDate = blogs.reduce(
+    (latest, blog) => (new Date(blog.date) > latest ? new Date(blog.date) : latest),
+    new Date(0)
+  );
 
   return [
     {
@@ -27,7 +34,7 @@ export default function sitemap() {
     },
     {
       url: `${baseUrl}/blog`,
-      lastModified: new Date(),
+      lastModified: latestBlogDate,
       changeFrequency: 'weekly',
       priority: 0.8,
     },

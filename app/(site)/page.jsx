@@ -354,14 +354,14 @@ export default function Home() {
                 <div className="w-full min-[500px]:w-[30%] mx-auto tablet:w-auto tablet:max-h-[calc(100vh-350px)] aspect-[41/56] rounded-2xl overflow-clip shadow-2xl">
                   <Image
                     src="/images/founder-image.png"
-                    alt="founder-image"
+                    alt="Nazneen K, Founder of BeyondFaith"
                     fill
                     sizes="(min-width: 1300px) 50vw, (min-width: 800px) 40vw, (min-width: 500px) 30vw, 100vw"
                     className="object-cover rounded-2xl"
                   />
                 </div>
                 <div className="founder-star absolute -top-8 -left-8">
-                  <Image src="/images/Stars.svg" width={48} height={48} alt="stars-decoration" />
+                  <Image src="/images/Stars.svg" width={48} height={48} alt="" />
                 </div>
               </div>
             </div>
@@ -371,7 +371,7 @@ export default function Home() {
           <div id="founder-content" className="w-full flex tablet:pr-12 text-pretty flex-col h-fit gap-y-6 relative text-center mt-14 tablet:mt-0">
             <div className="w-fit relative mx-auto">
               <div className="founder-star absolute -top-8 -right-8 -rotate-12">
-                <Image src="/images/Stars.svg" width={48} height={48} alt="stars-decoration" />
+                <Image src="/images/Stars.svg" width={48} height={48} alt="" />
               </div>
               <h2 className="!text-5xl tablet:!text-6xl font-dm w-fit leading-tight">
                 A Message from<br />Our Founder

@@ -89,7 +89,7 @@ const Header = () => {
           }
           height={40}
           width={160}
-          alt="beyondFaith-logo"
+          alt="BeyondFaith logo"
           className="translate-y-1"
           style={{ width: "auto", height: "40px" }}
         />

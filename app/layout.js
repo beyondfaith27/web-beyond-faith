@@ -14,6 +14,12 @@ const inter = Inter({
   variable: "--inter-font",
 });
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#4f2479",
+};
+
 export const metadata = {
   metadataBase: new URL(process.env.IS_DEV === 'true'
     ? "https://web-beyond-faith.vercel.app"
@@ -21,6 +27,7 @@ export const metadata = {
   alternates: {
     canonical: '/',
   },
+  manifest: "/manifest.json",
   title: {
     default: "BeyondFaith | Your Journey to Inner Strength",
     template: "%s | BeyondFaith",
@@ -66,6 +73,7 @@ export default function RootLayout({ children }) {
     "url": process.env.IS_DEV === "true" ? "https://web-beyond-faith.vercel.app" : "https://beyondfaith.in",
     "logo": `${process.env.IS_DEV === "true" ? "https://web-beyond-faith.vercel.app" : "https://beyondfaith.in"}/images/beyondFaith-logo-black.png`,
     "description": "Virtual mental health counseling and therapy services for individuals and organizations worldwide.",
+    "email": "wellness@beyondfaith.in",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Navi Mumbai",
@@ -82,20 +90,25 @@ export default function RootLayout({ children }) {
       { "@type": "Country", "name": "United States" },
       { "@type": "Country", "name": "United Kingdom" }
     ],
-    // "sameAs": []
+    "sameAs": [
+      "https://www.instagram.com/wearebeyondfaith",
+      "https://www.linkedin.com/company/beyondfaith/"
+    ],
   };
 
   const founderJsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "FOUNDER_NAME_HERE",
+    "name": "Nazneen K",
     "jobTitle": "Founder & Mental Health Counselor",
     "worksFor": {
       "@type": "MedicalOrganization",
       "name": "BeyondFaith"
     },
     "url": process.env.IS_DEV === "true" ? "https://web-beyond-faith.vercel.app" : "https://beyondfaith.in",
-    // "sameAs": []
+    "sameAs": [
+      "https://www.linkedin.com/in/nazneen-kamal-b35a87240/"
+    ],
   };
 
   return (

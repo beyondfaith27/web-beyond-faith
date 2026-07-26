@@ -10,21 +10,21 @@ const Footer = () => {
         <h2 className="text-lg inline-block">
           <Image
             src="/images/beyondFaith-logo-black.svg"
-            alt="beyondFaith-logo"
+            alt="BeyondFaith logo"
             width={120}
             height={32}
             draggable="false"
           />
         </h2>
         <span className="opacity-40 flex text-sm mb-2">© {new Date().getFullYear()} BeyondFaith</span>
-        <span className="opacity-30 flex text-xs">Developed by Alfred Nelson</span>
+        <span className="opacity-30 flex text-xs">Developed by Abhiram Krishna M</span>
       </div>
       <div className="flex flex-col items-start md:items-end gap-y-4 w-fit">
         <div className="flex items-center w-full gap-x-6 tablet:gap-x-12 justify-center md:justify-end">
           <Link target="_blank" href="https://www.instagram.com/wearebeyondfaith">
             <Image
               src="/images/instagram.svg"
-              alt="instagram"
+              alt="BeyondFaith on Instagram"
               width={32}
               height={32}
             />
@@ -32,7 +32,7 @@ const Footer = () => {
           <Link target="_blank" href="https://www.linkedin.com/company/beyondfaith/">
             <Image
               src="/images/linkedIn.svg"
-              alt="linkedIn"
+              alt="BeyondFaith on LinkedIn"
               width={32}
               height={32}
             />
@@ -41,7 +41,7 @@ const Footer = () => {
           <ContactFormSheet>
             <Image
               src="/images/whatsapp.svg"
-              alt="whatsapp"
+              alt="Chat with BeyondFaith on WhatsApp"
               width={32}
               height={32}
             />

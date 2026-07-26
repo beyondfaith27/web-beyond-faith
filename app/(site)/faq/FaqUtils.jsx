@@ -2,7 +2,7 @@
 
 import FAQS from "@/lib/faqs";
 import React, { createContext, useContext, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import { cj } from "@/lib/utils";
 import {
   Accordion,
@@ -58,44 +58,52 @@ export const FaqTypeSelection = () => {
 
 export const SectionFaqList = () => {
   const { selectedSection } = useContext(FaqContext);
-  const { questionare } = FAQS[selectedSection];
 
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0 }}
-        key={selectedSection}
-        className="w-full h-fit flex justify-start text-left mt-16 mb-20"
-      >
-        <Accordion type="single" collapsible className="w-full">
-          {questionare.map((nare) => {
-            return (
-              <AccordionItem
-                key={nare.question}
-                value={nare.question}
-                className="px-4"
-              >
-                <AccordionTrigger className="text-lg">
-                  <div className="flex items-center gap-3">
-                    <span className="shrink-0 text-muted-foreground">
-                      {nare.icon}
-                    </span>
+    <div className="w-full mt-16 mb-20">
+      {FAQS.map((section, idx) => {
+        const isActive = idx === selectedSection;
 
-                    <span className="text-left">{nare.question}</span>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="flex flex-col gap-4 text-balance text-lg pl-7">
-                  <div className="flex flex-col gap-y-4 max-w-180">
-                    {nare.answer}
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-            );
-          })}
-        </Accordion>
-      </motion.div>
-    </AnimatePresence>
+        return (
+          // Every section stays mounted (not just the selected tab) so all
+          // Q&As are present in the rendered HTML for crawlers — only the
+          // active one is shown to sighted users, matching the FAQPage schema.
+          <div key={section.sectionName} className={isActive ? "block" : "hidden"}>
+            <motion.div
+              animate={{ opacity: isActive ? 1 : 0, y: isActive ? 0 : 20 }}
+              transition={{ duration: 0.3 }}
+              className="w-full h-fit flex justify-start text-left"
+            >
+              <Accordion type="single" collapsible className="w-full">
+                {section.questionare.map((nare) => {
+                  return (
+                    <AccordionItem
+                      key={nare.question}
+                      value={nare.question}
+                      className="px-4"
+                    >
+                      <AccordionTrigger className="text-lg">
+                        <div className="flex items-center gap-3">
+                          <span className="shrink-0 text-muted-foreground">
+                            {nare.icon}
+                          </span>
+
+                          <span className="text-left">{nare.question}</span>
+                        </div>
+                      </AccordionTrigger>
+                      <AccordionContent className="flex flex-col gap-4 text-balance text-lg pl-7">
+                        <div className="flex flex-col gap-y-4 max-w-180">
+                          {nare.answer}
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
+                  );
+                })}
+              </Accordion>
+            </motion.div>
+          </div>
+        );
+      })}
+    </div>
   );
 };

@@ -1,0 +1,16 @@
+{
+  "name": "BeyondFaith | Mental Health Counseling & Support",
+  "short_name": "BeyondFaith",
+  "description": "Virtual mental health counseling and therapy services for individuals and organizations.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4f2479",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    }
+  ]
+}
