@@ -73,8 +73,9 @@ Existing images are royalty-free stock photos (Unsplash/Pexels-style), ~1600px w
    curl -L "<direct-image-url>" -o "public/images/blog/<slug>.jpg"
    ```
 5. Write a specific, descriptive `alt` — describe the actual scene, not the topic (e.g. `"Silhouette of a man standing alone by the water at dusk"`, not `"Man with depression"`).
+6. **Ask the user to confirm the image before moving on.** Read the downloaded file with the Read tool so it renders inline, then ask (via AskUserQuestion or plainly in chat) whether it works, giving them the option to: keep it, have you try a different search/photo, or supply their own image file to use instead. Don't proceed to step 5 until they've approved one.
 
-If no good photo is found after a couple of searches, tell the user rather than shipping a mismatched image.
+If no good photo is found after a couple of searches, say so and ask the user for direction rather than shipping a mismatched image.
 
 ### 5. Insert into `lib/blogs.js`
 
